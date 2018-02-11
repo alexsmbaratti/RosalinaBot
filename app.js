@@ -8,7 +8,7 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.0.0";
+const build = "5.0.1";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
 
@@ -646,10 +646,28 @@ client.on('message', msg => {
     });
   }
 
+  if (msg.content.toLowerCase() == "r!github") {
+    msg.channel.send({
+      embed: {
+        author: {
+          name: "GitHub",
+          icon_url: "https://github.com/alexsmbaratti/RosalinaBot/raw/master/misc/github-favicon.png"
+        },
+        title: "RosalinaBot",
+        thumbnail: {
+          url: client.user.avatarURL
+        },
+        url: "https://github.com/alexsmbaratti/RosalinaBot/",
+        color: 0x86D0CF,
+        description: "View the source code, request features, and report bugs.",
+      }
+    });
+  }
+
   if (msg.content.toLowerCase() == "r!help") {
     // TODO: Add r!coin
     // TODO: \n**Voice** - `shockDodge`
-    msg.channel.send("**Command List**\nBasic command structure is `r![command]`. All commands are **not** case-sensitive. Use `r!help [command]` for more information about that command.\n\n**Friend Codes** - `setSwitchCode`, `getSwitchCode`, `set3DSCode`, `get3DSCode`\n**Fun** - `coin`, `dice`, `8ball`\n**Debug** - `ping`, `build`, `channel`, `guilds`\n**Misc.** - `settings`");
+    msg.channel.send("**Command List**\nBasic command structure is `r![command]`. All commands are **not** case-sensitive. Use `r!help [command]` for more information about that command.\n\n**Friend Codes** - `setSwitchCode`, `getSwitchCode`, `set3DSCode`, `get3DSCode`\n**Fun** - `coin`, `dice`, `8ball`\n**Debug** - `ping`, `build`, `channel`, `guilds`\n**Misc.** - `settings`, `github`");
     if (msg.author.id == alex) {
       msg.channel.send("**Admin** - `setGame`, `randomGame`, `ip`");
     }
@@ -696,6 +714,9 @@ client.on('message', msg => {
       case "guilds":
         msg.channel.send("**r!guilds**\nReturns the amount of guilds, or servers, that RosalinaBot serves.");
         break;
+        case "github":
+          msg.channel.send("**r!github**\nView the source code, request features, and report bugs.");
+          break;
       default:
         msg.reply("That command is not in the help database.");
         break;
