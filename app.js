@@ -651,7 +651,7 @@ client.on('message', msg => {
       embed: {
         author: {
           name: "GitHub",
-          icon_url: "https://github.com/alexsmbaratti/RosalinaBot/raw/master/misc/github-favicon.png"
+          icon_url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/github-favicon.png"
         },
         title: "RosalinaBot",
         thumbnail: {
