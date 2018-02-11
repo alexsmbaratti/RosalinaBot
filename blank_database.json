@@ -1,0 +1,12 @@
+{
+  "users": [{
+    "userID": "-1",
+    "switchCode": "-1",
+    "dsCode": "-1",
+    "switchPrivacy": "PRIVATE",
+    "dsPrivacy": "PRIVATE",
+    "starbits": 0,
+    "exp": 0,
+    "level": 1
+  }]
+}

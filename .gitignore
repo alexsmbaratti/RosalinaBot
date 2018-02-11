@@ -1,0 +1,20 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/sounds
+/profile_pictures
+package.json
+package-lock.json
+
+# database
+database.json
+
+# System Files
+.DS_Store
+
+# API Keys
+config.js
+config.json
+
+notes.txt
