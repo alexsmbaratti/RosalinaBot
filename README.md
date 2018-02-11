@@ -1,6 +1,8 @@
 # RosalinaBot
 **A Discord Bot for Nintendo fans**
 
+![alt text](https://img.shields.io/uptimerobot/status/m778918918-3e92c097147760ee39d02d36.svg "Online")
+
 RosalinaBot keeps tracks of your friend's Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features. 
 
 [Add to Discord](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot)
