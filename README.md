@@ -12,6 +12,8 @@ RosalinaBot keeps tracks of your friend's Nintendo friend codes through Discord!
   * Use `r!dice` or `r!die` to roll a die. A great alternative to settling it in Smash!
 * Coin Flipping
   * Use `r!coin` to flip a coin. Who knows? Maybe it'll land on its side!
+* 8 Ball
+  * Use `r!8ball [Yes or No Question]` to seek answers from the cosmos.
 * Privacy Settings
-  * Customize whether your friends can request your individual friend codes
-    * (The alternative is you sending your code to chat yourself)
+  * Customize whether your friends can request your individual friend codes.
+    * (The alternative is you sending your code to chat yourself.)
