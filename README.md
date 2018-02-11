@@ -1,7 +1,7 @@
 # RosalinaBot
 **A Discord Bot for Nintendo fans**
 
-[![alt text](https://img.shields.io/badge/maintenance-active-brightgreen.svg "Maintenance")](https://github.com/alexsmbaratti/RosalinaBot/commits/master) ![alt text](https://img.shields.io/badge/build-5.1.0-brightgreen.svg "Build") [![alt text](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot)
+[![alt text](https://img.shields.io/badge/maintenance-active-brightgreen.svg "Maintenance")](https://github.com/alexsmbaratti/RosalinaBot/commits/master) [![alt text](https://img.shields.io/badge/build-5.1.0-brightgreen.svg "Build")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![alt text](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot)
 
 RosalinaBot keeps tracks of your friend's Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features.
 
