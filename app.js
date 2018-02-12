@@ -8,7 +8,7 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.1.0";
+const build = "5.1.1";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
 
@@ -101,12 +101,7 @@ client.on('guildCreate', guild => {
 client.on('message', msg => {
   updateGuildsToAWS();
   readJSON();
-  if (msg.author.id != rosalinaID) { // TODO: Change to ID
-    console.log('Message from ' + msg.author.username + ' with ID ' + msg.author.id);
-    console.log(' - ' + msg.content);
-    if (findUserinJSON(msg) == 0) { // If user is not in database
-      addUserToJSON(msg);
-    }
+  if (msg.author.bot != true) { // TODO: Change to ID
     if ((msg.channel.type == 1) || (msg.content.toLowerCase().includes("<@" + rosalinaID + ">"))) {
       console.log(' - Channel type is ' + msg.channel.type);
       if (msg.content.toLowerCase().includes('hello') || msg.content.toLowerCase().includes('hi')) {
@@ -130,6 +125,9 @@ client.on('message', msg => {
 
     // XP and Level Block
     if (false == true) {
+      if (findUserinJSON(msg) == 0) { // If user is not in database
+        addUserToJSON(msg);
+      }
       var userIndex = findUserinJSON(msg);
       json.users[userIndex].exp += 5;
       if (json.users[userIndex].exp >= 2 ^ json.users[userIndex].level + 158) {
@@ -316,6 +314,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase().includes("r!setswitchcode") && msg.author.id != rosalinaID) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     console.log(" - Request to set Nintendo Switch friend code");
     if (msg.content.substring(16) == "") {
       console.log(" - No code detected!");
@@ -359,6 +360,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase() == ("r!getswitchcode") || msg.content.toLowerCase() == ("r!switchcode")) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     console.log(" - Request to get Nintendo Switch friend code");
     var userIndex = findUserinJSON(msg);
     console.log("  - Switch Code is: " + json.users[userIndex].switchCode);
@@ -382,6 +386,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase().includes("r!getswitchcode <@") && msg.content.substring(msg.content.length - 1, msg.content.length) == ">") {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     console.log(" - Request to get Nintendo Switch friend code");
     var extractedID = extractID(msg);
     var mention = "<@" + extractedID + ">";
@@ -423,6 +430,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase() == ("r!profile")) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     var userIndex = findUserinJSON(msg);
     msg.channel.send({
       embed: {
@@ -448,6 +458,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase().includes("r!set3dscode") && msg.author.id != rosalinaID) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     // TODO: Validate friend code
     console.log(" - Request to set Nintendo 3DS friend code");
     if (msg.content.substring(13) == "") {
@@ -479,6 +492,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase() == ("r!get3dscode") || msg.content.toLowerCase() == ("r!3dscode")) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     console.log(" - Request to get Nintendo 3DS friend code");
     var userIndex = findUserinJSON(msg);
     console.log("  - 3DS Code is: " + json.users[userIndex].dsCode);
@@ -502,6 +518,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase().includes("r!get3dscode <@") && msg.content.substring(msg.content.length - 1, msg.content.length) == ">") {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     console.log(" - Request to get Nintendo 3DS friend code");
     var extractedID = extractID(msg);
     var mention = "<@" + extractedID + ">";
@@ -667,7 +686,7 @@ client.on('message', msg => {
   if (msg.content.toLowerCase() == "r!help") {
     // TODO: Add r!coin
     // TODO: \n**Voice** - `shockDodge`
-    msg.channel.send("**Command List**\nBasic command structure is `r![command]`. All commands are **not** case-sensitive. Use `r!help [command]` for more information about that command.\n\n**Friend Codes** - `setSwitchCode`, `getSwitchCode`, `set3DSCode`, `get3DSCode`\n**Fun** - `coin`, `dice`, `8ball`\n**Debug** - `ping`, `build`, `channel`, `guilds`\n**Misc.** - `settings`, `github`");
+    msg.channel.send("**Command List**\nBasic command structure is `r![command]`. All commands are **not** case-sensitive. Use `r!help [command]` for more information about that command.\n\n**Friend Codes** - `setSwitchCode`, `switchCode`, `set3DSCode`, `3DSCode`\n**Fun** - `coin`, `dice`, `8ball`\n**Debug** - `ping`, `build`, `channel`, `guilds`\n**Misc.** - `settings`, `github`");
     if (msg.author.id == alex) {
       msg.channel.send("**Admin** - `setGame`, `randomGame`, `ip`");
     }
@@ -679,13 +698,13 @@ client.on('message', msg => {
         msg.channel.send("**r!setSwitchCode**\nKeeps your Nintendo Switch Friend Code stored for reference and sharing\n\n*Usage Examples*\n`r!setSwitchCode SW-YOUR_CODE_HERE` Sets your Nintendo Switch code (include dashes)\n`r!setSwitchCode clear` Your Nintendo Switch code will be removed from the database");
         break;
       case "getswitchcode":
-        msg.channel.send("**r!getSwitchCode**\nShares your Nintendo Switch Friend Code with your channel\n\n*Usage Examples*\n`r!getSwitchCode` Gets sender's Nintendo Switch code\n`r!getSwitchCode @USER` Gets mentioned users' Nintendo Switch code");
+        msg.channel.send("**r!switchCode**\nShares your Nintendo Switch Friend Code with your channel\n\n*Usage Examples*\n`r!getSwitchCode` Gets sender's Nintendo Switch code\n`r!getSwitchCode @USER` Gets mentioned users' Nintendo Switch code");
         break;
       case "set3dscode":
         msg.channel.send("**r!set3DSCode**\nKeeps your Nintendo 3DS Friend Code stored for reference and sharing\n\n*Usage Examples*\n`r!set3DSCode YOUR_CODE_HERE` Sets your Nintendo 3DS code (include dashes)\n`r!set3DSCode clear` Your Nintendo 3DS code will be removed from the database");
         break;
       case "get3dscode":
-        msg.channel.send("**r!get3DSCode**\nShares your Nintendo 3DS Friend Code with your channel\n\n*Usage Examples*\n`r!get3DSCode` Gets sender's Nintendo 3DS code\n`r!get3DSCode @USER` Gets mentioned users' Nintendo 3DS code");
+        msg.channel.send("**r!3DSCode**\nShares your Nintendo 3DS Friend Code with your channel\n\n*Usage Examples*\n`r!get3DSCode` Gets sender's Nintendo 3DS code\n`r!get3DSCode @USER` Gets mentioned users' Nintendo 3DS code");
         break;
       case "build":
         msg.channel.send("**r!build**\nReturns RosalinaBot's build number");
@@ -724,6 +743,9 @@ client.on('message', msg => {
   }
 
   if (msg.content.toLowerCase().includes("r!settings") && msg.author.id != rosalinaID) {
+    if (findUserinJSON(msg) == 0) { // If user is not in database
+      addUserToJSON(msg);
+    }
     switch (msg.content.toLowerCase().substring(11)) {
       case "switchcode public":
         var userIndex = findUserinJSON(msg);
