@@ -8,7 +8,7 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.1.1";
+const build = "5.1.2";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
 
@@ -429,7 +429,7 @@ client.on('message', msg => {
     }
   }
 
-  if (msg.content.toLowerCase() == ("r!profile")) {
+  if (msg.content.toLowerCase() == ("r!profile") && false == true) { // Temp disabled
     if (findUserinJSON(msg) == 0) { // If user is not in database
       addUserToJSON(msg);
     }
@@ -902,8 +902,8 @@ function addUserToJSON(msg) {
     "userID": msg.author.id,
     "switchCode": "-1",
     "dsCode": "-1",
-    "switchPrivacy": "PUBLIC",
-    "dsPrivacy": "PUBLIC",
+    "switchPrivacy": "PRIVATE",
+    "dsPrivacy": "PRIVATE",
     "starbits": 0,
     "exp": 0,
     "level": 1
