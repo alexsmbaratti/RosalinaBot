@@ -4,7 +4,6 @@
 /node_modules
 /sounds
 /profile_pictures
-package.json
 package-lock.json
 
 # database
