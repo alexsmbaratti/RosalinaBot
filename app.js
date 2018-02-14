@@ -8,7 +8,7 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.1.2";
+const build = "5.1.3";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
 
