@@ -59,6 +59,10 @@ client.on('ready', () => {
           {
             name: "Platform",
             value: platform
+          },
+          {
+            name: "Guilds Serving",
+            value: client.guilds.size
           }
         ],
         footer: {
@@ -79,6 +83,10 @@ client.on('ready', () => {
           {
             name: "Platform",
             value: "Not defined"
+          },
+          {
+            name: "Guilds Serving",
+            value: client.guilds.size
           }
         ],
         footer: {
