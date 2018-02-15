@@ -1,7 +1,7 @@
 # RosalinaBot
 **A Discord Bot for Nintendo fans**
 
-[![alt text](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![alt text](https://img.shields.io/badge/maintenance-active-brightgreen.svg "Maintenance")](https://github.com/alexsmbaratti/RosalinaBot/commits/master) [![alt text](https://img.shields.io/badge/build-5.1.3-brightgreen.svg "Build")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![alt text](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) 
+[![alt text](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![alt text](https://img.shields.io/badge/maintenance-active-brightgreen.svg "Maintenance")](https://github.com/alexsmbaratti/RosalinaBot/commits/master) [![alt text](https://img.shields.io/badge/build-5.1.4-brightgreen.svg "Build")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![alt text](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) 
 
 RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features.
 
@@ -19,7 +19,7 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
     * (The alternative is you sending your code to chat yourself.)
-    
+
 ## Instructions
 ### Sharing friend codes
 To share your friend code with people in your server, or just keep it handy on Discord, use either `r!setSwitchCode` or `r!set3DSCode` to store your Nintendo Switch friend code or Nintendo 3DS friend code respectively. Example usage is below for both commands.

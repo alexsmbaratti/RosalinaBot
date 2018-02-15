@@ -8,7 +8,7 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.1.3";
+const build = "5.1.4";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
 
@@ -102,7 +102,11 @@ client.on('ready', () => {
 
 client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
-  guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
+  try {
+    guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
+  } catch (e) {
+    // If there is no default channel
+  }
   updateGuildsToAWS();
 });
 
@@ -656,10 +660,6 @@ client.on('message', msg => {
     updateSwitchCodesToAWS();
   }
 
-  if (msg.content.toLowerCase() == "r!getschwifty" || msg.content.toLowerCase() == "r!getswifty") {
-    msg.reply("Nice try.")
-  }
-
   if (msg.content.toLowerCase() == "r!embed") {
     msg.channel.send({
       embed: {
@@ -741,9 +741,9 @@ client.on('message', msg => {
       case "guilds":
         msg.channel.send("**r!guilds**\nReturns the amount of guilds, or servers, that RosalinaBot serves.");
         break;
-        case "github":
-          msg.channel.send("**r!github**\nView the source code, request features, and report bugs.");
-          break;
+      case "github":
+        msg.channel.send("**r!github**\nView the source code, request features, and report bugs.");
+        break;
       default:
         msg.reply("That command is not in the help database.");
         break;
