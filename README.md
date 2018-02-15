@@ -28,3 +28,8 @@ To share your friend code with people in your server, or just keep it handy on D
 `r!set3DSCode 1234-5678-9000`
 
 Note that dashes are required and the commands are not case sensitive. You should recieve a confirmation message if it is successful. By default, your friend codes are private. In order for others to see them, you must type `r!switchCode` or `r!3DSCode` to retrieve your friend codes. If you set your friend codes to public, others in a server with RosalinaBot may use `r!switchCode @[YOU]` or `r!3DSCode @[YOU]` to retrieve your friend codes.
+
+### Privacy Settings
+By default, any of your friend codes will be set to private. The only time RosalinaBot will send your friend codes to a chat is if you and only you use the `r!switchCode` or the `r!3DSCode` commands. To check these settings at anytime, use `r!settings`.
+
+To change a privacy setting, follow this format `r!settings [PLATFORM]Code [PRIVACY]`. Replace `PLATFORM` with either `switch` or `3DS` and `PRIVACY` with either `PUBLIC` or `PRIVATE`. For example, typing `r!settings switchCode PUBLIC` will set your Nintendo Switch friend code to public. 
