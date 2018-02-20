@@ -8,9 +8,12 @@ const rosalinaRole = config.rosalinaRole;
 var rosalinaID;
 var rosalinaBotTestChannel;
 
-const build = "5.1.4";
+const build = "5.1.5";
 var host_ip = "0.0.0.0";
 var platform = "undefined";
+
+const check = ":white_check_mark:";
+const x = ":x:";
 
 // TODO: Make multi server friendly
 var voiceChannel;
@@ -1027,11 +1030,11 @@ function extractID(msg) {
     }
   }
   if (startIndex != -1 && endIndex != -1) {
-    result = text.substring(startIndex, endIndex);
+    result = check + text.substring(startIndex, endIndex);
     console.log(" - Extracted: " + result);
     return result;
   } else {
-    return "ID Extraction Failed!"
+    return x + " Extraction Failed!"
   }
 }
 
