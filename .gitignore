@@ -17,3 +17,13 @@ config.js
 config.json
 
 notes.txt
+
+# Gource
+gource.sh
+
+# Gource Live
+/.project
+/.gitignore~
+tmp
+/feeders
+gource-live.sh
