@@ -1,0 +1,29 @@
+[{
+    "name": "help",
+    "help": "Use this command for detailed information on each command\n\n*Usage Examples*\n`r!help 8ball` Gives help information for `r!8ball` command"
+  },
+  {
+    "name": "green",
+    "help": "#0f0"
+  },
+  {
+    "name": "blue",
+    "help": "#00f"
+  },
+  {
+    "name": "cyan",
+    "help": "#0ff"
+  },
+  {
+    "name": "magenta",
+    "help": "#f0f"
+  },
+  {
+    "name": "yellow",
+    "help": "#ff0"
+  },
+  {
+    "name": "black",
+    "help": "#000"
+  }
+]
