@@ -19,11 +19,11 @@
     "help": "Tosses a six-sided die. Can also be executed with `r!dice`."
   },
   {
-    "name": "yellow",
-    "help": "#ff0"
+    "name": "8ball",
+    "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
   },
   {
-    "name": "black",
-    "help": "#000"
+    "name": "settings",
+    "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
   }
 ]

@@ -27,8 +27,16 @@ class Help extends Command {
           msg.channel.send(":x: Invalid usage!");
         }
       });
-    } catch (e) {
-      msg.channel.send(":x: Invalid usage!");
+    } catch (e) { // General r!help
+      fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
+        if (err) throw err;
+        var obj = JSON.parse(data);
+        var message = "**Commands**\n";
+        for (var i = 0; i < obj.length; i++) {
+          message += "`" + obj[i].name + "` ";
+        }
+        msg.channel.send(message);
+      });
     }
   }
 }
