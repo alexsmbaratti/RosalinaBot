@@ -11,9 +11,9 @@ class Help extends Command {
       if (parsable.startsWith("r!")) { // r!8ball
         parsable = parsable.substring(2); // -> 8ball
       }
-      msg.reply(parsable);
+      msg.reply(parsable); // TODO: Read commands.json
     } catch(e) {
-      msg.reply("Command not in database!");
+      msg.channel.send(":x: **Invalid usage!**"); // TODO: Reference help document to show correct usage
     }
   }
 }
