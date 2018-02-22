@@ -1,22 +1,22 @@
 [{
     "name": "help",
-    "help": "Use this command for detailed information on each command\n\n*Usage Examples*\n`r!help 8ball` Gives help information for `r!8ball` command"
+    "help": "Use this command for detailed information on each command.\n\n*Usage Examples*\n`r!help 8ball` Gives help information for `r!8ball` command."
   },
   {
-    "name": "green",
-    "help": "#0f0"
+    "name": "ping",
+    "help": "Returns the response time, or ping, of a message."
   },
   {
-    "name": "blue",
-    "help": "#00f"
+    "name": "coin",
+    "help": "Flips a coin. Can land on heads, tails, or its side."
   },
   {
-    "name": "cyan",
-    "help": "#0ff"
+    "name": "dice",
+    "help": "Tosses a six-sided die. Can also be executed with `r!die`."
   },
   {
-    "name": "magenta",
-    "help": "#f0f"
+    "name": "die",
+    "help": "Tosses a six-sided die. Can also be executed with `r!dice`."
   },
   {
     "name": "yellow",
