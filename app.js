@@ -20,6 +20,9 @@ client.on('message', msg => {
     if (input.startsWith("help")) {
       new Help(msg);
     }
+    else if (input.startsWith("8ball")) {
+      new EightBall(msg);
+    }
   }
 });
 
