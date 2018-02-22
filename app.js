@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var config = require('./config.json');
 
+// Classes
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 
@@ -15,10 +16,9 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase().startsWith(prefix)) {
-    switch (msg.content.toLowerCase().substring(2)) {
-      case `help`:
-        new Help(msg);
-        break;
+    var input = msg.content.toLowerCase().substring(prefix.length);
+    if (input.startsWith("help")) {
+      new Help(msg);
     }
   }
 });

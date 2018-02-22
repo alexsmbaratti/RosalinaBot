@@ -1,6 +1,6 @@
 class Command {
   constructor(msg) {
-    
+
   }
 }
 
