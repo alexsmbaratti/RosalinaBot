@@ -1,6 +1,10 @@
 {
   "name": "rosalinabot",
+<<<<<<< HEAD
   "version": "5.2.0",
+=======
+  "version": "5.1.5",
+>>>>>>> cbb1dc497750e385c21b430ff4ac3f81ef9adac5
   "description": "A Discord bot for sharing Nintendo friend codes",
   "main": "app.js",
   "scripts": {
