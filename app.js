@@ -21,10 +21,10 @@ client.on('ready', () => {
     status: 'online',
     afk: false,
     game: {
-      name: "r!help for commands",
-      url: "https://www.nintendo.com"
+      name: "r!help for commands"
     }
   });
+  new UpdateGuilds(client.guilds.size);
 });
 
 client.on('message', msg => {
@@ -58,7 +58,6 @@ client.on('message', msg => {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
-      new UpdateGuilds(client.guilds.size);
     }
   }
 });
@@ -69,6 +68,8 @@ client.on('guildCreate', guild => {
     guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
   } catch (e) {
     // If there is no default channel
+  } finally {
+    new UpdateGuilds(client.guilds.size);
   }
 });
 
