@@ -8,6 +8,7 @@ const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
 const Ping = require('./commands/Ping.js');
+const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 
 const build = "5.2.0";
 const prefix = "r!";
@@ -57,6 +58,7 @@ client.on('message', msg => {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
+      new UpdateGuilds(client.guilds.size);
     }
   }
 });
