@@ -6,6 +6,7 @@ var config = require('./config.json');
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
+const Dice = require('./commands/Dice.js');
 
 const build = "5.2.0";
 const prefix = "r!";
@@ -47,6 +48,8 @@ client.on('message', msg => {
           description: "View the source code, request features, and report bugs.",
         }
       });
+    } else if (input.startsWith("dice") || input.startsWith("die")) {
+      new Dice(msg);
     }
   }
 });
