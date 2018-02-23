@@ -6,10 +6,10 @@ var config = require('./config.json');
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
-const GitHub = require('./commands/GitHub.js');
 
 const build = "5.2.0";
 const prefix = "r!";
+const color = 0x86D0CF;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
@@ -43,7 +43,7 @@ client.on('message', msg => {
             url: client.user.avatarURL
           },
           url: "https://github.com/alexsmbaratti/RosalinaBot/",
-          color: 0x86D0CF,
+          color: color,
           description: "View the source code, request features, and report bugs.",
         }
       });
