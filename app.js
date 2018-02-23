@@ -6,6 +6,7 @@ var config = require('./config.json');
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
+const GitHub = require('./commands/GitHub.js');
 
 const build = "5.2.0";
 const prefix = "r!";
@@ -28,9 +29,24 @@ client.on('message', msg => {
     var input = msg.content.toLowerCase().substring(prefix.length);
     if (input.startsWith("help")) {
       new Help(msg);
-    }
-    else if (input.startsWith("8ball")) {
+    } else if (input.startsWith("8ball")) {
       new EightBall(msg);
+    } else if (input == "github") {
+      msg.channel.send({
+        embed: {
+          author: {
+            name: "GitHub",
+            icon_url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/github-favicon.png"
+          },
+          title: "RosalinaBot",
+          thumbnail: {
+            url: client.user.avatarURL
+          },
+          url: "https://github.com/alexsmbaratti/RosalinaBot/",
+          color: 0x86D0CF,
+          description: "View the source code, request features, and report bugs.",
+        }
+      });
     }
   }
 });
