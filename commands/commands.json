@@ -24,7 +24,7 @@
     },
     {
       "name": "dice",
-      "help": "Tosses a six-sided die. Can also be executed with `r!die`."
+      "help": "Tosses a six-sided die. Can also be executed with `r!die`. Add a number from 1 to 10 to roll multiple dice.\n\n*Usage Examples*\n`r!dice 8` Rolls eight dice."
     },
     {
       "name": "8ball",
