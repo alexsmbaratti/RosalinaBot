@@ -7,6 +7,7 @@ const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
+const Ping = require('./commands/Ping.js');
 
 const build = "5.2.0";
 const prefix = "r!";
@@ -50,6 +51,12 @@ client.on('message', msg => {
       });
     } else if (input.startsWith("dice") || input.startsWith("die")) {
       new Dice(msg);
+    } else if (input == "ping") {
+      new Ping(msg);
+    } else if (input == "build") {
+      msg.channel.send("Build: `" + build + "`");
+    } else if (input == "guilds") {
+      msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
     }
   }
 });
