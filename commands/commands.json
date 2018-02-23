@@ -1,29 +1,62 @@
-[{
-    "name": "help",
-    "help": "Use this command for detailed information on each command.\n\n*Usage Examples*\n`r!help 8ball` Gives help information for `r!8ball` command."
-  },
-  {
-    "name": "ping",
-    "help": "Returns the response time, or ping, of a message."
-  },
-  {
-    "name": "coin",
-    "help": "Flips a coin. Can land on heads, tails, or its side."
-  },
-  {
-    "name": "dice",
-    "help": "Tosses a six-sided die. Can also be executed with `r!die`."
-  },
-  {
-    "name": "die",
-    "help": "Tosses a six-sided die. Can also be executed with `r!dice`."
-  },
-  {
-    "name": "8ball",
-    "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
-  },
-  {
-    "name": "settings",
-    "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
-  }
+[
+  [
+    {
+      "name": "setSwitchCode",
+      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!setSwitchCode SW-YOUR_CODE_HERE` Sets your Nintendo Switch code (include dashes).\n`r!setSwitchCode clear` Your Nintendo Switch code will be removed from the database."
+    },
+    {
+      "name": "switchCode",
+      "help": "Shares your Nintendo Switch Friend Code with your channel.\n\n*Usage Examples*\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
+    },
+    {
+      "name": "set3DSCode",
+      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!setSwitchCode YOUR_CODE_HERE` Sets your Nintendo 3DS code (include dashes).\n`r!set3DSCode clear` Your Nintendo Switch code will be removed from the database."
+    },
+    {
+      "name": "3DSCode",
+      "help": "Shares your Nintendo 3DS Friend Code with your channel.\n\n*Usage Examples*\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code."
+    }
+  ],
+  [
+    {
+      "name": "coin",
+      "help": "Flips a coin. Can land on heads, tails, or its side."
+    },
+    {
+      "name": "dice",
+      "help": "Tosses a six-sided die. Can also be executed with `r!die`."
+    },
+    {
+      "name": "8ball",
+      "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
+    }
+  ],
+  [
+    {
+      "name": "ping",
+      "help": "Returns the response time, or ping, of a message."
+    },
+    {
+      "name": "build",
+      "help": "Returns the current build or version."
+    },
+    {
+      "name": "guilds",
+      "help": "Returns how many guilds (servers) this bot is serving."
+    }
+  ],
+  [
+    {
+      "name": "settings",
+      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
+    },
+    {
+      "name": "github",
+      "help": "View the source code, request features, and report bugs."
+    },
+    {
+      "name": "help",
+      "help": "Use this command for detailed information on each command.\n\n*Usage Examples*\n`r!help 8ball` Returns help documentation for `r!8ball`."
+    }
+  ]
 ]

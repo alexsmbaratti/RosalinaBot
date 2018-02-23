@@ -5,6 +5,7 @@ var config = require('./config.json');
 // Classes
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
+const EightBall = require('./commands/EightBall.js');
 
 const build = "5.2.0";
 const prefix = "r!";
@@ -12,10 +13,18 @@ const prefix = "r!";
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.username}!`);
   console.log("Build: " + build);
+  client.user.setPresence({
+    status: 'online',
+    afk: false,
+    game: {
+      name: "r!help for commands",
+      url: "https://www.nintendo.com"
+    }
+  });
 });
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase().startsWith(prefix)) {
+  if (msg.content.toLowerCase().startsWith(prefix) && msg.author.bot != true) {
     var input = msg.content.toLowerCase().substring(prefix.length);
     if (input.startsWith("help")) {
       new Help(msg);

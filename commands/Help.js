@@ -1,6 +1,8 @@
 const Command = require('./Command.js');
 const fs = require('fs');
 
+const categories = ["Friend Codes", "Fun", "Technical", "Misc."];
+
 // Example usage of command: r!help 8ball
 // Potential usage of command: r!help r!8ball
 
@@ -17,23 +19,28 @@ class Help extends Command {
         if (err) throw err;
         var obj = JSON.parse(data);
         for (var i = 0; i < obj.length; i++) {
-          console.log(obj[i].name + "|" + parsable);
-          if (obj[i].name == parsable) {
-            msg.channel.send("**r!" + obj[i].name + "**\n" + obj[i].help);
-            found = true;
+          for (var j = 0; j < obj[i].length; j++) {
+            if (obj[i][j].name == parsable) {
+              msg.channel.send("**r!" + parsable + "**\n" + obj[i][j].help);
+              found = true;
+              break;
+            }
           }
         }
         if (found == false) {
-          msg.channel.send(":x: Invalid usage!");
+          msg.channel.send(":x: Command not found!");
         }
       });
     } catch (e) { // General r!help
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
         if (err) throw err;
         var obj = JSON.parse(data);
-        var message = "**Commands**\n";
+        var message = "**Command List**\nBasic command structure is `r![command]`. All commands are not case-sensitive. Use `r!help [command]` for more information about that command.\n";
         for (var i = 0; i < obj.length; i++) {
-          message += "`" + obj[i].name + "` ";
+          message += "\n**" + categories[i] + "** - ";
+          for (var j = 0; j < obj[i].length; j++) {
+            message += "`" + obj[i][j].name + "` ";
+          }
         }
         msg.channel.send(message);
       });
