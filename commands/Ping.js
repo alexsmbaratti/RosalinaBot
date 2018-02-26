@@ -4,10 +4,10 @@ class Ping extends Command {
   constructor(msg) {
     super(msg);
     let start = msg.createdTimestamp;
-    msg.channel.send('Pong')
+    msg.channel.send("Pong")
       .then(message => {
         let diff = (message.createdTimestamp - start);
-        message.edit(`Pong \`in ${diff}ms\``);
+        message.edit("Pong \`in ${diff}ms\`");
       })
       .catch(console.error);
   }

@@ -4,7 +4,7 @@
   "description": "A Discord bot for sharing Nintendo friend codes",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js $(hostname -I) [PLATFORM]"
+    "test": "node app.js $(hostname -I) [PLATFORM]"
   },
   "repository": {
 		"type": "git",
@@ -18,8 +18,6 @@
   "homepage": "https://github.com/alexsmbaratti/RosalinaBot#readme",
   "dependencies": {
     "aws-sdk": "^2.113.0",
-    "discord.js": "^11.1.0",
-    "erlpack": "^0.1.2",
-    "node-opus": "^0.2.6"
+    "discord.js": "^11.1.0"
   }
 }
