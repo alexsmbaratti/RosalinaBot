@@ -27,7 +27,7 @@ Currently, I am working on a complete rewrite of this bot (v6.0), which will cle
 * MongoDB Integration
 * Cleanup of commands (i.e. `r!switchCode` instead of `r!getSwitchCode` or `r!setSwitchCode`
 
-The code for the future update is available to view in the `indev` branch.
+The code for the future update is available to view in the [`indev` branch](https://github.com/alexsmbaratti/RosalinaBot/tree/indev).
 
 ## Instructions
 ### Sharing friend codes
