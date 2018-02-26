@@ -19,6 +19,15 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
     * (The alternative is you sending your code to chat yourself.)
+    
+### Indev
+Currently, I am working on a complete rewrite of this bot (v6.0), which will clean up the code significantly. This will make it significantly easier for me to add new functionality in the future. Below are some features planned for the update.
+* Luigi's Balloon World (Super Mario Odyssey) Code Integration
+* Super Mario Maker Code Integration
+* MongoDB Integration
+* Cleanup of commands (i.e. `r!switchCode` instead of `r!getSwitchCode` or `r!setSwitchCode`
+
+The code for the future update is available to view in the `indev` branch.
 
 ## Instructions
 ### Sharing friend codes
