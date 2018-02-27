@@ -21,9 +21,9 @@ class UpdateGuilds {
 
     cw.putMetricData(params, function(err, data) {
       if (err) {
-        console.log("Error", err);
+        console.log("⛈  CloudWatch Put Error: ", err);
       } else {
-        console.log("Success", data);
+        console.log("☁️  CloudWatch Put Success!");
       }
     });
   }

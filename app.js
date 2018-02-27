@@ -8,6 +8,7 @@ const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
 const Ping = require('./commands/Ping.js');
+const Coin = require('./commands/Coin.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 
 const build = "5.2.0";
@@ -15,8 +16,8 @@ const prefix = "r!";
 const color = 0x86D0CF;
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.username}!`);
-  console.log("Build: " + build);
+  console.log(`✅ Logged in as ${client.user.username}!`);
+  console.log(`🔨 Build: ${build}`);
   client.user.setPresence({
     status: 'online',
     afk: false,
@@ -54,6 +55,8 @@ client.on('message', msg => {
       new Dice(msg);
     } else if (input == "ping") {
       new Ping(msg);
+    } else if (input == "coin") {
+      new Coin(msg);
     } else if (input == "build") {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {

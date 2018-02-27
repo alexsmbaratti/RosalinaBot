@@ -14,6 +14,9 @@ class Help extends Command {
       if (parsable.startsWith("r!")) { // r!8ball
         parsable = parsable.substring(2); // -> 8ball
       }
+      if (parsable == "die") { // Special case
+        parsable = "dice";
+      }
       var found = false;
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
         if (err) throw err;

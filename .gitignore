@@ -8,6 +8,7 @@ package-lock.json
 
 # Database
 database.json
+/mongoDB
 
 # System Files
 .DS_Store
