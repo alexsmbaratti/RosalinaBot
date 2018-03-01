@@ -7,7 +7,7 @@ class Ping extends Command {
     msg.channel.send("Pong")
       .then(message => {
         let diff = (message.createdTimestamp - start);
-        message.edit("Pong \`in ${diff}ms\`");
+        message.edit("Pong \`in " + diff + "ms`");
       })
       .catch(console.error);
   }
