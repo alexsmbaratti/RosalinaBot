@@ -13,6 +13,7 @@ const Dice = require('./commands/Dice.js');
 const Ping = require('./commands/Ping.js');
 const Coin = require('./commands/Coin.js');
 const SwitchCode = require('./commands/SwitchCode.js');
+const DSCode = require('./commands/DSCode.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 
 const build = "5.2.0";
@@ -67,6 +68,8 @@ client.on('message', msg => {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
     } else if (input.startsWith("switchcode")) {
       new SwitchCode(msg);
+    } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
+      new DSCode(msg);
     }
   }
 });

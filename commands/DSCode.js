@@ -4,12 +4,12 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
-// Example: r!switchCode
-// Example: r!switchCode @USER
-// Example: r!switchCode clear
-// Example: r!switchCode SW-XXXX-XXXX-XXXX
+// Example: r!dsCode
+// Example: r!dsCode @USER
+// Example: r!dsCode clear
+// Example: r!dsCode XXXX-XXXX-XXXX
 
-class SwitchCode extends Command {
+class DSCode extends Command {
   constructor(msg) {
     super(msg);
     try {
@@ -18,76 +18,37 @@ class SwitchCode extends Command {
       argument = "";
     }
 
-    if (argument.startsWith("sw-")) {
-      MongoClient.connect(url, function(err, client) {
-        var db = client.db('bot');
-        db.collection('users').findOne({
-          _id: msg.author.id
-        }, function(err, results) {
-          if (results == null) {
-            db.collection('users').insertOne({
-              _id: msg.author.id,
-              switchCode: argument.toUpperCase(),
-              dsCode: "-1",
-              switchPrivacy: "PRIVATE",
-              dsPrivacy: "PRIVATE"
-            });
-          } else {
-            db.collection('users').updateOne({
-              "_id": msg.author.id
-            }, {
-              $set: {
-                "switchCode": argument.toUpperCase()
-              }
-            });
-          }
-          client.close();
-          msg.channel.send({
-            embed: {
-              color: 0x86D0CF,
-              author: {
-                name: "Code Saved!",
-                icon_url: msg.member.user.avatarURL
-              },
-              description: argument.toUpperCase(),
-              footer: {
-                text: "Type 'r!help settings' for information about privacy settings."
-              }
-            }
-          });
-        });
-      })
-    } else if (argument.startsWith("<@!") && argument.endsWith(">")) {
+    if (argument.startsWith("<@!") && argument.endsWith(">")) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         var extractedID = extractID(msg);
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {
-          if (results == null || results.switchCode == "-1") {
+          if (results == null || results.dsCode == "-1") {
             msg.channel.send({
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                  name: msg.guild.members.get(extractedID).user.username + "'s Nintendo 3DS Friend Code",
                   icon_url: msg.guild.members.get(extractedID).user.avatarURL
                 },
                 description: "This user has not entered their code.",
                 footer: {
-                  text: "They must set it up with `r!switchcode SW-XXXX-XXXX-XXXX`"
+                  text: "They must set it up with `r!dsCode XXXX-XXXX-XXXX`"
                 }
               }
             });
           } else {
-            if (results.switchPrivacy == "PUBLIC") {
+            if (results.dsPrivacy == "PUBLIC") {
               msg.channel.send({
                 embed: {
                   color: 0x86D0CF,
                   author: {
-                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo 3DS Friend Code",
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
-                  description: results.switchCode
+                  description: results.dsCode
                 }
               });
             } else {
@@ -95,7 +56,7 @@ class SwitchCode extends Command {
                 embed: {
                   color: 0x86D0CF,
                   author: {
-                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo 3DS Friend Code",
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
                   description: "This code has been kept private",
@@ -116,11 +77,11 @@ class SwitchCode extends Command {
           "_id": msg.author.id
         }, {
           $set: {
-            "switchCode": "-1"
+            "dsCode": "-1"
           }
         });
         client.close();
-        msg.reply("Your Nintendo Switch friend code has been removed from my knowledge.");
+        msg.reply("Your Nintendo 3DS friend code has been removed from my knowledge.");
       });
     } else if (argument == "") {
       MongoClient.connect(url, function(err, client) {
@@ -129,17 +90,17 @@ class SwitchCode extends Command {
         db.collection('users').findOne({
           "_id": msg.author.id
         }, function(err, results) {
-          if (results == null || results.switchCode == "-1") {
+          if (results == null || results.dsCode == "-1") {
             msg.channel.send({
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s Nintendo Switch Friend Code",
+                  name: msg.author.username + "'s Nintendo 3DS Friend Code",
                   icon_url: msg.author.avatarURL
                 },
                 description: "You have not entered a code.",
                 footer: {
-                  text: "You can set it up with `r!switchcode SW-XXXX-XXXX-XXXX`"
+                  text: "You can set it up with `r!dsCode XXXX-XXXX-XXXX`"
                 }
               }
             });
@@ -148,10 +109,10 @@ class SwitchCode extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s Nintendo Switch Friend Code",
+                  name: msg.author.username + "'s Nintendo 3DS Friend Code",
                   icon_url: msg.author.avatarURL
                 },
-                description: results.switchCode,
+                description: results.dsCode,
                 footer: {
                   text: "Privacy settings can be managed through r!settings"
                 }
@@ -162,7 +123,48 @@ class SwitchCode extends Command {
         client.close();
       });
     } else {
-      msg.channel.send(":x: Invalid usage!");
+      if (validateCode(argument)) {
+        MongoClient.connect(url, function(err, client) {
+          var db = client.db('bot');
+          db.collection('users').findOne({
+            _id: msg.author.id
+          }, function(err, results) {
+            if (results == null) {
+              db.collection('users').insertOne({
+                _id: msg.author.id,
+                dsCode: "-1",
+                dsCode: argument,
+                switchPrivacy: "PRIVATE",
+                dsPrivacy: "PRIVATE"
+              });
+            } else {
+              db.collection('users').updateOne({
+                "_id": msg.author.id
+              }, {
+                $set: {
+                  "dsCode": argument
+                }
+              });
+            }
+            client.close();
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: "Code Saved!",
+                  icon_url: msg.member.user.avatarURL
+                },
+                description: argument.toUpperCase(),
+                footer: {
+                  text: "Type 'r!help settings' for information about privacy settings."
+                }
+              }
+            });
+          });
+        })
+      } else {
+        msg.channel.send(":x: Invalid usage!");
+      }
     }
   }
 }
@@ -194,8 +196,8 @@ function extractID(msg) {
 }
 
 function validateCode(code) {
-  if (code.substring(0, 3) == "SW-") {
-    if (code.length == 17) {
+  if (code.substring(0, 3) != "SW-") {
+    if (code.length == 14) {
       return true;
     } else {
       return false;
@@ -205,4 +207,4 @@ function validateCode(code) {
   }
 }
 
-module.exports = SwitchCode;
+module.exports = DSCode;
