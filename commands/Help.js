@@ -23,8 +23,8 @@ class Help extends Command {
         var obj = JSON.parse(data);
         for (var i = 0; i < obj.length; i++) {
           for (var j = 0; j < obj[i].length; j++) {
-            if (obj[i][j].name == parsable) {
-              msg.channel.send("**r!" + parsable + "**\n" + obj[i][j].help);
+            if (obj[i][j].name.toLowerCase() == parsable.toLowerCase()) {
+              msg.channel.send("**r!" + obj[i][j].name + "**\n" + obj[i][j].help);
               found = true;
               break;
             }

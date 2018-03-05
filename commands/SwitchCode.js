@@ -7,6 +7,7 @@ const url = 'mongodb://localhost:27017';
 // Example: r!switchCode
 // Example: r!switchCode @USER
 // Example: r!switchCode clear
+// Example: r!switchCode SW-XXXX-XXXX-XXXX
 
 class SwitchCode extends Command {
   constructor(msg) {
@@ -17,7 +18,7 @@ class SwitchCode extends Command {
       argument = "";
     }
 
-    if (argument.startsWith("sw-")) { // Example: r!switchCode SW-XXXX-XXXX-XXXX
+    if (argument.startsWith("sw-")) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         db.collection('users').findOne({

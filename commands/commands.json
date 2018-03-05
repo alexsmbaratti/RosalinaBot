@@ -1,12 +1,8 @@
 [
   [
     {
-      "name": "setSwitchCode",
-      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!setSwitchCode SW-YOUR_CODE_HERE` Sets your Nintendo Switch code (include dashes).\n`r!setSwitchCode clear` Your Nintendo Switch code will be removed from the database."
-    },
-    {
       "name": "switchCode",
-      "help": "Shares your Nintendo Switch Friend Code with your channel.\n\n*Usage Examples*\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
+      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
     },
     {
       "name": "set3DSCode",
