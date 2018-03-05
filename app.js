@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-const url = 'mongodb://localhost:27017';
+
 var config = require('./config.json');
 
 // Classes
@@ -14,9 +12,10 @@ const Ping = require('./commands/Ping.js');
 const Coin = require('./commands/Coin.js');
 const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
+const Settings = require('./commands/Settings.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 
-const build = "5.2.0";
+const build = "6.0.0";
 const prefix = "r!";
 const color = 0x86D0CF;
 
@@ -70,6 +69,8 @@ client.on('message', msg => {
       new SwitchCode(msg);
     } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
       new DSCode(msg);
+    } else if (input.startsWith("settings")) {
+      new Settings(msg);
     }
   }
 });
