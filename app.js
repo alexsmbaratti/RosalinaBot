@@ -1,5 +1,8 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+const url = 'mongodb://localhost:27017';
 var config = require('./config.json');
 
 // Classes
@@ -9,6 +12,7 @@ const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
 const Ping = require('./commands/Ping.js');
 const Coin = require('./commands/Coin.js');
+const SwitchCode = require('./commands/SwitchCode.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 
 const build = "5.2.0";
@@ -61,6 +65,8 @@ client.on('message', msg => {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
+    } else if (input.startsWith("switchcode")) {
+      new SwitchCode(msg);
     }
   }
 });

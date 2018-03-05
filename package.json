@@ -4,20 +4,25 @@
   "description": "A Discord bot for sharing Nintendo friend codes",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js $(hostname -I) [PLATFORM]"
+    "test": "node app.js $(hostname -I) [PLATFORM]",
+    "start": "nodemon app.js $(hostname -I) [PLATFORM]"
   },
   "repository": {
-		"type": "git",
-		"url": "git+https://github.com/alexsmbaratti/RosalinaBot.git"
-	},
+    "type": "git",
+    "url": "git+https://github.com/alexsmbaratti/RosalinaBot.git"
+  },
   "author": "alexsmbaratti",
   "license": "UNLICENSED",
   "bugs": {
-		"url": "https://github.com/alexsmbaratti/RosalinaBot/issues"
-	},
+    "url": "https://github.com/alexsmbaratti/RosalinaBot/issues"
+  },
   "homepage": "https://github.com/alexsmbaratti/RosalinaBot#readme",
   "dependencies": {
     "aws-sdk": "^2.113.0",
-    "discord.js": "^11.1.0"
+    "discord.js": "^11.1.0",
+    "mongodb": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
   }
 }
