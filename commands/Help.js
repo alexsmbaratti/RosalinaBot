@@ -17,6 +17,9 @@ class Help extends Command {
       if (parsable == "die") { // Special case
         parsable = "dice";
       }
+      if (parsable.toLowerCase() == "dscode") { // Special case
+        parsable = "3dscode";
+      }
       var found = false;
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
         if (err) throw err;
