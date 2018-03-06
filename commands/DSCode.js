@@ -1,4 +1,5 @@
 const Command = require('./Command.js');
+const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
@@ -86,7 +87,6 @@ class DSCode extends Command {
     } else if (argument == "") {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
         db.collection('users').findOne({
           "_id": msg.author.id
         }, function(err, results) {
@@ -166,6 +166,7 @@ class DSCode extends Command {
         msg.channel.send(":x: Invalid usage!");
       }
     }
+    new Update3DSCodes();
   }
 }
 

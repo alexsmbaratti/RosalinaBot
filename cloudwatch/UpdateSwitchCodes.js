@@ -7,13 +7,13 @@ var cw = new AWS.CloudWatch({
   apiVersion: '2010-08-01'
 });
 
-class Update3DSCodes {
+class UpdateSwitchCodes {
   constructor() {
     var num;
     MongoClient.connect(url, function(err, client) {
       var db = client.db('bot');
       db.collection('users').count({
-        dsCode: {
+        switchCode: {
           $ne: "-1"
         }
       }, function(err, results) {
@@ -21,7 +21,7 @@ class Update3DSCodes {
         client.close();
         var params = {
           MetricData: [{
-            MetricName: 'Nintendo 3DS Codes Managed',
+            MetricName: 'Nintendo Switch Codes Managed',
             Dimensions: [{
               Name: 'Statistics',
               Value: 'Codes'
@@ -36,7 +36,7 @@ class Update3DSCodes {
           if (err) {
             console.log("⛈  CloudWatch Put Error: ", err);
           } else {
-            console.log("☁️  Put " + num + " Nintendo 3DS friend codes to CloudWatch");
+            console.log("☁️  Put " + num + " Nintendo Switch friend codes to CloudWatch");
           }
         });
       });
@@ -44,4 +44,4 @@ class Update3DSCodes {
   }
 }
 
-module.exports = Update3DSCodes;
+module.exports = UpdateSwitchCodes;

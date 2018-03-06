@@ -1,4 +1,5 @@
 const Command = require('./Command.js');
+const UpdateSwitchCodes = require('../cloudwatch/UpdateSwitchCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
@@ -164,6 +165,7 @@ class SwitchCode extends Command {
     } else {
       msg.channel.send(":x: Invalid usage!");
     }
+    new UpdateSwitchCodes();
   }
 }
 

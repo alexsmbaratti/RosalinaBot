@@ -14,6 +14,8 @@ const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
 const Settings = require('./commands/Settings.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
+const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
+const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 
 const build = "6.0.0";
 const prefix = "r!";
@@ -30,6 +32,8 @@ client.on('ready', () => {
     }
   });
   new UpdateGuilds(client.guilds.size);
+  new Update3DSCodes();
+  new UpdateSwitchCodes();
 });
 
 client.on('message', msg => {
@@ -65,6 +69,7 @@ client.on('message', msg => {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
+      new UpdateGuilds(client.guilds.size);
     } else if (input.startsWith("switchcode")) {
       new SwitchCode(msg);
     } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {

@@ -23,7 +23,7 @@ class UpdateGuilds {
       if (err) {
         console.log("⛈  CloudWatch Put Error: ", err);
       } else {
-        console.log("☁️  CloudWatch Put Success!");
+        console.log("☁️  Put " + guilds + " guilds to CloudWatch");
       }
     });
   }
