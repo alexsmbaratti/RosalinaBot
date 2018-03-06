@@ -17,7 +17,7 @@ const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 
-const build = "6.0.0";
+const build = "6.0.0-alpha";
 const prefix = "r!";
 const color = 0x86D0CF;
 

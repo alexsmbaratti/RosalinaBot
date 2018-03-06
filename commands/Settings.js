@@ -18,6 +18,7 @@ class Settings extends Command {
         arg2 = "";
       }
     }
+    console.log(msg.content);
     if (arg1 != "" && (arg2 == "public" || arg2 == "private")) {
       if (arg1 == "switchcode" || arg1 == "switch") {
         MongoClient.connect(url, function(err, client) {
@@ -99,6 +100,7 @@ class Settings extends Command {
         })
       }
     } else if (msg.content.length == 10) { // r!settings
+      console.log("A");
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         db.collection('users').findOne({
@@ -107,33 +109,55 @@ class Settings extends Command {
           if (results == null) {
             db.collection('users').insertOne({
               _id: msg.author.id,
-              dsCode: "-1",
+              switchCode: "-1",
               dsCode: "-1",
               switchPrivacy: "PRIVATE",
               dsPrivacy: "PRIVATE"
             });
-          }
-          msg.channel.send({
-            embed: {
-              color: 0x86D0CF,
-              author: {
-                name: "Settings for " + msg.author.username,
-                icon_url: msg.member.user.avatarURL
-              },
-              fields: [{
-                  name: "*Nintendo 3DS Friend Code Privacy Setting*",
-                  value: results.dsPrivacy
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: "Settings for " + msg.author.username,
+                  icon_url: msg.member.user.avatarURL
                 },
-                {
-                  name: "*Nintendo Switch Friend Code Privacy Setting*",
-                  value: results.switchPrivacy
+                fields: [{
+                    name: "*Nintendo 3DS Friend Code Privacy Setting*",
+                    value: "PRIVATE"
+                  },
+                  {
+                    name: "*Nintendo Switch Friend Code Privacy Setting*",
+                    value: "PRIVATE"
+                  }
+                ],
+                footer: {
+                  text: "Type 'r!help settings' for information about changing these settings."
                 }
-              ],
-              footer: {
-                text: "Type 'r!help settings' for information about changing these settings."
               }
-            }
-          });
+            });
+          } else {
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: "Settings for " + msg.author.username,
+                  icon_url: msg.member.user.avatarURL
+                },
+                fields: [{
+                    name: "*Nintendo 3DS Friend Code Privacy Setting*",
+                    value: results.dsPrivacy
+                  },
+                  {
+                    name: "*Nintendo Switch Friend Code Privacy Setting*",
+                    value: results.switchPrivacy
+                  }
+                ],
+                footer: {
+                  text: "Type 'r!help settings' for information about changing these settings."
+                }
+              }
+            });
+          }
           client.close();
         });
       })
