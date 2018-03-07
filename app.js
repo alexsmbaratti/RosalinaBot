@@ -13,6 +13,7 @@ const Coin = require('./commands/Coin.js');
 const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
 const Settings = require('./commands/Settings.js');
+const MarioMaker = require('./commands/MarioMaker.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
@@ -76,6 +77,8 @@ client.on('message', msg => {
       new DSCode(msg);
     } else if (input.startsWith("settings")) {
       new Settings(msg);
+    } else if (input.startsWith("smm")) {
+      new MarioMaker(msg);
     }
   }
 });
