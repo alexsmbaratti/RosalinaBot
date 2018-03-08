@@ -9,7 +9,6 @@ class MarioMaker extends Command {
     super(msg);
     try {
       var argument = msg.content.split(" ")[1].toUpperCase();
-      console.log(argument);
       SMM.fetchCourse(argument, function(error, course) {
         if (error) {
           msg.channel.send(":x: " + error);
@@ -40,6 +39,10 @@ class MarioMaker extends Command {
               },
               title: "**" + course.title + "**",
               description: style,
+              url: "https://supermariomakerbookmark.nintendo.net/courses/" + argument,
+              "thumbnail": {
+                "url": course.thumbnailUrl
+              },
               fields: [{
                   name: "Stars",
                   value: course.stars
