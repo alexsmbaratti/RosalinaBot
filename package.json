@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node app.js $(hostname -I) [PLATFORM]",
-    "start": "nodemon app.js $(hostname -I) [PLATFORM]"
+    "start": "mongod --dbpath ./mongoDB & nodemon app.js $(hostname -I) [PLATFORM]"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "aws-sdk": "^2.113.0",
     "discord.js": "^11.1.0",
     "mongodb": "^3.0.3",
+    "pokedex-promise-v2": "^3.1.1",
     "super-mario-maker-client": "^0.3.1",
     "uws": "^9.14.0"
   },

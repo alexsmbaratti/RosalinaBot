@@ -135,7 +135,20 @@ class DSCode extends Command {
                 dsCode: "-1",
                 dsCode: argument,
                 switchPrivacy: "PRIVATE",
-                dsPrivacy: "PRIVATE"
+                dsPrivacy: "PRIVATE",
+                bowser: "-1",
+                cap: "-1",
+                cascade: "-1",
+                lake: "-1",
+                lost: "-1",
+                luncheon: "-1",
+                metro: "-1",
+                moon: "-1",
+                mushroom: "-1",
+                sand: "-1",
+                seaside: "-1",
+                snow: "-1",
+                wooded: "-1"
               });
             } else {
               db.collection('users').updateOne({
