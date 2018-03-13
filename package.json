@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexsmbaratti/RosalinaBot.git"
+    "url": "git://github.com/alexsmbaratti/RosalinaBot.git"
   },
   "author": "alexsmbaratti",
   "license": "UNLICENSED",

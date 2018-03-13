@@ -118,7 +118,7 @@ class SuperMarioOdyssey extends Command {
         break;
     }
     if (kingdom == -1) {
-      msg.channel.send("You did not enter a valid kingdom."); // Add example or help
+      msg.channel.send(":x: You did not enter a valid kingdom.\n\n*Kingdoms*\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"); // Add example or help
     } else if (arg2 == "clear") {
       // Clear code
       MongoClient.connect(url, function(err, client) {
@@ -243,7 +243,7 @@ class SuperMarioOdyssey extends Command {
             break;
         }
         client.close();
-        msg.reply("Your " + kingdomName +" Balloon World code has been removed from my knowledge.");
+        msg.reply("Your " + kingdomName + " Balloon World code has been removed from my knowledge.");
       });
     } else if (arg2 == "") {
       // Get self code
@@ -285,6 +285,50 @@ class SuperMarioOdyssey extends Command {
           }
           client.close();
         });
+      });
+    } else if (arg2.startsWith("<@!") && arg2.endsWith(">")) {
+      MongoClient.connect(url, function(err, client) {
+        var db = client.db('bot');
+        var extractedID = extractID(msg);
+        db.collection('users').findOne({
+          "_id": extractedID
+        }, function(err, results) {
+          if (results == null || results[kingdom] == "-1") {
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: msg.guild.members.get(extractedID).user.username,
+                  icon_url: msg.guild.members.get(extractedID).user.avatarURL
+                },
+                title: kingdomName + " Balloon Code",
+                description: "This user has not entered their code.",
+                thumbnail: {
+                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                },
+                footer: {
+                  text: "They must set it up with `r!smo [KINGDOM] [CODE]`"
+                }
+              }
+            });
+          } else {
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: msg.guild.members.get(extractedID).user.username,
+                  icon_url: msg.guild.members.get(extractedID).user.avatarURL
+                },
+                title: kingdomName + " Balloon Code",
+                thumbnail: {
+                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                },
+                description: results[kingdom]
+              }
+            });
+          }
+        });
+        client.close();
       });
     } else if (arg2.length == 9) { // Ensure mentions cannot fall here
       // Set code
