@@ -518,7 +518,6 @@ function extractID(msg) {
   }
   if (startIndex != -1 && endIndex != -1) {
     result = text.substring(startIndex, endIndex);
-    console.log("Extracted: " + result);
     return result;
   } else {
     return "Extraction Failed!"
