@@ -63,6 +63,7 @@ class SwitchCode extends Command {
                 name: "Code Saved!",
                 icon_url: msg.member.user.avatarURL
               },
+              title: "Nintendo Switch Code",
               description: argument.toUpperCase(),
               footer: {
                 text: "Type 'r!help settings' for information about privacy settings."
@@ -83,9 +84,10 @@ class SwitchCode extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                  name: msg.guild.members.get(extractedID).user.username,
                   icon_url: msg.guild.members.get(extractedID).user.avatarURL
                 },
+                title: "Nintendo Switch Code",
                 description: "This user has not entered their code.",
                 footer: {
                   text: "They must set it up with `r!switchcode SW-XXXX-XXXX-XXXX`"
@@ -98,9 +100,10 @@ class SwitchCode extends Command {
                 embed: {
                   color: 0x86D0CF,
                   author: {
-                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                    name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
+                  title: "Nintendo Switch Code",
                   description: results.switchCode
                 }
               });
@@ -109,9 +112,10 @@ class SwitchCode extends Command {
                 embed: {
                   color: 0x86D0CF,
                   author: {
-                    name: msg.guild.members.get(extractedID).user.username + "'s Nintendo Switch Friend Code",
+                    name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
+                  title: "Nintendo Switch Code",
                   description: "This code has been kept private",
                   footer: {
                     text: "Privacy settings can be managed through r!settings"
@@ -148,9 +152,10 @@ class SwitchCode extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s Nintendo Switch Friend Code",
+                  name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
+                title: "Nintendo Switch Code",
                 description: "You have not entered a code.",
                 footer: {
                   text: "You can set it up with `r!switchcode SW-XXXX-XXXX-XXXX`"
@@ -162,9 +167,10 @@ class SwitchCode extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s Nintendo Switch Friend Code",
+                  name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
+                title: "Nintendo Switch Code",
                 description: results.switchCode,
                 footer: {
                   text: "Privacy settings can be managed through r!settings"

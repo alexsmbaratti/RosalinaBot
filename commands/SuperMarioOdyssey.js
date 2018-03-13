@@ -119,6 +119,132 @@ class SuperMarioOdyssey extends Command {
     }
     if (kingdom == -1) {
       msg.channel.send("You did not enter a valid kingdom."); // Add example or help
+    } else if (arg2 == "clear") {
+      // Clear code
+      MongoClient.connect(url, function(err, client) {
+        var db = client.db('bot');
+        switch (kingdom) {
+          case "cap":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                cap: "-1"
+              }
+            });
+            break;
+          case "cascade":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                cascade: "-1"
+              }
+            });
+            break;
+          case "sand":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                sand: "-1"
+              }
+            });
+            break;
+          case "lake":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                lake: "-1"
+              }
+            });
+            break;
+          case "wood":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                wooded: "-1"
+              }
+            });
+            break;
+          case "lost":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                lost: "-1"
+              }
+            });
+            break;
+          case "metro":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                metro: "-1"
+              }
+            });
+            break;
+          case "snow":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                snow: "-1"
+              }
+            });
+            break;
+          case "seaside":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                seaside: "-1"
+              }
+            });
+            break;
+          case "luncheon":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                luncheon: "-1"
+              }
+            });
+            break;
+          case "bowser":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                bowser: "-1"
+              }
+            });
+            break;
+          case "moon":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                moon: "-1"
+              }
+            });
+            break;
+          case "mushroom":
+            db.collection('users').updateOne({
+              "_id": msg.author.id
+            }, {
+              $set: {
+                mushroom: "-1"
+              }
+            });
+            break;
+        }
+        client.close();
+        msg.reply("Your " + kingdomName +" Balloon World code has been removed from my knowledge.");
+      });
     } else if (arg2 == "") {
       // Get self code
       MongoClient.connect(url, function(err, client) {
@@ -131,12 +257,13 @@ class SuperMarioOdyssey extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s " + kingdomName + " Balloon Code",
+                  name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
+                title: kingdomName + " Balloon Code",
                 description: "You have not entered a code.",
                 footer: {
-                  text: "You can set it up with `r!smo [KINGDOM] XXXXXXXXX`"
+                  text: "You can set it up with `r!smo [KINGDOM] [CODE]`"
                 }
               }
             });
@@ -145,9 +272,10 @@ class SuperMarioOdyssey extends Command {
               embed: {
                 color: 0x86D0CF,
                 author: {
-                  name: msg.author.username + "'s " + kingdomName + " Balloon Code",
+                  name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
+                title: kingdomName + " Balloon Code",
                 description: results[kingdom],
                 thumbnail: {
                   url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
@@ -158,7 +286,7 @@ class SuperMarioOdyssey extends Command {
           client.close();
         });
       });
-    } else if (arg2.length == 9) {
+    } else if (arg2.length == 9) { // Ensure mentions cannot fall here
       // Set code
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');

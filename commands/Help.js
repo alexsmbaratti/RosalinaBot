@@ -1,7 +1,7 @@
 const Command = require('./Command.js');
 const fs = require('fs');
 
-const categories = ["Friend Codes", "Fun", "Technical", "Misc."];
+const categories = ["Codes", "Fun", "Technical", "Misc."];
 
 // Example usage of command: r!help 8ball
 // Potential usage of command: r!help r!8ball
