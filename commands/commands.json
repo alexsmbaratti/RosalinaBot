@@ -6,11 +6,11 @@
     },
     {
       "name": "3DSCode",
-      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!3DSCode YOUR_CODE_HERE` Sets your Nintendo 3DS code (include dashes).\n`r!3DSCode clear` Your Nintendo 3DS code will be removed from the database.\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code."
+      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!3DSCode YOUR-CODE-HERE` Sets your Nintendo 3DS code (include dashes).\n`r!3DSCode clear` Your Nintendo 3DS code will be removed from the database.\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code."
     },
     {
       "name": "smo",
-      "help": "Stores your Balloon World codes (from Super Mario Odyssey) for reference and sharing.\n\n*Usage Examples*\n`r!smo KINGDOM YOUR_CODE_HERE` Sets a Balloon World code for the specified kingdom (no dashes).\n`r!smo KINGDOM` Gets sender's Balloon World code for the specified kingdom.\n\n*Kingdoms*\nIn any examples, replace `KINGDOM` with one of the following:\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"
+      "help": "Stores your Balloon World codes (from Super Mario Odyssey) for reference and sharing.\n\n*Usage Examples*\n`r!smo KINGDOM YOUR-CODE-HERE` Sets a Balloon World code for the specified kingdom (no dashes or spaces).\n`r!smo KINGDOM` Gets sender's Balloon World code for the specified kingdom.\n\n*Kingdoms*\nIn any examples, replace `KINGDOM` with one of the following:\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"
     }
   ],
   [

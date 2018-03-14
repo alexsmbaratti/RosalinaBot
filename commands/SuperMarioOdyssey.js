@@ -495,7 +495,17 @@ class SuperMarioOdyssey extends Command {
           client.close();
         });
       });
+    } else {
+      msg.channel.send(":x: You did not enter a valid Balloon World code.");
     }
+  }
+}
+
+function formatBalloonCode(code) { // Input: XXXXXXXXX Output: XXX XXX XXX
+  if (code.length == 9) { // Verifies formatable
+    return code.substring(0, 3) + " " + code.substring(3, 6) + " " + code.substring(6, 9);
+  } else { // Cannot format
+    return code;
   }
 }
 
