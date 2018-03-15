@@ -18,6 +18,7 @@ const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
+const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
 const build = "6.0.0-alpha";
 const prefix = "r!";
@@ -36,6 +37,7 @@ client.on('ready', () => {
   new UpdateGuilds(client.guilds.size);
   new Update3DSCodes();
   new UpdateSwitchCodes();
+  new UpdateBalloonCodes();
 });
 
 client.on('message', msg => {
@@ -80,7 +82,7 @@ client.on('message', msg => {
       new Settings(msg);
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
-    } else if (input.startsWith("smo")) {
+    } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
       new SuperMarioOdyssey(msg);
     }
   }
