@@ -80,6 +80,10 @@ client.on('message', msg => {
     } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
       new DSCode(msg);
       new Update3DSCodes();
+    } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
+      msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
+    }else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
+      msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!3DSCode` instead.");
     } else if (input.startsWith("settings")) {
       new Settings(msg);
     } else if (input.startsWith("smm")) {
