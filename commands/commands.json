@@ -1,0 +1,58 @@
+[
+  [
+    {
+      "name": "switchCode",
+      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
+    },
+    {
+      "name": "3DSCode",
+      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!3DSCode YOUR-CODE-HERE` Sets your Nintendo 3DS code (include dashes).\n`r!3DSCode clear` Your Nintendo 3DS code will be removed from the database.\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code."
+    },
+    {
+      "name": "smo",
+      "help": "Stores your Balloon World codes (from Super Mario Odyssey) for reference and sharing.\n\n*Usage Examples*\n`r!smo KINGDOM YOUR-CODE-HERE` Sets a Balloon World code for the specified kingdom (no dashes or spaces).\n`r!smo KINGDOM` Gets sender's Balloon World code for the specified kingdom.\n\n*Kingdoms*\nIn any examples, replace `KINGDOM` with one of the following:\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"
+    }
+  ],
+  [
+    {
+      "name": "coin",
+      "help": "Flips a coin. Can land on heads, tails, or its side."
+    },
+    {
+      "name": "dice",
+      "help": "Tosses a six-sided die. Can also be executed with `r!die`. Add a number from 1 to 10 to roll multiple dice.\n\n*Usage Examples*\n`r!dice 8` Rolls eight dice."
+    },
+    {
+      "name": "8ball",
+      "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
+    }
+  ],
+  [
+    {
+      "name": "ping",
+      "help": "Returns the response time, or ping, of a message."
+    },
+    {
+      "name": "build",
+      "help": "Returns the current build or version."
+    },
+    {
+      "name": "guilds",
+      "help": "Returns how many guilds (servers) this bot is serving."
+    }
+  ],
+  [
+    {
+      "name": "settings",
+      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
+    },
+    {
+      "name": "github",
+      "help": "View the source code, request features, and report bugs."
+    },
+    {
+      "name": "help",
+      "help": "Use this command for detailed information on each command.\n\n*Usage Examples*\n`r!help 8ball` Returns help documentation for `r!8ball`."
+    }
+  ]
+]

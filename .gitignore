@@ -8,6 +8,7 @@ package-lock.json
 
 # Database
 database.json
+/mongoDB
 
 # System Files
 .DS_Store
@@ -16,6 +17,8 @@ database.json
 config.json
 
 notes.txt
+todo.md
+transfer.md
 
 # Gource
 gource.sh
