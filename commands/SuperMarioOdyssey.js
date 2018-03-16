@@ -278,7 +278,7 @@ class SuperMarioOdyssey extends Command {
                 title: kingdomName + " Balloon Code",
                 description: results[kingdom],
                 thumbnail: {
-                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
                 }
               }
             });
@@ -304,7 +304,7 @@ class SuperMarioOdyssey extends Command {
                 title: kingdomName + " Balloon Code",
                 description: "This user has not entered their code.",
                 thumbnail: {
-                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
                 },
                 footer: {
                   text: "They must set it up with `r!smo [KINGDOM] [CODE]`"
@@ -321,7 +321,7 @@ class SuperMarioOdyssey extends Command {
                 },
                 title: kingdomName + " Balloon Code",
                 thumbnail: {
-                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                  url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
                 },
                 description: results[kingdom]
               }
@@ -487,7 +487,7 @@ class SuperMarioOdyssey extends Command {
                 icon_url: msg.author.avatarURL
               },
               thumbnail: {
-                url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/icon_" + iconName + ".png"
+                url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
               },
               description: arg2.toUpperCase()
             }
