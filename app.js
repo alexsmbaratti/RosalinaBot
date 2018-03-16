@@ -20,7 +20,7 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.0.0-alpha";
+const build = "6.0.0";
 const prefix = "r!";
 const color = 0x86D0CF;
 
@@ -76,14 +76,17 @@ client.on('message', msg => {
       new UpdateGuilds(client.guilds.size);
     } else if (input.startsWith("switchcode")) {
       new SwitchCode(msg);
+      new UpdateSwitchCodes();
     } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
       new DSCode(msg);
+      new Update3DSCodes();
     } else if (input.startsWith("settings")) {
       new Settings(msg);
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
       new SuperMarioOdyssey(msg);
+      new UpdateBalloonCodes();
     }
   }
 });
