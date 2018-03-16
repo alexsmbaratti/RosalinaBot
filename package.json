@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node app.js $(hostname -I) [PLATFORM]",
-    "start": "mongod --dbpath ./mongoDB & nodemon app.js $(hostname -I) [PLATFORM]"
+    "start": "node app.js & mongo --host 127.0.0.1:27017"
   },
   "repository": {
     "type": "git",
