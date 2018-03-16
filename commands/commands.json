@@ -1,6 +1,5 @@
 [
-  [
-    {
+  [{
       "name": "switchCode",
       "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
     },
@@ -13,8 +12,7 @@
       "help": "Stores your Balloon World codes (from Super Mario Odyssey) for reference and sharing.\n\n*Usage Examples*\n`r!smo KINGDOM YOUR-CODE-HERE` Sets a Balloon World code for the specified kingdom (no dashes or spaces).\n`r!smo KINGDOM` Gets sender's Balloon World code for the specified kingdom.\n\n*Kingdoms*\nIn any examples, replace `KINGDOM` with one of the following:\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"
     }
   ],
-  [
-    {
+  [{
       "name": "coin",
       "help": "Flips a coin. Can land on heads, tails, or its side."
     },
@@ -27,8 +25,7 @@
       "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
     }
   ],
-  [
-    {
+  [{
       "name": "ping",
       "help": "Returns the response time, or ping, of a message."
     },
@@ -41,10 +38,13 @@
       "help": "Returns how many guilds (servers) this bot is serving."
     }
   ],
-  [
-    {
+  [{
       "name": "settings",
       "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
+    },
+    {
+      "name": "vote",
+      "help": "Sends a link to vote for RosalinaBot on Discord Bot List. Votes help increase the popularity of RosalinaBot. No account creation required, just sign in with your Discord account!\nNote: Simply running this command does not cast a vote. You must use the link."
     },
     {
       "name": "github",
