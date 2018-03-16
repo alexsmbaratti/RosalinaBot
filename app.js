@@ -113,6 +113,18 @@ client.on('message', msg => {
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
       new SuperMarioOdyssey(msg);
       new UpdateBalloonCodes();
+    } else if (input.startsWith("vote")) {
+      msg.channel.send({
+        embed: {
+          title: "Vote on Discord Bot List",
+          thumbnail: {
+            url: client.user.avatarURL
+          },
+          url: "https://discordbots.org/bot/322405544490958849/vote",
+          color: color,
+          description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
+        }
+      });
     }
   }
 });
