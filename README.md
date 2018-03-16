@@ -21,22 +21,13 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
     * (The alternative is you sending your code to chat yourself.)
-    
-### Indev
-Currently, I am working on a complete rewrite of this bot (v6.0), which will clean up the code significantly. This will make it significantly easier for me to add new functionality in the future. Below are some features planned for the update.
-* Luigi's Balloon World (Super Mario Odyssey) Code Integration
-* Super Mario Maker Code Integration
-* MongoDB Integration
-* Cleanup of commands (i.e. `r!switchCode` instead of `r!getSwitchCode` or `r!setSwitchCode`
-
-The code for the future update is available to view in the [`indev`](https://github.com/alexsmbaratti/RosalinaBot/tree/indev) branch.
 
 ## Instructions
 ### Sharing friend codes
-To share your friend code with people in your server, or just keep it handy on Discord, use either `r!setSwitchCode` or `r!set3DSCode` to store your Nintendo Switch friend code or Nintendo 3DS friend code respectively. Example usage is below for both commands.
+To share your friend code with people in your server, or just keep it handy on Discord, use either `r!switchCode` or `r!3DSCode` to store your Nintendo Switch friend code or Nintendo 3DS friend code respectively. Example usage is below for both commands.
 
-`r!setSwitchCode SW-1234-5678-9000`
-`r!set3DSCode 1234-5678-9000`
+`r!switchCode SW-1234-5678-9000`
+`r!3DSCode 1234-5678-9000`
 
 Note that dashes are required and the commands are not case sensitive. You should receive a confirmation message if it is successful. By default, your friend codes are private. In order for others to see them, you must type `r!switchCode` or `r!3DSCode` to retrieve your friend codes. If you set your friend codes to public, others in a server with RosalinaBot may use `r!switchCode @[YOU]` or `r!3DSCode @[YOU]` to retrieve your friend codes.
 
