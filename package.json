@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "node app.js $(hostname -I) [PLATFORM]",
-    "start": "mongod --dbpath ./mongoDB & nodemon app.js $(hostname -I) [PLATFORM]"
+    "start": "mongod --dbpath ./mongoDB & nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/alexsmbaratti/RosalinaBot#readme",
   "dependencies": {
     "aws-sdk": "^2.113.0",
+    "dblapi.js": "^1.2.0",
     "discord.js": "^11.1.0",
     "mongodb": "^3.0.3",
     "pokedex-promise-v2": "^3.1.1",

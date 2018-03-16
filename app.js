@@ -3,6 +3,9 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 
+const DBL = require("dblapi.js");
+const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
+
 // Classes
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
@@ -20,7 +23,7 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.0.0";
+const build = "6.0.1";
 const prefix = "r!";
 const color = 0x86D0CF;
 
@@ -38,6 +41,25 @@ client.on('ready', () => {
   new Update3DSCodes();
   new UpdateSwitchCodes();
   new UpdateBalloonCodes();
+
+  client.channels.get(config.rosalinaBotTestChannel).send({
+    embed: {
+      title: "Client Restarted!",
+      color: color,
+      fields: [{
+          name: "Build",
+          value: build
+        },
+        {
+          name: "Guilds Serving",
+          value: client.guilds.size
+        }
+      ],
+      footer: {
+        text: "This message was automatically generated because an instance of RosalinaBot was started. This message is intended for development and debugging purposes and should only appear in a specific server."
+      }
+    }
+  });
 });
 
 client.on('message', msg => {
@@ -69,7 +91,7 @@ client.on('message', msg => {
       new Ping(msg);
     } else if (input == "coin") {
       new Coin(msg);
-    } else if (input == "build") {
+    } else if (input == "build" || input == "version") {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
@@ -82,7 +104,7 @@ client.on('message', msg => {
       new Update3DSCodes();
     } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
       msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
-    }else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
+    } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
       msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!3DSCode` instead.");
     } else if (input.startsWith("settings")) {
       new Settings(msg);
