@@ -70,6 +70,7 @@ class SwitchCode extends Command {
               }
             }
           });
+          console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
         });
       })
     } else if (argument.startsWith("<@!") && argument.endsWith(">")) {

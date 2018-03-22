@@ -41,6 +41,7 @@ class DSCode extends Command {
                 }
               }
             });
+            console.log(`✅ Nintendo 3DS Code saved for ` + msg.author.username);
           } else {
             if (results.dsPrivacy == "PUBLIC") {
               msg.channel.send({

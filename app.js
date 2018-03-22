@@ -126,6 +126,9 @@ client.on('message', msg => {
         }
       });
     }
+    else if (input.startsWith("status")) {
+      // TODO
+    }
   }
 });
 
