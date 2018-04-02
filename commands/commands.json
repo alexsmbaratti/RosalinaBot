@@ -44,7 +44,7 @@
     },
     {
       "name": "vote",
-      "help": "Sends a link to vote for RosalinaBot on Discord Bot List. Votes help increase the popularity of RosalinaBot. No account creation required, just sign in with your Discord account!\nNote: Simply running this command does not cast a vote. You must use the link."
+      "help": "Sends a link to vote for RosalinaBot on Discord Bot List. Votes help increase the popularity of RosalinaBot. No account creation required, just sign in with your Discord account!\n\nNote: Simply running this command does not cast a vote. You must use the link."
     },
     {
       "name": "github",
