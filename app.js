@@ -18,6 +18,7 @@ const DSCode = require('./commands/DSCode.js');
 const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
+const Status = require('./commands/Status.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
@@ -125,6 +126,9 @@ client.on('message', msg => {
           description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
         }
       });
+    }
+    else if (input.startsWith("status")) {
+      new Status(msg, build, client);
     }
   }
 });

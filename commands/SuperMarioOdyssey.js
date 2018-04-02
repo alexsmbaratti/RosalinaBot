@@ -279,6 +279,9 @@ class SuperMarioOdyssey extends Command {
                 description: results[kingdom],
                 thumbnail: {
                   url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
+                },
+                footer: {
+                  text: "For use with Super Mario Odyssey"
                 }
               }
             });
@@ -323,7 +326,10 @@ class SuperMarioOdyssey extends Command {
                 thumbnail: {
                   url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/icon_" + iconName + ".png"
                 },
-                description: results[kingdom]
+                description: results[kingdom],
+                footer: {
+                  text: "For use with Super Mario Odyssey"
+                }
               }
             });
           }
