@@ -25,7 +25,7 @@ class Status extends Command {
           msg.channel.send("```Status\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...```")
             .then(message => {
               let diff = (message.createdTimestamp - start);
-              message.edit("```Status\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n🔢  Nintendo Switch Codes: " + switchCodes + "```");
+              message.edit("```Status\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n🔢 Nintendo Switch Codes: " + switchCodes + "```");
             })
             .catch(console.error);
         });
