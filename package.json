@@ -4,7 +4,7 @@
   "description": "A Discord bot for sharing Nintendo friend codes",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js $(hostname -I) [PLATFORM]",
+    "test": "mongod --dbpath ./mongoDB & nodemon app.js",
     "start": "node app.js & mongo --host 127.0.0.1:27017"
   },
   "repository": {
