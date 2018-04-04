@@ -35,3 +35,21 @@ Note that dashes are required and the commands are not case sensitive. You shoul
 By default, any of your friend codes will be set to private. The only time RosalinaBot will send your friend codes to a chat is if you and only you use the `r!switchCode` or the `r!3DSCode` commands. To check these settings at anytime, use `r!settings`.
 
 To change a privacy setting, follow this format `r!settings [PLATFORM]Code [PRIVACY]`. Replace `PLATFORM` with either `switch` or `3DS` and `PRIVACY` with either `PUBLIC` or `PRIVATE`. For example, typing `r!settings switchCode PUBLIC` will set your Nintendo Switch friend code to public. Likewise, typing `r!settings 3DSCode PRIVATE` will set your Nintendo 3DS friend code to private.
+
+### Sharing Balloon World codes
+You can share your Balloon World codes from Super Mario Odyssey using `r!smo`. The basic structure for saving a code is `r!smo [KINGDOM] 000000000`. `[KINGDOM]` should be replaced with one of the following:
+* cap
+* cascade 
+* sand 
+* lake 
+* wooded
+* lost
+* metro
+* snow
+* seaside
+* luncheon
+* bowser
+* moon
+* mushroom
+
+Balloon World codes do not have privacy settings. They are public for other members to see. You can view another person's code by using `r!smo [KINGDOM] @[MENTION]`
