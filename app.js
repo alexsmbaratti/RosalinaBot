@@ -95,6 +95,8 @@ client.on('message', msg => {
     } else if (input == "build" || input == "version") {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
+      const DBL = require("dblapi.js");
+      const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
       new UpdateGuilds(client.guilds.size);
     } else if (input.startsWith("switchcode")) {
@@ -129,6 +131,8 @@ client.on('message', msg => {
     }
     else if (input.startsWith("status")) {
       new Status(msg, build, client);
+      const DBL = require("dblapi.js");
+      const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
     }
   }
 });
@@ -137,6 +141,8 @@ client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
   try {
     guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
+    const DBL = require("dblapi.js");
+    const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
   } catch (e) {
     // If there is no default channel
   } finally {
