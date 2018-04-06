@@ -62,7 +62,7 @@ class Settings extends Command {
                 color: 0x86D0CF,
                 author: {
                   name: "Nintendo Switch Code Privacy Updated!",
-                  icon_url: msg.member.user.avatarURL
+                  icon_url: msg.author.avatarURL
                 },
                 description: arg2.toUpperCase(),
                 footer: {
@@ -114,7 +114,7 @@ class Settings extends Command {
                 color: 0x86D0CF,
                 author: {
                   name: "Nintendo 3DS Code Privacy Updated!",
-                  icon_url: msg.member.user.avatarURL
+                  icon_url: msg.author.avatarURL
                 },
                 description: arg2.toUpperCase(),
                 footer: {
@@ -158,7 +158,7 @@ class Settings extends Command {
                 color: 0x86D0CF,
                 author: {
                   name: "Settings for " + msg.author.username,
-                  icon_url: msg.member.user.avatarURL
+                  icon_url: msg.author.avatarURL
                 },
                 fields: [{
                     name: "*Nintendo 3DS Friend Code Privacy Setting*",
@@ -180,7 +180,7 @@ class Settings extends Command {
                 color: 0x86D0CF,
                 author: {
                   name: "Settings for " + msg.author.username,
-                  icon_url: msg.member.user.avatarURL
+                  icon_url: msg.author.avatarURL
                 },
                 fields: [{
                     name: "*Nintendo 3DS Friend Code Privacy Setting*",

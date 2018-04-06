@@ -24,7 +24,7 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.0.2";
+const build = "6.0.3";
 const prefix = "r!";
 const color = 0x86D0CF;
 

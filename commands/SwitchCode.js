@@ -61,7 +61,7 @@ class SwitchCode extends Command {
               color: 0x86D0CF,
               author: {
                 name: "Code Saved!",
-                icon_url: msg.member.user.avatarURL
+                icon_url: msg.author.avatarURL
               },
               title: "Nintendo Switch Code",
               description: argument.toUpperCase(),
