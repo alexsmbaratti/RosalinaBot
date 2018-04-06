@@ -171,7 +171,7 @@ class DSCode extends Command {
                 color: 0x86D0CF,
                 author: {
                   name: "Code Saved!",
-                  icon_url: msg.member.user.avatarURL
+                  icon_url: msg.author.avatarURL
                 },
                 title: "Nintendo 3DS Code",
                 description: argument.toUpperCase(),
