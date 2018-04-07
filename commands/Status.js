@@ -7,7 +7,7 @@ const url = 'mongodb://localhost:27017';
 class Status extends Command {
   constructor(msg, build, client) {
     super(msg);
-    if (msg.author.id == config.alexID) { // Admin only command
+    if (msg.author.id == config.alexsmbaratti) { // Admin only command
       // Status, build, ping, guilds, codes, mongoDB, CloudWatch, DBL, Pokedex, SMM, CPU Usage
       // Pass in "this" from app.js
 

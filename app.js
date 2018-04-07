@@ -3,9 +3,6 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 
-const DBL = require("dblapi.js");
-const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
-
 // Classes
 const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
@@ -38,29 +35,37 @@ client.on('ready', () => {
       name: "r!help for commands"
     }
   });
-  new UpdateGuilds(client.guilds.size);
-  new Update3DSCodes();
-  new UpdateSwitchCodes();
-  new UpdateBalloonCodes();
+  if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
+    new UpdateGuilds(client.guilds.size);
+    new Update3DSCodes();
+    new UpdateSwitchCodes();
+    new UpdateBalloonCodes();
+    const DBL = require("dblapi.js");
+    const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
-  client.channels.get(config.rosalinaBotTestChannel).send({
-    embed: {
-      title: "Client Restarted!",
-      color: color,
-      fields: [{
-          name: "Build",
-          value: build
-        },
-        {
-          name: "Guilds Serving",
-          value: client.guilds.size
+    client.channels.get(config.rosalinaBotTestChannel).send({
+      embed: {
+        title: "Client Restarted!",
+        color: color,
+        fields: [{
+            name: "Build",
+            value: build
+          },
+          {
+            name: "Guilds Serving",
+            value: client.guilds.size
+          }
+        ],
+        footer: {
+          text: "This message was automatically generated because an instance of RosalinaBot was started. This message is intended for development and debugging purposes and should only appear in a specific server."
         }
-      ],
-      footer: {
-        text: "This message was automatically generated because an instance of RosalinaBot was started. This message is intended for development and debugging purposes and should only appear in a specific server."
       }
-    }
-  });
+    });
+  }
+  if (process.env.USER == "travis") {
+    console.log("Compilation successful! Exiting with code 0.")
+    process.exit(0);
+  }
 });
 
 client.on('message', msg => {
@@ -96,7 +101,7 @@ client.on('message', msg => {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       const DBL = require("dblapi.js");
-      const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
+      const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
       new UpdateGuilds(client.guilds.size);
     } else if (input.startsWith("switchcode")) {
@@ -128,25 +133,26 @@ client.on('message', msg => {
           description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
         }
       });
-    }
-    else if (input.startsWith("status")) {
+    } else if (input.startsWith("status")) {
       new Status(msg, build, client);
       const DBL = require("dblapi.js");
-      const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
+      const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
     }
   }
 });
 
 client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
-  try {
-    guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
-    const DBL = require("dblapi.js");
-    const dbl = new DBL(config.discordBotsAPIKey, client); // Requires Node 7.6 or later
-  } catch (e) {
-    // If there is no default channel
-  } finally {
-    new UpdateGuilds(client.guilds.size);
+  if (client.user.id == config.CLIENT_ID) {
+    try {
+      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
+      const DBL = require("dblapi.js");
+      const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+    } catch (e) {
+      // If there is no default channel
+    } finally {
+      new UpdateGuilds(client.guilds.size);
+    }
   }
 });
 
