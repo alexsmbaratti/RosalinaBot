@@ -3,7 +3,7 @@ node_js:
   - "8"
 cache:
   directories:
-    - "node_modules"
+    - $HOME/.npm
 before_script:
   - sleep 15
 before_install:
