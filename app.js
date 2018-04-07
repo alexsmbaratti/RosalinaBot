@@ -62,6 +62,7 @@ client.on('ready', () => {
       }
     });
   }
+    console.log(process.env.USER);
 });
 
 client.on('message', msg => {
