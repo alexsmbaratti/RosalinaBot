@@ -12,7 +12,7 @@ before_install:
   - npm i -g pokedex-promise-v2@3.1.1
   - npm i -g super-mario-maker-client@0.3.1
   - npm i -g uws@9.14.0
-  - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in config.json.enc -out config.json -d
+  - openssl aes-256-cbc -K $encrypted_58f547796dc6_key -iv $encrypted_58f547796dc6_iv -in config.json.enc -out config.json -d
 cache:
   directories:
     - "node_modules"
