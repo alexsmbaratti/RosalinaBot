@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const DBL = require("dblapi.js");
 
 var config = require('./config.json');
 
@@ -35,15 +36,12 @@ client.on('ready', () => {
       name: "r!help for commands"
     }
   });
-  client.channels.get(config.rosalinaBotTestChannel).send(client.user.id);
-  client.channels.get(config.rosalinaBotTestChannel).send(config.CLIENT_ID);
   if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
     console.log("Live bot");
     new UpdateGuilds(client.guilds.size);
     new Update3DSCodes();
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
-    const DBL = require("dblapi.js");
     const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
     client.channels.get(config.rosalinaBotTestChannel).send({
