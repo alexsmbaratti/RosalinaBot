@@ -35,7 +35,11 @@ client.on('ready', () => {
       name: "r!help for commands"
     }
   });
+  console.log(client.user.id);
+  console.log(config.CLIENT_ID);
+  console.log(config.DBL_TOKEN);
   if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
+    console.log("Live bot");
     new UpdateGuilds(client.guilds.size);
     new Update3DSCodes();
     new UpdateSwitchCodes();
@@ -61,8 +65,7 @@ client.on('ready', () => {
         }
       }
     });
-  }
-  if (process.env.USER == "travis") {
+  } else if (process.env.USER == "travis") {
     console.log("Compilation successful! Exiting with code 0.")
     process.exit(0);
   }
