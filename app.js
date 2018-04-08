@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const DBL = require("dblapi.js");
 
 var config = require('./config.json');
+const DBL = require("dblapi.js");
+const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 // Classes
 const Command = require('./commands/Command.js');
@@ -42,7 +43,6 @@ client.on('ready', () => {
     new Update3DSCodes();
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
-    const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
     client.channels.get(config.rosalinaBotTestChannel).send({
       embed: {
