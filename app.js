@@ -2,11 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 var config = require('./config.json');
-const DBL = require("dblapi.js");
-const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 // Classes
-const Command = require('./commands/Command.js');
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
@@ -26,6 +23,9 @@ const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const build = "6.0.3";
 const prefix = "r!";
 const color = 0x86D0CF;
+const star = "<:super_star_fill:433020245163114525>";
+const switchIcon = "<:switch:434587349117042698>";
+const dsIcon = "<:ds:434587539173670913>";
 
 client.on('ready', () => {
   console.log(`✅ Logged in as ${client.user.username}!`);
@@ -62,7 +62,7 @@ client.on('ready', () => {
         }
       }
     });
-  } else if (process.env.USER == "travis") {
+  } else if (process.env.USER == "travis") { // Travis-CI
     console.log("Compilation successful! Exiting with code 0.")
     process.exit(0);
   }
@@ -100,8 +100,6 @@ client.on('message', msg => {
     } else if (input == "build" || input == "version") {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
-      const DBL = require("dblapi.js");
-      const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
       new UpdateGuilds(client.guilds.size);
     } else if (input.startsWith("switchcode")) {
@@ -122,21 +120,35 @@ client.on('message', msg => {
       new SuperMarioOdyssey(msg);
       new UpdateBalloonCodes();
     } else if (input.startsWith("vote")) {
-      msg.channel.send({
-        embed: {
-          title: "Vote on Discord Bot List",
-          thumbnail: {
-            url: client.user.avatarURL
-          },
-          url: "https://discordbots.org/bot/322405544490958849/vote",
-          color: color,
-          description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
+      dbl.hasVoted(msg.author.id).then(voted => {
+        if (voted) {
+          msg.channel.send({
+            embed: {
+              title: "Vote on Discord Bot List",
+              thumbnail: {
+                url: client.user.avatarURL
+              },
+              url: "https://discordbots.org/bot/322405544490958849/vote",
+              color: 0xFFD700,
+              description: "Thank you for voting! Note that you can only vote once per 24 hours."
+            }
+          });
+        } else {
+          msg.channel.send({
+            embed: {
+              title: "Vote on Discord Bot List",
+              thumbnail: {
+                url: client.user.avatarURL
+              },
+              url: "https://discordbots.org/bot/322405544490958849/vote",
+              color: color,
+              description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
+            }
+          });
         }
       });
     } else if (input.startsWith("status")) {
       new Status(msg, build, client);
-      const DBL = require("dblapi.js");
-      const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
     }
   }
 });
