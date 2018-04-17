@@ -21,6 +21,7 @@ config.json
 # Additional files and notes
 talk.js
 voice.js
+embed.js
 notes.txt
 todo.md
 transfer.md

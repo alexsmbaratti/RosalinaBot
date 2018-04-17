@@ -5,6 +5,8 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
+var color = 0x86D0CF;
+
 // Example: r!switchCode
 // Example: r!switchCode @USER
 // Example: r!switchCode clear
@@ -58,7 +60,7 @@ class SwitchCode extends Command {
           client.close();
           msg.channel.send({
             embed: {
-              color: 0x86D0CF,
+              color: color,
               author: {
                 name: "Code Saved!",
                 icon_url: msg.author.avatarURL
@@ -83,7 +85,7 @@ class SwitchCode extends Command {
           if (results == null || results.switchCode == "-1") {
             msg.channel.send({
               embed: {
-                color: 0x86D0CF,
+                color: color,
                 author: {
                   name: msg.guild.members.get(extractedID).user.username,
                   icon_url: msg.guild.members.get(extractedID).user.avatarURL
@@ -99,7 +101,7 @@ class SwitchCode extends Command {
             if (results.switchPrivacy == "PUBLIC") {
               msg.channel.send({
                 embed: {
-                  color: 0x86D0CF,
+                  color: color,
                   author: {
                     name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
@@ -111,7 +113,7 @@ class SwitchCode extends Command {
             } else {
               msg.channel.send({
                 embed: {
-                  color: 0x86D0CF,
+                  color: color,
                   author: {
                     name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
@@ -151,7 +153,7 @@ class SwitchCode extends Command {
           if (results == null || results.switchCode == "-1") {
             msg.channel.send({
               embed: {
-                color: 0x86D0CF,
+                color: color,
                 author: {
                   name: msg.author.username,
                   icon_url: msg.author.avatarURL
@@ -166,7 +168,7 @@ class SwitchCode extends Command {
           } else {
             msg.channel.send({
               embed: {
-                color: 0x86D0CF,
+                color: color,
                 author: {
                   name: msg.author.username,
                   icon_url: msg.author.avatarURL
