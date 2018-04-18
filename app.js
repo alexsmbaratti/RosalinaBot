@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 var config = require('./config.json');
+const DBL = require("dblapi.js");
+const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 // Classes
 const Help = require('./commands/Help.js');
