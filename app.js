@@ -22,7 +22,7 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.0.3";
+const build = "6.0.4";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -168,6 +168,13 @@ client.on('guildCreate', guild => {
       new UpdateGuilds(client.guilds.size);
     }
   }
+});
+
+client.on('guildDelete', guild => {
+  console.log(`Guild Delete Triggered!`);
+  new UpdateGuilds(client.guilds.size);
+  const DBL = require("dblapi.js");
+  const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 });
 
 client.login(config.TOKEN);
