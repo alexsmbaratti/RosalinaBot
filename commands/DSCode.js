@@ -19,10 +19,10 @@ class DSCode extends Command {
       argument = "";
     }
 
-    if (argument.startsWith("<@!") && argument.endsWith(">")) {
+    if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
+        var extractedID = msg.mentions.users.array()[0].id;
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {

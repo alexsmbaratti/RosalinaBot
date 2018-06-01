@@ -22,6 +22,7 @@ class SwitchCode extends Command {
     }
 
     if (argument.startsWith("sw-")) {
+      if (validateCode(argument)) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         db.collection('users').findOne({
@@ -75,10 +76,13 @@ class SwitchCode extends Command {
           console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
         });
       })
-    } else if (argument.startsWith("<@!") && argument.endsWith(">")) {
+    } else {
+      msg.channel.send(":x: Invalid Nintendo Switch Friend Code!");
+    }
+  } else if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
+        var extractedID = msg.mentions.users.array()[0].id;
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {
@@ -218,7 +222,7 @@ function extractID(msg) {
 }
 
 function validateCode(code) {
-  if (code.substring(0, 3) == "SW-") {
+  if (code.substring(0, 3).toLowerCase() == "sw-") {
     if (code.length == 17) {
       return true;
     } else {
