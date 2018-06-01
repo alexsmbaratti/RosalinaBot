@@ -2,6 +2,8 @@
 
 # Dependencies
 /node_modules
+
+# Directories
 /sounds
 /profile_pictures
 package-lock.json
@@ -16,6 +18,7 @@ database.json
 # API Keys
 config.json
 
+# Additional files and notes
 talk.js
 voice.js
 embed.js
