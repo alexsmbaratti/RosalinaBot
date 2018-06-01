@@ -22,6 +22,7 @@ class SwitchCode extends Command {
     }
 
     if (argument.startsWith("sw-")) {
+      if (validateCode(argument)) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         db.collection('users').findOne({
@@ -75,10 +76,13 @@ class SwitchCode extends Command {
           console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
         });
       })
-    } else if (argument.startsWith("<@!") && argument.endsWith(">")) {
+    } else {
+      msg.channel.send(":x: Invalid Nintendo Switch Friend Code!");
+    }
+  } else if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
+        var extractedID = msg.mentions.users.array()[0].id;
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {
@@ -146,7 +150,6 @@ class SwitchCode extends Command {
     } else if (argument == "") {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
         db.collection('users').findOne({
           "_id": msg.author.id
         }, function(err, results) {
@@ -191,34 +194,8 @@ class SwitchCode extends Command {
   }
 }
 
-function extractID(msg) {
-  var text = msg.content.toLowerCase();
-  var startIndex = -1;
-  var endIndex = -1;
-  var result = "";
-  for (i = 0; i < text.length; i++) {
-    if (text.substring(i, i + 2) == "<@") {
-      if (text.substring(i + 2, i + 3) == "!") {
-        startIndex = i + 3;
-      } else {
-        startIndex = i + 2;
-      }
-    }
-    if (text.substring(i, i + 1) == ">") {
-      endIndex = i;
-    }
-  }
-  if (startIndex != -1 && endIndex != -1) {
-    result = text.substring(startIndex, endIndex);
-    console.log("Extracted: " + result);
-    return result;
-  } else {
-    return "Extraction Failed!"
-  }
-}
-
 function validateCode(code) {
-  if (code.substring(0, 3) == "SW-") {
+  if (code.substring(0, 3).toLowerCase() == "sw-") {
     if (code.length == 17) {
       return true;
     } else {

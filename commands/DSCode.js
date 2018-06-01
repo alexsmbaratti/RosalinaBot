@@ -19,10 +19,10 @@ class DSCode extends Command {
       argument = "";
     }
 
-    if (argument.startsWith("<@!") && argument.endsWith(">")) {
+    if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
+        var extractedID = msg.mentions.users.array()[0].id;
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {
@@ -187,32 +187,6 @@ class DSCode extends Command {
       }
     }
     new Update3DSCodes();
-  }
-}
-
-function extractID(msg) {
-  var text = msg.content.toLowerCase();
-  var startIndex = -1;
-  var endIndex = -1;
-  var result = "";
-  for (i = 0; i < text.length; i++) {
-    if (text.substring(i, i + 2) == "<@") {
-      if (text.substring(i + 2, i + 3) == "!") {
-        startIndex = i + 3;
-      } else {
-        startIndex = i + 2;
-      }
-    }
-    if (text.substring(i, i + 1) == ">") {
-      endIndex = i;
-    }
-  }
-  if (startIndex != -1 && endIndex != -1) {
-    result = text.substring(startIndex, endIndex);
-    console.log("Extracted: " + result);
-    return result;
-  } else {
-    return "Extraction Failed!"
   }
 }
 
