@@ -150,7 +150,6 @@ class SwitchCode extends Command {
     } else if (argument == "") {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
-        var extractedID = extractID(msg);
         db.collection('users').findOne({
           "_id": msg.author.id
         }, function(err, results) {
@@ -192,32 +191,6 @@ class SwitchCode extends Command {
       msg.channel.send(":x: Invalid usage!");
     }
     new UpdateSwitchCodes();
-  }
-}
-
-function extractID(msg) {
-  var text = msg.content.toLowerCase();
-  var startIndex = -1;
-  var endIndex = -1;
-  var result = "";
-  for (i = 0; i < text.length; i++) {
-    if (text.substring(i, i + 2) == "<@") {
-      if (text.substring(i + 2, i + 3) == "!") {
-        startIndex = i + 3;
-      } else {
-        startIndex = i + 2;
-      }
-    }
-    if (text.substring(i, i + 1) == ">") {
-      endIndex = i;
-    }
-  }
-  if (startIndex != -1 && endIndex != -1) {
-    result = text.substring(startIndex, endIndex);
-    console.log("Extracted: " + result);
-    return result;
-  } else {
-    return "Extraction Failed!"
   }
 }
 

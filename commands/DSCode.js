@@ -190,32 +190,6 @@ class DSCode extends Command {
   }
 }
 
-function extractID(msg) {
-  var text = msg.content.toLowerCase();
-  var startIndex = -1;
-  var endIndex = -1;
-  var result = "";
-  for (i = 0; i < text.length; i++) {
-    if (text.substring(i, i + 2) == "<@") {
-      if (text.substring(i + 2, i + 3) == "!") {
-        startIndex = i + 3;
-      } else {
-        startIndex = i + 2;
-      }
-    }
-    if (text.substring(i, i + 1) == ">") {
-      endIndex = i;
-    }
-  }
-  if (startIndex != -1 && endIndex != -1) {
-    result = text.substring(startIndex, endIndex);
-    console.log("Extracted: " + result);
-    return result;
-  } else {
-    return "Extraction Failed!"
-  }
-}
-
 function validateCode(code) {
   if (code.substring(0, 3) != "SW-") {
     if (code.length == 14) {
