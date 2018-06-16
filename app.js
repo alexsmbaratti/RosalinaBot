@@ -22,7 +22,7 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.1.0";
+const build = "6.1.1";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -122,31 +122,27 @@ client.on('message', msg => {
       new SuperMarioOdyssey(msg);
       new UpdateBalloonCodes();
     } else if (input.startsWith("vote")) {
-      dbl.hasVoted(msg.author.id).then(voted => {
-        if (voted) {
-          msg.channel.send({
-            embed: {
-              title: "Vote on Discord Bot List",
-              thumbnail: {
-                url: client.user.avatarURL
-              },
-              url: "https://discordbots.org/bot/322405544490958849/vote",
-              color: 0xFFD700,
-              description: "Thank you for voting! Note that you can only vote once per 24 hours."
-            }
-          });
-        } else {
-          msg.channel.send({
-            embed: {
-              title: "Vote on Discord Bot List",
-              thumbnail: {
-                url: client.user.avatarURL
-              },
-              url: "https://discordbots.org/bot/322405544490958849/vote",
-              color: color,
-              description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
-            }
-          });
+      msg.channel.send({
+        embed: {
+          title: "Vote on Discord Bot List",
+          thumbnail: {
+            url: client.user.avatarURL
+          },
+          url: "https://discordbots.org/bot/322405544490958849/vote",
+          color: color,
+          description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
+        }
+      });
+    } else if (input.startsWith("invite")) {
+      msg.channel.send({
+        embed: {
+          title: "Invite Link",
+          thumbnail: {
+            url: client.user.avatarURL
+          },
+          url: "https://discordapp.com/oauth2/authorize?client_id=322405544490958849&scope=bot&permissions=0",
+          color: color,
+          description: "To invite RosalinaBot to another server, use this link."
         }
       });
     } else if (input.startsWith("status")) {
@@ -175,6 +171,12 @@ client.on('guildDelete', guild => {
   new UpdateGuilds(client.guilds.size);
   const DBL = require("dblapi.js");
   const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+});
+
+client.on('guildMemberAdd', member => {
+  if (member.guild.id == config.COMET_OBSERVATORY_ID) {
+    client.channels.get(config.COMET_OBSERVATORY_ID).send("Welcome, " + member.nickname + ", to the Comet Observatory!");
+  }
 });
 
 client.login(config.TOKEN);
