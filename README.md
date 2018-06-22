@@ -12,6 +12,8 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Send and receive your Nintendo Switch and Nintendo 3DS friend codes with your Discord friends
 * Share Super Mario Odyssey Balloon Codes
   * Store your Luigi's Balloon World codes and challenge your friends on Discord to find them
+* Share Pokémon Go friend codes
+  * Catch them all with your friends!
 * Dice
   * Use `r!dice` or `r!die` to roll a die. A great alternative to settling it in Smash!
 * Coin Flipping
