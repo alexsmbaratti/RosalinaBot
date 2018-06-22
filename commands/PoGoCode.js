@@ -1,16 +1,16 @@
 const Command = require('./Command.js');
-const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
+const UpdatePoGoCodes = require('../cloudwatch/UpdatePoGoCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
-// Example: r!dsCode
-// Example: r!dsCode @USER
-// Example: r!dsCode clear
-// Example: r!dsCode XXXX-XXXX-XXXX
+// Example: r!PoGoCode
+// Example: r!PoGoCode @USER
+// Example: r!PoGoCode clear
+// Example: r!PoGoCode XXXX-XXXX-XXXX
 
-class DSCode extends Command {
+class PoGoCode extends Command {
   constructor(msg) {
     super(msg);
     try {
@@ -26,7 +26,7 @@ class DSCode extends Command {
         db.collection('users').findOne({
           "_id": extractedID
         }, function(err, results) {
-          if (results == null || results.dsCode == "-1") {
+          if (results == null || results.poGoCode == "-1") {
             msg.channel.send({
               embed: {
                 color: 0x86D0CF,
@@ -34,16 +34,16 @@ class DSCode extends Command {
                   name: msg.guild.members.get(extractedID).user.username,
                   icon_url: msg.guild.members.get(extractedID).user.avatarURL
                 },
-                title: "Nintendo 3DS Code",
+                title: "Pokémon Go Friend Code",
                 description: "This user has not entered their code.",
                 footer: {
-                  text: "They must set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                  text: "They must set it up with `r!poGoCode XXXX XXXX XXXX`"
                 }
               }
             });
-            console.log(`✅ Nintendo 3DS Code saved for ` + msg.author.username);
+            console.log(`✅ Pokémon Go Code saved for ` + msg.author.username);
           } else {
-            if (results.dsPrivacy == "PUBLIC") {
+            if (results.poGoPrivacy == "PUBLIC") {
               msg.channel.send({
                 embed: {
                   color: 0x86D0CF,
@@ -51,8 +51,8 @@ class DSCode extends Command {
                     name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
-                  title: "Nintendo 3DS Code",
-                  description: results.dsCode
+                  title: "Pokémon Go Friend Code",
+                  description: results.poGoCode
                 }
               });
             } else {
@@ -63,7 +63,7 @@ class DSCode extends Command {
                     name: msg.guild.members.get(extractedID).user.username,
                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                   },
-                  title: "Nintendo 3DS Code",
+                  title: "Pokémon Go Friend Code",
                   description: "This code has been kept private",
                   footer: {
                     text: "Privacy settings can be managed through r!settings"
@@ -82,11 +82,11 @@ class DSCode extends Command {
           "_id": msg.author.id
         }, {
           $set: {
-            "dsCode": "-1"
+            "poGoCode": "-1"
           }
         });
         client.close();
-        msg.reply("Your Nintendo 3DS friend code has been removed from my knowledge.");
+        msg.reply("Your Pokémon Go friend code has been removed from my knowledge.");
       });
     } else if (argument == "") {
       MongoClient.connect(url, function(err, client) {
@@ -94,7 +94,7 @@ class DSCode extends Command {
         db.collection('users').findOne({
           "_id": msg.author.id
         }, function(err, results) {
-          if (results == null || results.dsCode == "-1") {
+          if (results == null || results.poGoCode == "-1") {
             msg.channel.send({
               embed: {
                 color: 0x86D0CF,
@@ -102,10 +102,10 @@ class DSCode extends Command {
                   name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
-                title: "Nintendo 3DS Code",
+                title: "Pokémon Go Friend Code",
                 description: "You have not entered a code.",
                 footer: {
-                  text: "You can set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                  text: "You can set it up with `r!poGoCode XXXX XXXX XXXX`"
                 }
               }
             });
@@ -117,8 +117,8 @@ class DSCode extends Command {
                   name: msg.author.username,
                   icon_url: msg.author.avatarURL
                 },
-                title: "Nintendo 3DS Code",
-                description: results.dsCode,
+                title: "Pokémon Go Friend Code",
+                description: results.poGoCode,
                 footer: {
                   text: "Privacy settings can be managed through r!settings"
                 }
@@ -129,7 +129,12 @@ class DSCode extends Command {
         client.close();
       });
     } else {
-      if (validateCode(argument)) {
+      if (validateCode(msg.content.substring(11))) { // Cuts off r!poGoCode command
+        var code = msg.content.substring(11);
+        if (code.startsWith("iends in Pokémon GO! My Trainer Code is ")) {
+          code = code.substring(40, 54);
+        }
+        console.log(code);
         MongoClient.connect(url, function(err, client) {
           var db = client.db('bot');
           db.collection('users').findOne({
@@ -139,8 +144,8 @@ class DSCode extends Command {
               db.collection('users').insertOne({
                 _id: msg.author.id,
                 switchCode: "-1",
-                dsCode: argument,
-                poGoCode: "-1",
+                dsCode: "-1",
+                poGoCode: code,
                 switchPrivacy: "PRIVATE",
                 dsPrivacy: "PRIVATE",
                 poGoPrivacy: "PRIVATE",
@@ -163,7 +168,7 @@ class DSCode extends Command {
                 "_id": msg.author.id
               }, {
                 $set: {
-                  "dsCode": argument
+                  "poGoCode": code
                 }
               });
             }
@@ -175,8 +180,8 @@ class DSCode extends Command {
                   name: "Code Saved!",
                   icon_url: msg.author.avatarURL
                 },
-                title: "Nintendo 3DS Code",
-                description: argument.toUpperCase(),
+                title: "Pokémon Go Friend Code",
+                description: code,
                 footer: {
                   text: "Type 'r!help settings' for information about privacy settings."
                 }
@@ -188,20 +193,20 @@ class DSCode extends Command {
         msg.channel.send(":x: Invalid usage!");
       }
     }
-    new Update3DSCodes();
+    new UpdatePoGoCodes();
   }
 }
 
 function validateCode(code) {
   if (code.substring(0, 3) != "SW-") {
-    if (code.length == 14) {
+    if (code.length == 14 || code.length == 12) {
+      return true;
+    } else if (code.startsWith("iends in Pokémon GO! My Trainer Code is ") && code.endsWith("!") && code.length == 55) {
       return true;
     } else {
       return false;
     }
-  } else {
-    return false;
   }
 }
 
-module.exports = DSCode;
+module.exports = PoGoCode;

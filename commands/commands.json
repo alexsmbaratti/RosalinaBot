@@ -10,6 +10,10 @@
     {
       "name": "smo",
       "help": "Stores your Balloon World codes (from Super Mario Odyssey) for reference and sharing.\n\n*Usage Examples*\n`r!smo KINGDOM YOUR-CODE-HERE` Sets a Balloon World code for the specified kingdom (no dashes or spaces).\n`r!smo KINGDOM` Gets sender's Balloon World code for the specified kingdom.\n\n*Kingdoms*\nIn any examples, replace `KINGDOM` with one of the following:\n`cap` `cascade` `sand` `lake` `wooded` `lost` `metro` `snow` `seaside` `luncheon` `bowser` `moon` `mushroom`"
+    },
+    {
+      "name": "poGoCode",
+      "help": "Keeps your Pokémon Go Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!poGoCode XXXX XXXX XXXX` Sets your Pokémon Go code.\n`r!poGoCode clear` Your Pokémon Go code will be removed from the database.\n`r!poGoCode` Gets sender's Pokémon Go code.\n`r!poGoCode @USER` Gets mentioned users' Pokémon Go code.\n\nPro Tip: Sending the generated friend code share text will automatically save your friend code.\nExample: `Let's be friends in Pokémon GO! My Trainer Code is XXXX XXXX XXXX!`"
     }
   ],
   [{
@@ -40,7 +44,7 @@
   ],
   [{
       "name": "settings",
-      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`\n**privacy** - `PUBLIC`, `PRIVATE`"
+      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`, 'PoGo'\n**privacy** - `PUBLIC`, `PRIVATE`"
     },
     {
       "name": "invite",

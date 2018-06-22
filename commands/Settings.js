@@ -29,10 +29,12 @@ class Settings extends Command {
             if (results == null) {
               db.collection('users').insertOne({
                 _id: msg.author.id,
+                switchCode: "-1",
                 dsCode: "-1",
-                dsCode: "-1",
+                poGoCode: "-1",
                 switchPrivacy: arg2.toUpperCase(),
                 dsPrivacy: "PRIVATE",
+                poGoPrivacy: "PRIVATE",
                 bowser: "-1",
                 cap: "-1",
                 cascade: "-1",
@@ -81,10 +83,12 @@ class Settings extends Command {
             if (results == null) {
               db.collection('users').insertOne({
                 _id: msg.author.id,
+                switchCode: "-1",
                 dsCode: "-1",
-                dsCode: "-1",
+                poGoCode: "-1",
                 switchPrivacy: "PRIVATE",
                 dsPrivacy: arg2.toUpperCase(),
+                poGoPrivacy: "PRIVATE",
                 bowser: "-1",
                 cap: "-1",
                 cascade: "-1",
@@ -124,9 +128,62 @@ class Settings extends Command {
             });
           });
         })
+      } else if (arg1 == "pogocode" || arg1 == "pogo" || arg1 == "pokemongo") {
+        MongoClient.connect(url, function(err, client) {
+          var db = client.db('bot');
+          db.collection('users').findOne({
+            _id: msg.author.id
+          }, function(err, results) {
+            if (results == null) {
+              db.collection('users').insertOne({
+                _id: msg.author.id,
+                switchCode: "-1",
+                dsCode: "-1",
+                poGoCode: "-1",
+                switchPrivacy: "PRIVATE",
+                dsPrivacy: "PRIVATE",
+                poGoPrivacy: arg2.toUpperCase(),
+                bowser: "-1",
+                cap: "-1",
+                cascade: "-1",
+                lake: "-1",
+                lost: "-1",
+                luncheon: "-1",
+                metro: "-1",
+                moon: "-1",
+                mushroom: "-1",
+                sand: "-1",
+                seaside: "-1",
+                snow: "-1",
+                wooded: "-1"
+              });
+            } else {
+              db.collection('users').updateOne({
+                "_id": msg.author.id
+              }, {
+                $set: {
+                  "poGoPrivacy": arg2.toUpperCase()
+                }
+              });
+            }
+            client.close();
+            msg.channel.send({
+              embed: {
+                color: 0x86D0CF,
+                author: {
+                  name: "Pokémon Go Code Privacy Updated!",
+                  icon_url: msg.author.avatarURL
+                },
+                description: arg2.toUpperCase(),
+                footer: {
+                  text: "Type 'r!help settings' for information about privacy settings."
+                }
+              }
+            });
+          });
+        })
       }
     } else if (msg.content.length == 10) { // r!settings
-      console.log("A");
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         db.collection('users').findOne({
@@ -137,8 +194,10 @@ class Settings extends Command {
               _id: msg.author.id,
               switchCode: "-1",
               dsCode: "-1",
+              poGoCode: "-1",
               switchPrivacy: "PRIVATE",
               dsPrivacy: "PRIVATE",
+              poGoPrivacy: "PRIVATE",
               bowser: "-1",
               cap: "-1",
               cascade: "-1",
@@ -167,6 +226,10 @@ class Settings extends Command {
                   {
                     name: "*Nintendo Switch Friend Code Privacy Setting*",
                     value: "PRIVATE"
+                  },
+                  {
+                    name: "*Pokémon Go Friend Code Privacy Setting*",
+                    value: "PRIVATE"
                   }
                 ],
                 footer: {
@@ -189,6 +252,10 @@ class Settings extends Command {
                   {
                     name: "*Nintendo Switch Friend Code Privacy Setting*",
                     value: results.switchPrivacy
+                  },
+                  {
+                    name: "*Pokémon Go Friend Code Privacy Setting*",
+                    value: results.poGoPrivacy
                   }
                 ],
                 footer: {

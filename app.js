@@ -3,7 +3,6 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 const DBL = require("dblapi.js");
-const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 // Classes
 const Help = require('./commands/Help.js');
@@ -13,16 +12,18 @@ const Ping = require('./commands/Ping.js');
 const Coin = require('./commands/Coin.js');
 const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
+const PoGoCode = require('./commands/PoGoCode.js');
 const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
+const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.1.1";
+const build = "6.2.0";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -45,6 +46,7 @@ client.on('ready', () => {
     new Update3DSCodes();
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
+    const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
     client.channels.get(config.rosalinaBotTestChannel).send({
       embed: {
@@ -110,6 +112,9 @@ client.on('message', msg => {
     } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
       new DSCode(msg);
       new Update3DSCodes();
+    } else if (input.startsWith("pogocode")) {
+      new PoGoCode(msg);
+      new UpdatePoGoCodes();
     } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
       msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
     } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
@@ -148,6 +153,9 @@ client.on('message', msg => {
     } else if (input.startsWith("status")) {
       new Status(msg, build, client);
     }
+  } else if (msg.content.startsWith("Let's be friends in Pokémon GO! My Trainer Code is ")) {
+    new PoGoCode(msg);
+    new UpdatePoGoCodes();
   }
 });
 
