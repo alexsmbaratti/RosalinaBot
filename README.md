@@ -18,6 +18,8 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Use `r!coin` to flip a coin. Who knows? Maybe it'll land on its side!
 * 8 Ball
   * Use `r!8ball [Yes or No Question]` to seek answers from the cosmos.
+* 24/7 uptime with quality certification from Discord Bot List
+  * (That's a feature, right?)
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
     * (The alternative is you sending your code to chat yourself.)
