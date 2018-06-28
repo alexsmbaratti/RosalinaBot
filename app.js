@@ -3,6 +3,7 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 const DBL = require("dblapi.js");
+const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 // Classes
 const Help = require('./commands/Help.js');
@@ -23,7 +24,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.2.0";
+const build = "6.2.1";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -46,7 +47,6 @@ client.on('ready', () => {
     new Update3DSCodes();
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
-    const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
     client.channels.get(config.rosalinaBotTestChannel).send({
       embed: {
@@ -87,9 +87,6 @@ client.on('message', msg => {
             icon_url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/github-favicon.png"
           },
           title: "RosalinaBot",
-          thumbnail: {
-            url: client.user.avatarURL
-          },
           url: "https://github.com/alexsmbaratti/RosalinaBot/",
           color: color,
           description: "View the source code, request features, and report bugs.",
@@ -142,9 +139,6 @@ client.on('message', msg => {
       msg.channel.send({
         embed: {
           title: "Invite Link",
-          thumbnail: {
-            url: client.user.avatarURL
-          },
           url: "https://discordapp.com/oauth2/authorize?client_id=322405544490958849&scope=bot&permissions=0",
           color: color,
           description: "To invite RosalinaBot to another server, use this link."
@@ -163,7 +157,7 @@ client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
   if (client.user.id == config.CLIENT_ID) {
     try {
-      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.");
+      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.\nIn short, I can store your friend codes on Discord so you can send them to your server or to keep for reference. I also have a variety of fun commands and privacy settings for your codes. If you have any troubles or suggestions, please post your thoughts at my support server. https://discord.gg/Qv5cz3F");
       const DBL = require("dblapi.js");
       const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
     } catch (e) {
@@ -183,7 +177,7 @@ client.on('guildDelete', guild => {
 
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
-    client.channels.get(config.COMET_OBSERVATORY_ID).send("Welcome, " + member.nickname + ", to the Comet Observatory!");
+    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send("Welcome, " + member.nickname + ", to the Comet Observatory!");
   }
 });
 
