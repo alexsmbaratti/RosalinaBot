@@ -32,7 +32,7 @@ class Status extends Command {
           }, function(err, results) {
             dsCodes = results;
             db.collection('users').count({
-              poGoGode: {
+              poGoCode: {
                 $ne: "-1"
               }
             }, function(err, results) {

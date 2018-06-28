@@ -18,13 +18,14 @@ const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
+const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.2.1";
+const build = "6.2.2";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -120,6 +121,8 @@ client.on('message', msg => {
       new Settings(msg);
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
+    } else if (input.startsWith("changelog")) {
+      new Changelog(msg);
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
       new SuperMarioOdyssey(msg);
       new UpdateBalloonCodes();
