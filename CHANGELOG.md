@@ -1,8 +1,13 @@
 # Changelog
+## Build 6.2.2
+**June 28, 2018**
+* Adds r!changelog command
+* Fixes issue with counting Pokémon Go codes in r!status
+
 ## Build 6.2.1
 **June 27, 2018**
 * Adds users serving and Pokémon Go codes stored to r!status
-* Updates the help documenation for r!poGoCode
+* Updates the help documentation for r!poGoCode
 * Removes thumbnails from embeds that just use the bot's profile picture
 * Bug fixes
   * Attempt to fix DBL guild post issue

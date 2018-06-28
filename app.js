@@ -18,6 +18,7 @@ const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
+const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
@@ -120,6 +121,8 @@ client.on('message', msg => {
       new Settings(msg);
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
+    } else if (input.startsWith("changelog")) {
+      new Changelog(msg);
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
       new SuperMarioOdyssey(msg);
       new UpdateBalloonCodes();
