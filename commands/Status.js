@@ -16,6 +16,7 @@ class Status extends Command {
 
       var switchCodes;
       var dsCodes;
+      var poGoCodes;
       MongoClient.connect(url, function(err, mongoClient) {
         var db = mongoClient.db('bot');
         db.collection('users').count({
@@ -30,14 +31,21 @@ class Status extends Command {
             }
           }, function(err, results) {
             dsCodes = results;
-            mongoClient.close();
-            let start = msg.createdTimestamp;
-            msg.channel.send("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...")
-              .then(message => {
-                let diff = (message.createdTimestamp - start);
-                message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n" + switchIcon + "  Nintendo Switch Codes: " + switchCodes + "\n" + dsIcon + "  Nintendo 3DS Codes: " + dsCodes + "");
-              })
-              .catch(console.error);
+            db.collection('users').count({
+              poGoGode: {
+                $ne: "-1"
+              }
+            }, function(err, results) {
+              poGoCodes = results;
+              mongoClient.close();
+              let start = msg.createdTimestamp;
+              msg.channel.send("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...")
+                .then(message => {
+                  let diff = (message.createdTimestamp - start);
+                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\n" + switchIcon + "  Nintendo Switch Codes: " + switchCodes + "\n" + dsIcon + "  Nintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes);
+                })
+                .catch(console.error);
+            });
           });
         });
       });
