@@ -14,7 +14,6 @@ class Changelog extends Command {
         data += chunk;
       });
       res.on('end', function() {
-        msg.channel.send("```" + parseResponse(data) + "```");
         msg.channel.send({
           embed: {
             author: {
