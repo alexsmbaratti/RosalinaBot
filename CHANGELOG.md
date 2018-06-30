@@ -1,4 +1,9 @@
 # Changelog
+## Build 6.2.3
+**June 29, 2018**
+* Tells users who do not have access to r!status that it is a developer command only
+* Nickname will localize based on server region
+
 ## Build 6.2.2
 **June 28, 2018**
 * Adds r!changelog command

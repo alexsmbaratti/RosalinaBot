@@ -49,6 +49,8 @@ class Status extends Command {
           });
         });
       });
+    } else {
+      msg.channel.send("The status command is a debugging tool only available for developers.");
     }
   }
 }
