@@ -192,7 +192,7 @@ client.on('guildMemberAdd', member => {
 });
 
 function updateNickname(guild) {
-  if (client.user.id != config.CLIENT_ID) { // Client must be actual live bot for this block
+  if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
     switch (guild.region) {
       case "japan":
         guild.me.setNickname("ロゼッタ")
