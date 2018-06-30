@@ -25,7 +25,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.2.2";
+const build = "6.2.3";
 const prefix = "r!";
 const color = 0x86D0CF;
 const star = "<:super_star_fill:433020245163114525>";
@@ -163,6 +163,7 @@ client.on('guildCreate', guild => {
       guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.\nIn short, I can store your friend codes on Discord so you can send them to your server or to keep for reference. I also have a variety of fun commands and privacy settings for your codes. If you have any troubles or suggestions, please post your thoughts at my support server. https://discord.gg/Qv5cz3F");
       const DBL = require("dblapi.js");
       const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+      updateNickname(newGuild);
     } catch (e) {
       // If there is no default channel
     } finally {
@@ -178,10 +179,34 @@ client.on('guildDelete', guild => {
   const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 });
 
+client.on('guildUpdate', (oldGuild, newGuild) => {
+  console.log(`Guild Update Triggered!`);
+  console.log("Region: " + newGuild.region);
+  updateNickname(newGuild);
+});
+
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
     client.channels.get(config.COMET_OBSERVATORY_WELCOME).send("Welcome, " + member.nickname + ", to the Comet Observatory!");
   }
 });
+
+function updateNickname(guild) {
+  if (client.user.id != config.CLIENT_ID) { // Client must be actual live bot for this block
+    switch (guild.region) {
+      case "japan":
+        guild.me.setNickname("ロゼッタ")
+          .catch(console.error);
+        break;
+      case "russia":
+        guild.me.setNickname("Розалина")
+          .catch(console.error);
+        break;
+      default:
+        guild.me.setNickname("Rosalina")
+          .catch(console.error);
+    }
+  }
+}
 
 client.login(config.TOKEN);
