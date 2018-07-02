@@ -41,7 +41,7 @@ class Help extends Command {
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
         if (err) throw err;
         var obj = JSON.parse(data);
-        var message = "**Command List**\nBasic command structure is `r![command]`. All commands are not case-sensitive. Use `r!help [command]` for more information about that command.\n";
+        var message = "**Command List**\nBasic command structure is `r![command]`. Commands are *not* case-sensitive. Use `r!help [command]` for more information about that command.\n";
         for (var i = 0; i < obj.length; i++) {
           message += "\n**" + categories[i] + "** - ";
           for (var j = 0; j < obj[i].length; j++) {

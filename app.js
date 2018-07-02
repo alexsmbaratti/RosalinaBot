@@ -18,6 +18,7 @@ const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
+const Welcome = require('./commands/Welcome.js');
 const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
@@ -146,6 +147,8 @@ client.on('message', msg => {
       });
     } else if (input.startsWith("status")) {
       new Status(msg, build, client);
+    } else if (input.startsWith("welcome")) {
+      new Welcome(msg);
     }
   } else if (msg.content.startsWith("Let's be friends in Pokémon GO! My Trainer Code is ")) {
     new PoGoCode(msg);
@@ -157,7 +160,7 @@ client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
   if (client.user.id == config.CLIENT_ID) {
     try {
-      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.\nIn short, I can store your friend codes on Discord so you can send them to your server or to keep for reference. I also have a variety of fun commands and privacy settings for your codes. If you have any troubles or suggestions, please post your thoughts at my support server. https://discord.gg/Qv5cz3F");
+      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.\nIn short, I can store your friend codes on Discord so you can send them to your server or to keep for reference. I also have a variety of fun commands and privacy settings for your codes.");
       const DBL = require("dblapi.js");
       const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
       updateNickname(newGuild);
