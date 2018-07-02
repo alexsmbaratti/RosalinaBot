@@ -2,7 +2,6 @@ const Command = require('./Command.js');
 const UpdatePoGoCodes = require('../cloudwatch/UpdatePoGoCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
 // Example: r!PoGoCode

@@ -28,9 +28,6 @@ const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const build = "6.2.3";
 const prefix = "r!";
 const color = 0x86D0CF;
-const star = "<:super_star_fill:433020245163114525>";
-const switchIcon = "<:switch:434587349117042698>";
-const dsIcon = "<:ds:434587539173670913>";
 
 client.on('ready', () => {
   console.log(`✅ Logged in as ${client.user.username}!`);
