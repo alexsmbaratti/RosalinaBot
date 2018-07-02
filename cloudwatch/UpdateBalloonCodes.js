@@ -1,6 +1,5 @@
 var AWS = require("aws-sdk");
 const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 AWS.config.loadFromPath('./config.json');
 var cw = new AWS.CloudWatch({
