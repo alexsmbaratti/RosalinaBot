@@ -5,6 +5,8 @@ var config = require('./config.json');
 const DBL = require("dblapi.js");
 const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
+const luma = "<:luma:463841535377539082>";
+
 // Classes
 const Help = require('./commands/Help.js');
 const EightBall = require('./commands/EightBall.js');
@@ -19,6 +21,8 @@ const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
 const Welcome = require('./commands/Welcome.js');
+const Suggest = require('./commands/Suggest.js');
+const Bug = require('./commands/Bug.js');
 const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
@@ -26,7 +30,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "6.2.3";
+const build = "7.0.0";
 const prefix = "r!";
 const color = 0x86D0CF;
 
@@ -149,6 +153,12 @@ client.on('message', msg => {
       new Status(msg, build, client);
     } else if (input.startsWith("welcome")) {
       new Welcome(msg);
+    } else if (input.startsWith("suggest")) {
+      new Suggest(msg, client);
+    } else if (input.startsWith("bug")) {
+      new Bug(msg, client);
+    } else if (input.startsWith("support") || input.startsWith("server")) {
+      msg.channel.send("https://discord.gg/kpFHWAq");
     }
   } else if (msg.content.startsWith("Let's be friends in Pokémon GO! My Trainer Code is ")) {
     new PoGoCode(msg);
@@ -160,7 +170,7 @@ client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
   if (client.user.id == config.CLIENT_ID) {
     try {
-      guild.defaultChannel.send("Hello. I am RosalinaBot! To get started, use `r!help` to view my commands.\nIn short, I can store your friend codes on Discord so you can send them to your server or to keep for reference. I also have a variety of fun commands and privacy settings for your codes.");
+      guild.defaultChannel.send("**Hello. I am Rosalina.**\nI can store your Nintendo Switch, Nintendo 3DS, and Pokémon Go friend codes on Discord! I also have a variety of fun commands and privacy settings for your codes. \n\nTo get started, use `r!help` to view my commands.\n\nIf you need any help or have a suggestion, please join my support server, The Comet Observatory. https://discord.gg/kpFHWAq \n\nIf you find me useful, please consider voting for me on Discord Bot List. https://discordbots.org/bot/rosalina \n\nThank you and enjoy! " + luma);
       const DBL = require("dblapi.js");
       const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
       updateNickname(newGuild);
@@ -187,7 +197,7 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
 
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
-    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send("Welcome, " + member.nickname + ", to the Comet Observatory!");
+    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send("Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>");
   }
 });
 
