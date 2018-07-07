@@ -3,9 +3,6 @@ var config = require('../config.json');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
-const switchIcon = "<:switch:434587349117042698>";
-const dsIcon = "<:ds:434587539173670913>";
-
 class Status extends Command {
   constructor(msg, build, client) {
     super(msg);
@@ -41,7 +38,7 @@ class Status extends Command {
               msg.channel.send("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...")
                 .then(message => {
                   let diff = (message.createdTimestamp - start);
-                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\n" + switchIcon + "  Nintendo Switch Codes: " + switchCodes + "\n" + dsIcon + "  Nintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes);
+                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\n  Nintendo Switch Codes: " + switchCodes + "\n  Nintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes);
                 })
                 .catch(console.error);
             });

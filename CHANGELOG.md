@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.0.0
+**July 6, 2018**
+* Adds r!support command and help documentation
+* Adds r!bug and r!suggest commands for support server
+* Updates the guild join message
+* Removes emoji icons for r!status command
+
 ## Build 6.2.3
 **June 29, 2018**
 * Tells users who do not have access to r!status that it is a developer command only

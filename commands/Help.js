@@ -20,6 +20,9 @@ class Help extends Command {
       if (parsable.toLowerCase() == "dscode") { // Special case
         parsable = "3dscode";
       }
+      if (parsable.toLowerCase() == "server") { // Special case
+        parsable = "support";
+      }
       var found = false;
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
         if (err) throw err;

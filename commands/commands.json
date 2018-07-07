@@ -47,6 +47,10 @@
       "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`, 'PoGo'\n**privacy** - `PUBLIC`, `PRIVATE`"
     },
     {
+      "name": "support",
+      "help": "Sends an invite to the support server. Here, you can report bugs, suggest features, and give feedback."
+    },
+    {
       "name": "invite",
       "help": "Sends a link to invite RosalinaBot to another server."
     },
