@@ -18,7 +18,7 @@ class Bug extends Command {
           },
           title: "Bug Report",
           color: color,
-          description: msg.content.substring(10) + "\nReference ID: `" + msg.id + "`",
+          description: msg.content.substring(6) + "\nReference ID: `" + msg.id + "`",
           footer: {
             text: "If this bug affects you too, react to this message with a star."
           }
