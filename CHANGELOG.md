@@ -1,4 +1,9 @@
 # Changelog
+## Build 7.0.1
+**July 8, 2018**
+* Pokémon Go codes are now able to be copied on Discord mobile
+  * Subsequently, embeds are not used for Pokémon Go codes anymore
+
 ## Build 7.0.0
 **July 6, 2018**
 * Adds r!support command and help documentation

@@ -43,17 +43,8 @@ class PoGoCode extends Command {
             console.log(`✅ Pokémon Go Code saved for ` + msg.author.username);
           } else {
             if (results.poGoPrivacy == "PUBLIC") {
-              msg.channel.send({
-                embed: {
-                  color: 0x86D0CF,
-                  author: {
-                    name: msg.guild.members.get(extractedID).user.username,
-                    icon_url: msg.guild.members.get(extractedID).user.avatarURL
-                  },
-                  title: "Pokémon Go Friend Code",
-                  description: results.poGoCode
-                }
-              });
+              msg.channel.send("**" + msg.guild.members.get(extractedID).user.username + "'s Pokémon Go Friend Code**");
+              msg.channel.send(results.poGoCode);
             } else {
               msg.channel.send({
                 embed: {
@@ -109,20 +100,8 @@ class PoGoCode extends Command {
               }
             });
           } else {
-            msg.channel.send({
-              embed: {
-                color: 0x86D0CF,
-                author: {
-                  name: msg.author.username,
-                  icon_url: msg.author.avatarURL
-                },
-                title: "Pokémon Go Friend Code",
-                description: results.poGoCode,
-                footer: {
-                  text: "Privacy settings can be managed through r!settings"
-                }
-              }
-            });
+            msg.channel.send("**" + msg.author.username + "'s Pokémon Go Friend Code**");
+            msg.channel.send(results.poGoCode);
           }
         });
         client.close();
