@@ -30,7 +30,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "7.0.0";
+const build = "7.0.1";
 const prefix = "r!";
 const color = 0x86D0CF;
 
