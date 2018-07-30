@@ -5,7 +5,6 @@ var config = require('./config.json');
 var npm = require('./package.json');
 const DBL = require("dblapi.js");
 const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
-// const dblWebhook = new DBL(config.DBL_TOKEN, { webhookPort: 5000, webhookAuth: config.DBL_AUTH });
 
 const luma = "<:luma:463841535377539082>";
 
@@ -218,14 +217,6 @@ client.on('guildMemberAdd', member => {
     client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
   }
 });
-
-// dblWebhook.webhook.on('ready', hook => {
-//   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-// });
-//
-// dblWebhook.webhook.on('vote', vote => {
-//   console.log(`User with ID ${vote.user} just voted!`);
-// });
 
 function updateNickname(guild) {
   if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
