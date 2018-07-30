@@ -3,7 +3,8 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 const DBL = require("dblapi.js");
-const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+// const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+const dblWebhook = new DBL(config.DBL_TOKEN, { webhookPort: 5000, webhookAuth: config.DBL_AUTH });
 
 const luma = "<:luma:463841535377539082>";
 
@@ -30,7 +31,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "7.0.1";
+const build = "7.0.2";
 const prefix = "r!";
 const color = 0x86D0CF;
 
@@ -50,6 +51,7 @@ client.on('ready', () => {
     new Update3DSCodes();
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
+    new UpdatePoGoCodes();
 
     client.channels.get(config.rosalinaBotTestChannel).send({
       embed: {
@@ -197,8 +199,31 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
 
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
-    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send("Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>");
+    var ran = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    var welcomeMsg;
+    switch (ran) {
+      case 1:
+        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+        break;
+      case 2:
+        welcomeMsg = "Everyone welcome " + member.user.username + " to the Comet Observatory! <:luma:463841535377539082>";
+        break;
+      case 3:
+        welcomeMsg = member.user.username + " has joined! Welcome! <:luma:463841535377539082>";
+        break;
+      default:
+        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+    }
+    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
   }
+});
+
+dblWebhook.webhook.on('ready', hook => {
+  console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
+});
+
+dblWebhook.webhook.on('vote', vote => {
+  console.log(`User with ID ${vote.user} just voted!`);
 });
 
 function updateNickname(guild) {
