@@ -2,8 +2,9 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 var config = require('./config.json');
+var npm = require('./package.json');
 const DBL = require("dblapi.js");
-// const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 const dblWebhook = new DBL(config.DBL_TOKEN, { webhookPort: 5000, webhookAuth: config.DBL_AUTH });
 
 const luma = "<:luma:463841535377539082>";
@@ -31,7 +32,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 
-const build = "7.0.2";
+const build = npm.version;
 const prefix = "r!";
 const color = 0x86D0CF;
 
