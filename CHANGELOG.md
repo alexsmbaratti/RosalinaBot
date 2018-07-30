@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.0.2
+**July 30, 2018**
+* Updates Pokémon Go codes to CloudWatch upon startup
+* Adds new welcome messages for the Comet Observatory
+* Updates dblapi.js to v2.2.0
+* Adds some webhook logs for dblapi.js
+
 ## Build 7.0.1
 **July 8, 2018**
 * Pokémon Go codes are now able to be copied on Discord mobile

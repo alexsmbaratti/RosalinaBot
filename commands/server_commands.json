@@ -1,0 +1,7 @@
+{
+  "name": "suggest",
+  "help": "Sends a feature request to #feature-suggestions."
+}, {
+  "name": "bug",
+  "help": "Sends a bug report to #bug-reports."
+}
