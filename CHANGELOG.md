@@ -1,4 +1,10 @@
 # Changelog
+## Build 7.0.3
+**October 17, 2018**
+* Filters out users with Discord invites when welcoming new users to the Comet Observatory
+* Adds Comet Observatory members to r!status
+* Reformats r!status command
+
 ## Build 7.0.2
 **July 30, 2018**
 * Updates Pokémon Go codes to CloudWatch upon startup

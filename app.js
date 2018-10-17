@@ -199,22 +199,24 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
 
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
-    var ran = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    var welcomeMsg;
-    switch (ran) {
-      case 1:
-        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
-        break;
-      case 2:
-        welcomeMsg = "Everyone welcome " + member.user.username + " to the Comet Observatory! <:luma:463841535377539082>";
-        break;
-      case 3:
-        welcomeMsg = member.user.username + " has joined! Welcome! <:luma:463841535377539082>";
-        break;
-      default:
-        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+    if (!(member.user.username.includes("discord.gg/"))) {
+      var ran = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+      var welcomeMsg;
+      switch (ran) {
+        case 1:
+          welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+          break;
+        case 2:
+          welcomeMsg = "Everyone welcome " + member.user.username + " to the Comet Observatory! <:luma:463841535377539082>";
+          break;
+        case 3:
+          welcomeMsg = member.user.username + " has joined! Welcome! <:luma:463841535377539082>";
+          break;
+        default:
+          welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+      }
+      client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
     }
-    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
   }
 });
 
