@@ -38,7 +38,7 @@ class Status extends Command {
               msg.channel.send("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...")
                 .then(message => {
                   let diff = (message.createdTimestamp - start);
-                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\n  Nintendo Switch Codes: " + switchCodes + "\n  Nintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes);
+                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\nNintendo Switch Codes: " + switchCodes + "\nNintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes + "\nComet Observatory Members: " + client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
                 })
                 .catch(console.error);
             });

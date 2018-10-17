@@ -5,7 +5,6 @@ var config = require('./config.json');
 var npm = require('./package.json');
 const DBL = require("dblapi.js");
 const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
-// const dblWebhook = new DBL(config.DBL_TOKEN, { webhookPort: 5000, webhookAuth: config.DBL_AUTH });
 
 const luma = "<:luma:463841535377539082>";
 
@@ -200,32 +199,26 @@ client.on('guildUpdate', (oldGuild, newGuild) => {
 
 client.on('guildMemberAdd', member => {
   if (member.guild.id == config.COMET_OBSERVATORY_ID) {
-    var ran = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    var welcomeMsg;
-    switch (ran) {
-      case 1:
-        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
-        break;
-      case 2:
-        welcomeMsg = "Everyone welcome " + member.user.username + " to the Comet Observatory! <:luma:463841535377539082>";
-        break;
-      case 3:
-        welcomeMsg = member.user.username + " has joined! Welcome! <:luma:463841535377539082>";
-        break;
-      default:
-        welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+    if (!(member.user.username.includes("discord.gg/"))) {
+      var ran = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+      var welcomeMsg;
+      switch (ran) {
+        case 1:
+          welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+          break;
+        case 2:
+          welcomeMsg = "Everyone welcome " + member.user.username + " to the Comet Observatory! <:luma:463841535377539082>";
+          break;
+        case 3:
+          welcomeMsg = member.user.username + " has joined! Welcome! <:luma:463841535377539082>";
+          break;
+        default:
+          welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
+      }
+      client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
     }
-    client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
   }
 });
-
-// dblWebhook.webhook.on('ready', hook => {
-//   console.log(`Webhook running at http://${hook.hostname}:${hook.port}${hook.path}`);
-// });
-//
-// dblWebhook.webhook.on('vote', vote => {
-//   console.log(`User with ID ${vote.user} just voted!`);
-// });
 
 function updateNickname(guild) {
   if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
