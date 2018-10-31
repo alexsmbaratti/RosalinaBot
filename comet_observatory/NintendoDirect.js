@@ -36,11 +36,7 @@ class NintendoDirect {
         }
       });
 
-      try {
-        let lastUpdate = fs.readFileSync('lastEvent.dat', 'utf8');
-      } catch (e) {
-        fs.writeFileSync('lastEvent.dat', "");
-      }
+      let lastUpdate = fs.readFileSync('lastEvent.dat', 'utf8');
       if (lastUpdate == recent) {
         console.log("No change");
       } else {
