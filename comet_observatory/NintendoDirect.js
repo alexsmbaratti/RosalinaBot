@@ -36,14 +36,18 @@ class NintendoDirect {
         }
       });
 
-      let lastUpdate = fs.readFileSync('../comet_observatory/lastEvent.dat', 'utf8');
+      try {
+        let lastUpdate = fs.readFileSync('lastEvent.dat', 'utf8');
+      } catch (e) {
+        fs.writeFileSync('lastEvent.dat', "");
+      }
       if (lastUpdate == recent) {
         console.log("No change");
       } else {
         console.log("New Nintendo Direct detected!");
         console.log(lastUpdate);
         console.log(recent);
-        fs.writeFileSync('lastEvent.dat', recent);
+
         client.channels.get(config.COMET_OBSERVATORY_ANNOUNCE).send({
           embed: {
             author: {
@@ -55,6 +59,7 @@ class NintendoDirect {
             description: "Airing on " + recent.getMonth() + " " + recent.getDate() + " at " + recent.getHours() + ":" + recent.getMinutes()
           }
         });
+        fs.writeFileSync('lastEvent.dat', recent);
       }
     });
   }
