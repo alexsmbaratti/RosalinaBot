@@ -30,6 +30,8 @@ const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
 const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
+const UpdateServerMembers = require('./cloudwatch/UpdateServerMembers.js');
+const NintendoDirect = require('./commands/NintendoDirect.js');
 
 const build = npm.version;
 const prefix = "r!";
@@ -52,6 +54,10 @@ client.on('ready', () => {
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
     new UpdatePoGoCodes();
+    // new NintendoDirect();
+    if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
+      new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
+    }
 
     client.channels.get(config.rosalinaBotTestChannel).send({
       embed: {
