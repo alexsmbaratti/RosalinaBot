@@ -10,6 +10,7 @@ before_install:
   - npm i -g discord.js@11.1.0
   - npm i -g aws-sdk@2.345.0
   - npm i -g dblapi.js@2.2.0
+  - npm i -g request@2.88.0
   - npm i -g mongodb@3.0.3
   - npm i -g pokedex-promise-v2@3.1.1
   - npm i -g super-mario-maker-client@0.3.1
