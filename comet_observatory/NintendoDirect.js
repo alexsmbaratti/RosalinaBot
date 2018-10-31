@@ -71,7 +71,7 @@ class NintendoDirect {
               "url": thumb_url
             },
             color: color,
-            description: "Airing on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00"
+            description: "Airing on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00 (UTC)"
           }
         });
         fs.writeFileSync('lastEvent.dat', recent);
