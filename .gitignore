@@ -29,6 +29,7 @@ online.js
 info.js
 /profile_pictures
 comet_observatory/lastEvent.dat
+lastEvent.dat
 
 # Gource
 gource.sh
