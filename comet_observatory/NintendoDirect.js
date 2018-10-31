@@ -1,5 +1,5 @@
 var config = require('../config.json');
-const iCal = require(`iCal.js`);
+const iCal = require(`ical.js`);
 const fs = require(`fs`);
 var request = require('request');
 var calendarUrl = 'webcal://nintendo.cal.events/SNvEkC.ics';
