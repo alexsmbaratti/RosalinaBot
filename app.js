@@ -31,7 +31,7 @@ const UpdatePoGoCodes = require('./cloudwatch/UpdatePoGoCodes.js');
 const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const UpdateServerMembers = require('./cloudwatch/UpdateServerMembers.js');
-const NintendoDirect = require('./commands/NintendoDirect.js');
+const NintendoDirect = require('./comet_observatory/NintendoDirect.js');
 
 const build = npm.version;
 const prefix = "r!";
