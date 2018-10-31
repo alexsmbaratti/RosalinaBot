@@ -47,7 +47,7 @@ class NintendoDirect {
         console.log("New Nintendo Direct detected!");
         console.log(lastUpdate);
         console.log(recent);
-        fs.writeFileSync('lastEvent.dat', recent);
+
         client.channels.get(config.COMET_OBSERVATORY_ANNOUNCE).send({
           embed: {
             author: {
@@ -59,6 +59,7 @@ class NintendoDirect {
             description: "Airing on " + recent.getMonth() + " " + recent.getDate() + " at " + recent.getHours() + ":" + recent.getMinutes()
           }
         });
+        fs.writeFileSync('lastEvent.dat', recent);
       }
     });
   }

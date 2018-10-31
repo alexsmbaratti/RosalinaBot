@@ -54,7 +54,7 @@ client.on('ready', () => {
     new UpdateSwitchCodes();
     new UpdateBalloonCodes();
     new UpdatePoGoCodes();
-    new NintendoDirect();
+    new NintendoDirect(client);
     if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
       new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
     }
