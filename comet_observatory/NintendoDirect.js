@@ -36,7 +36,7 @@ class NintendoDirect {
         }
       });
 
-      let lastUpdate = fs.readFileSync('lastEvent.dat', 'utf8');
+      let lastUpdate = fs.readFileSync('../comet_observatory/lastEvent.dat', 'utf8');
       if (lastUpdate == recent) {
         console.log("No change");
       } else {
