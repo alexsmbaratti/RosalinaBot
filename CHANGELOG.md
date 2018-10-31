@@ -1,7 +1,7 @@
 # Changelog
-## Build 7.0.4
+## Build 7.1.0
 **October 30, 2018**
-* Adds framework for announcing new Nintendo Directs
+* Nintendo Directs are now announced in the Comet Observatory
 * Sends Comet Observatory member count to CloudWatch
 * Adds iCal as a dependency
 
