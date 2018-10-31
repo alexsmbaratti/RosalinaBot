@@ -49,8 +49,8 @@ class NintendoDirect {
             author: {
               name: "Nintendo Direct Announced!"
             },
-            title: e.getFirstPropertyValue(`summary`),
-            url: e.getFirstPropertyValue('url'),
+            title: event.getFirstPropertyValue(`summary`),
+            url: event.getFirstPropertyValue('url'),
             color: color,
             description: "Airing on " + recent.getMonth() + " " + recent.getDate() + " at " + recent.getHours() + ":" + recent.getMinutes()
           }
