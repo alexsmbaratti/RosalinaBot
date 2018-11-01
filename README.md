@@ -20,6 +20,8 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Use `r!coin` to flip a coin. Who knows? Maybe it'll land on its side!
 * 8 Ball
   * Use `r!8ball [Yes or No Question]` to seek answers from the cosmos.
+* Capable of notifying users when a Nintendo Direct is announced
+  * Sent to the announcements channel of the [Comet Observatory](https://discordapp.com/invite/Tu82Bm7) support server.
 * 24/7 uptime with quality certification from Discord Bot List
   * (That's a feature, right?)
 * Privacy Settings
