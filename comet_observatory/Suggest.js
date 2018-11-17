@@ -1,4 +1,4 @@
-const Command = require('./Command.js');
+const Command = require('../commands/Command.js');
 var config = require('../config.json');
 
 // r!suggest YOUR_SUGGESTION_HERE
