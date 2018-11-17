@@ -2,7 +2,7 @@ var config = require('../config.json');
 const iCal = require(`ical.js`);
 const fs = require(`fs`);
 var request = require('request');
-var calendarUrl = 'webcal://nintendo.cal.events/SNvEkC.ics';
+var calendarUrl = 'webcal://nintendo.cal.events/Sh0TE6.ics';
 var options = {
   url: calendarUrl.replace('webcal://', 'https://'),
   gzip: true
@@ -40,41 +40,43 @@ class NintendoDirect {
       if (lastUpdate == recent) {
         console.log("No change");
       } else {
-        console.log("New Nintendo Direct detected!");
-        console.log(lastUpdate);
-        console.log(recent);
+        if (lastUpdate > recent) { // Prevents overridding latest date with an old Direct
+          console.log("New Nintendo Direct detected!");
+          console.log(lastUpdate);
+          console.log(recent);
 
-        // Example URL: https://www.nintendo.com/nintendo-direct/11-01-2018/images/archive-thumb.jpg
-        let thumb_url = "https://www.nintendo.com/nintendo-direct/";
-        if ((recent.getMonth() + 1) < 10) {
-          thumb_url += ("0" + (recent.getMonth() + 1));
-        } else {
-          thumb_url += (recent.getMonth() + 1);
-        }
-        thumb_url += "-";
-
-        if ((recent.getDate()) < 10) {
-          thumb_url += ("0" + (recent.getDate()));
-        } else {
-          thumb_url += (recent.getDate());
-        }
-        thumb_url += "-" + recent.getFullYear() + "/images/archive-thumb.jpg";
-
-        client.channels.get(config.COMET_OBSERVATORY_ANNOUNCE).send({
-          embed: {
-            author: {
-              name: "Nintendo Direct Announced!"
-            },
-            title: event.getFirstPropertyValue(`summary`),
-            url: event.getFirstPropertyValue('url'),
-            "image": {
-              "url": thumb_url
-            },
-            color: color,
-            description: "Airing on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00 (UTC)"
+          // Example URL: https://www.nintendo.com/nintendo-direct/11-01-2018/images/archive-thumb.jpg
+          let thumb_url = "https://www.nintendo.com/nintendo-direct/";
+          if ((recent.getMonth() + 1) < 10) {
+            thumb_url += ("0" + (recent.getMonth() + 1));
+          } else {
+            thumb_url += (recent.getMonth() + 1);
           }
-        });
-        fs.writeFileSync('lastEvent.dat', recent);
+          thumb_url += "-";
+
+          if ((recent.getDate()) < 10) {
+            thumb_url += ("0" + (recent.getDate()));
+          } else {
+            thumb_url += (recent.getDate());
+          }
+          thumb_url += "-" + recent.getFullYear() + "/images/archive-thumb.jpg";
+
+          client.channels.get(config.COMET_OBSERVATORY_ANNOUNCE).send({
+            embed: {
+              author: {
+                name: "Nintendo Direct Announced!"
+              },
+              title: event.getFirstPropertyValue(`summary`),
+              url: event.getFirstPropertyValue('url'),
+              "image": {
+                "url": thumb_url
+              },
+              color: color,
+              description: "Airing on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00 (UTC)"
+            }
+          });
+          fs.writeFileSync('lastEvent.dat', recent);
+        }
       }
     });
   }

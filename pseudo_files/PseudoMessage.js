@@ -7,11 +7,12 @@ var content = "";
 var author;
 var pinned = false;
 var tts = false;
-var channel = new PseudoChannel();
+var channel;
 
 class PseudoMessage {
   constructor(message) {
     content = message;
+    channel = new PseudoChannel();
     author = new PseudoUser();
   }
 

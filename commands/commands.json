@@ -51,6 +51,10 @@
       "help": "Sends an invite to the support server. Here, you can report bugs, suggest features, and give feedback."
     },
     {
+      "name": "direct",
+      "help": "Displays the latest Nintendo Direct announced in the channel sent."
+    },
+    {
       "name": "invite",
       "help": "Sends a link to invite RosalinaBot to another server."
     },

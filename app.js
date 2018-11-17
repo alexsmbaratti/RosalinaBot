@@ -22,8 +22,8 @@ const MarioMaker = require('./commands/MarioMaker.js');
 const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
 const Welcome = require('./commands/Welcome.js');
-const Suggest = require('./commands/Suggest.js');
-const Bug = require('./commands/Bug.js');
+const Suggest = require('./comet_observatory/Suggest.js');
+const Bug = require('./comet_observatory/Bug.js');
 const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
 const Update3DSCodes = require('./cloudwatch/Update3DSCodes.js');
@@ -32,6 +32,7 @@ const UpdateSwitchCodes = require('./cloudwatch/UpdateSwitchCodes.js');
 const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const UpdateServerMembers = require('./cloudwatch/UpdateServerMembers.js');
 const NintendoDirect = require('./comet_observatory/NintendoDirect.js');
+const TriggerDirect = require('./commands/TriggerDirect.js');
 
 const build = npm.version;
 const prefix = "r!";
@@ -78,7 +79,7 @@ client.on('ready', () => {
       }
     });
   } else if (process.env.USER == "travis") { // Travis-CI
-    console.log("Compilation successful! Exiting with code 0.")
+    console.log("Compilation successful! Exiting with code 0.");
     process.exit(0);
   }
 });
@@ -159,6 +160,8 @@ client.on('message', msg => {
       });
     } else if (input.startsWith("status")) {
       new Status(msg, build, client);
+    } else if (input.startsWith("direct")) {
+      new TriggerDirect(client, msg);
     } else if (input.startsWith("welcome")) {
       new Welcome(msg);
     } else if (input.startsWith("suggest")) {

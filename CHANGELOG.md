@@ -1,4 +1,10 @@
 # Changelog
+## Build 7.1.1
+**November 17, 2018**
+* Adds the ability to check the latest announced Nintendo Direct using `r!direct`
+  * Note: The ability to have Nintendo Directs announced in specific channels automatically is coming soon
+* Updates the calendar used for checking for Nintendo Directs
+
 ## Build 7.1.0
 **October 30, 2018**
 * Nintendo Directs are now announced in the Comet Observatory
