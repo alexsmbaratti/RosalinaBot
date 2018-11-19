@@ -27,6 +27,10 @@
     {
       "name": "8ball",
       "help": "Ask a yes/no question after this command and recieve an answer from the stars (Reliability of answers may vary)."
+    },
+    {
+      "name": "echo",
+      "help": "Rosalina will echo whatever you say.\n\n*Usage Example*\n`r!echo May the stars shine down on you.`"
     }
   ],
   [{

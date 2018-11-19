@@ -33,6 +33,7 @@ const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const UpdateServerMembers = require('./cloudwatch/UpdateServerMembers.js');
 const NintendoDirect = require('./comet_observatory/NintendoDirect.js');
 const TriggerDirect = require('./commands/TriggerDirect.js');
+const Echo = require('./commands/Echo.js');
 // const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
@@ -109,6 +110,8 @@ client.on('message', msg => {
       new Dice(msg);
     } else if (input == "ping") {
       new Ping(msg);
+    } else if (input.startsWith("echo")) {
+      new Echo(msg);
     } else if (input == "coin") {
       new Coin(msg);
     } else if (input == "build" || input == "version") {
