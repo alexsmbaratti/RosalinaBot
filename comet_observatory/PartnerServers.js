@@ -5,12 +5,13 @@ const fs = require(`fs`);
 // r!partner [MESSAGE]
 // ONE USE PER USER
 // Check for discord.gg
+// Send to Peach/Daisy/Pauline
 
 class PartnerServers extends Command {
   constructor(msg, client) {
     super(msg);
     var partnerMessage = msg.content.substring(10);
-    
+
   }
 }
 
