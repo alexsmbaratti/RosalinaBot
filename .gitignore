@@ -30,6 +30,7 @@ info.js
 /profile_pictures
 comet_observatory/lastEvent.dat
 lastEvent.dat
+filters.dat
 
 # Gource
 gource.sh

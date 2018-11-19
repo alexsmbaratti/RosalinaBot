@@ -33,6 +33,7 @@ const UpdateBalloonCodes = require('./cloudwatch/UpdateBalloonCodes.js');
 const UpdateServerMembers = require('./cloudwatch/UpdateServerMembers.js');
 const NintendoDirect = require('./comet_observatory/NintendoDirect.js');
 const TriggerDirect = require('./commands/TriggerDirect.js');
+// const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
 const prefix = "r!";
@@ -168,6 +169,8 @@ client.on('message', msg => {
       new Suggest(msg, client);
     } else if (input.startsWith("bug")) {
       new Bug(msg, client);
+    } else if (input.startsWith("partner")) {
+      // new PartnerServers(msg, client);
     } else if (input.startsWith("support") || input.startsWith("server")) {
       msg.channel.send("https://discord.gg/kpFHWAq");
     }
@@ -225,6 +228,26 @@ client.on('guildMemberAdd', member => {
           welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
       }
       client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
+    }
+  }
+});
+
+client.on('guildMemberRemove', member => {
+  if (member.guild.id == config.COMET_OBSERVATORY_ID) {
+    if (!(member.user.username.includes("discord.gg/"))) {
+      var ran = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+      var byeMsg;
+      switch (ran) {
+        case 1:
+          byeMsg = member.user.username + " has left the server.";
+          break;
+        case 2:
+          byeMsg = "Goodbye " + member.user.username + "!";
+          break;
+        default:
+          byeMsg = member.user.username + " has left the server.";
+      }
+      client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(byeMsg);
     }
   }
 });
