@@ -31,6 +31,10 @@
     {
       "name": "echo",
       "help": "Rosalina will echo whatever you say.\n\n*Usage Example*\n`r!echo May the stars shine down on you.`"
+    },
+    {
+      "name": "echod",
+      "help": "Rosalina will echo whatever you say, but will also delete the message you sent.\n\n*Usage Example*\n`r!echod May the stars shine down on you.`"
     }
   ],
   [{
