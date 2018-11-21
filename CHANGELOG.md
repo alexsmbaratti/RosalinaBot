@@ -1,4 +1,10 @@
 # Changelog
+## Build 7.1.2
+**November 20, 2018**
+* PRIVACY UPDATE: By popular demand, all new codes stored are set to public by default.
+  * Note: Any existing codes will retain their current privacy settings and will not be affected by this change.
+* r!echo command and r!echod command
+
 ## Build 7.1.1
 **November 17, 2018**
 * Adds the ability to check the latest announced Nintendo Direct using `r!direct`

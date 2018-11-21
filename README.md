@@ -1,7 +1,7 @@
 # RosalinaBot
 **A Discord Bot for Nintendo fans**
 
-[![Add to Discord](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![Build Status](https://travis-ci.org/alexsmbaratti/RosalinaBot.svg?branch=master)](https://travis-ci.org/alexsmbaratti/RosalinaBot) [![Version](https://img.shields.io/badge/version-7.1.1-brightgreen.svg "Version")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![Library](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) [![Server Count](https://img.shields.io/badge/dynamic/json.svg?label=servers&url=https%3A%2F%2Fdiscordbots.org%2Fapi%2Fbots%2F322405544490958849&query=server_count&colorB=brightgreen "Server Count")](https://discordbots.org/bot/322405544490958849) [![Discord Bots](https://discordbots.org/api/widget/status/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849)
+[![Add to Discord](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![Build Status](https://travis-ci.org/alexsmbaratti/RosalinaBot.svg?branch=master)](https://travis-ci.org/alexsmbaratti/RosalinaBot) [![Version](https://img.shields.io/badge/version-7.1.2-brightgreen.svg "Version")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![Library](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) [![Server Count](https://img.shields.io/badge/dynamic/json.svg?label=servers&url=https%3A%2F%2Fdiscordbots.org%2Fapi%2Fbots%2F322405544490958849&query=server_count&colorB=brightgreen "Server Count")](https://discordbots.org/bot/322405544490958849) [![Discord Bots](https://discordbots.org/api/widget/status/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849)
 
 RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features.
 
@@ -33,10 +33,10 @@ To share your friend code with people in your server, or just keep it handy on D
 `r!switchCode SW-1234-5678-9000`
 `r!3DSCode 1234-5678-9000`
 
-Note that dashes are required and the commands are not case sensitive. You should receive a confirmation message if it is successful. By default, your friend codes are private. In order for others to see them, you must type `r!switchCode` or `r!3DSCode` to retrieve your friend codes. If you set your friend codes to public, others in a server with RosalinaBot may use `r!switchCode @[YOU]` or `r!3DSCode @[YOU]` to retrieve your friend codes.
+Note that dashes are required and the commands are not case sensitive. You should receive a confirmation message if it is successful. By default, your friend codes are public. In order for others to see them, you must type `r!switchCode` or `r!3DSCode` to retrieve your friend codes. If you set your friend codes to public, others in a server with RosalinaBot may use `r!switchCode @[YOU]` or `r!3DSCode @[YOU]` to retrieve your friend codes.
 
 ### Privacy Settings
-By default, any of your friend codes will be set to private. The only time RosalinaBot will send your friend codes to a chat is if you and only you use the `r!switchCode` or the `r!3DSCode` commands. To check these settings at anytime, use `r!settings`.
+By default, any of your friend codes will be set to public. The only time RosalinaBot will send your friend codes to a chat is if you and only you use the `r!switchCode` or the `r!3DSCode` commands. To check these settings at anytime, use `r!settings`.
 
 To change a privacy setting, follow this format `r!settings [PLATFORM]Code [PRIVACY]`. Replace `PLATFORM` with either `switch` or `3DS` and `PRIVACY` with either `PUBLIC` or `PRIVATE`. For example, typing `r!settings switchCode PUBLIC` will set your Nintendo Switch friend code to public. Likewise, typing `r!settings 3DSCode PRIVATE` will set your Nintendo 3DS friend code to private.
 
