@@ -32,8 +32,8 @@ class Settings extends Command {
                 dsCode: "-1",
                 poGoCode: "-1",
                 switchPrivacy: arg2.toUpperCase(),
-                dsPrivacy: "PRIVATE",
-                poGoPrivacy: "PRIVATE",
+                dsPrivacy: "PUBLIC",
+                poGoPrivacy: "PUBLIC",
                 bowser: "-1",
                 cap: "-1",
                 cascade: "-1",
@@ -85,9 +85,9 @@ class Settings extends Command {
                 switchCode: "-1",
                 dsCode: "-1",
                 poGoCode: "-1",
-                switchPrivacy: "PRIVATE",
+                switchPrivacy: "PUBLIC",
                 dsPrivacy: arg2.toUpperCase(),
-                poGoPrivacy: "PRIVATE",
+                poGoPrivacy: "PUBLIC",
                 bowser: "-1",
                 cap: "-1",
                 cascade: "-1",
@@ -139,8 +139,8 @@ class Settings extends Command {
                 switchCode: "-1",
                 dsCode: "-1",
                 poGoCode: "-1",
-                switchPrivacy: "PRIVATE",
-                dsPrivacy: "PRIVATE",
+                switchPrivacy: "PUBLIC",
+                dsPrivacy: "PUBLIC",
                 poGoPrivacy: arg2.toUpperCase(),
                 bowser: "-1",
                 cap: "-1",
@@ -194,9 +194,9 @@ class Settings extends Command {
               switchCode: "-1",
               dsCode: "-1",
               poGoCode: "-1",
-              switchPrivacy: "PRIVATE",
-              dsPrivacy: "PRIVATE",
-              poGoPrivacy: "PRIVATE",
+              switchPrivacy: "PUBLIC",
+              dsPrivacy: "PUBLIC",
+              poGoPrivacy: "PUBLIC",
               bowser: "-1",
               cap: "-1",
               cascade: "-1",
@@ -220,15 +220,15 @@ class Settings extends Command {
                 },
                 fields: [{
                     name: "*Nintendo 3DS Friend Code Privacy Setting*",
-                    value: "PRIVATE"
+                    value: results.dsPrivacy
                   },
                   {
                     name: "*Nintendo Switch Friend Code Privacy Setting*",
-                    value: "PRIVATE"
+                    value: results.switchPrivacy
                   },
                   {
                     name: "*Pokémon Go Friend Code Privacy Setting*",
-                    value: "PRIVATE"
+                    value: results.poGoPrivacy
                   }
                 ],
                 footer: {
