@@ -13,7 +13,7 @@ class NintendoDirect {
   constructor(client) {
     // Download fresh version of ICS file
     request(options, function(error, response, icalData) {
-      console.log("Response: " + response.statusCode);
+      console.log("Nintendo Direct Calendar Response: " + response.statusCode);
       let jcalData = ICAL.parse(icalData);
       let vcalendar = new iCal.Component(jcalData);
       let allSubcomponents = vcalendar.getAllSubcomponents();
@@ -25,13 +25,13 @@ class NintendoDirect {
         let title = e.getFirstPropertyValue(`summary`);
         let date = e.getFirstPropertyValue(`dtstart`);
         if (!(title.startsWith("Reminder:"))) { // Remove all events with reminders
-          console.log(title);
+          // console.log(title);
           var current = new Date(date.year, date.month - 1, date.day, date.hour, date.minute, 0, 0);
-          console.log("Current: " + current);
+          // console.log("Current: " + current);
           if (recent < current) {
             recent = current;
             event = e;
-            console.log("Recent: " + recent);
+            // console.log("Recent: " + recent);
           }
         }
       });

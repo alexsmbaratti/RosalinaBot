@@ -220,15 +220,15 @@ class Settings extends Command {
                 },
                 fields: [{
                     name: "*Nintendo 3DS Friend Code Privacy Setting*",
-                    value: results.dsPrivacy
+                    value: "PUBLIC"
                   },
                   {
                     name: "*Nintendo Switch Friend Code Privacy Setting*",
-                    value: results.switchPrivacy
+                    value: "PUBLIC"
                   },
                   {
                     name: "*Pokémon Go Friend Code Privacy Setting*",
-                    value: results.poGoPrivacy
+                    value: "PUBLIC"
                   }
                 ],
                 footer: {
