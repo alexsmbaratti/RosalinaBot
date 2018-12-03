@@ -136,8 +136,8 @@ client.on('message', msg => {
     } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
       msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!3DSCode` instead.");
     } else if (input.startsWith("settings")) {
-      // new Settings(msg);
-      msg.channel.send(":x: The `r!settings` command has been temporarily disabled. <:ohno_rosalina:517899671608229899>");
+      new Settings(msg);
+      // msg.channel.send(":x: The `r!settings` command has been temporarily disabled. <:ohno_rosalina:517899671608229899>");
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
     } else if (input.startsWith("changelog")) {
