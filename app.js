@@ -48,7 +48,7 @@ client.on('ready', () => {
     status: 'online',
     afk: false,
     game: {
-      name: "r!help for commands"
+      name: "Super Smash Bros. Ultimate"
     }
   });
   if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block

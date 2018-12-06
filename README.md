@@ -22,7 +22,7 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Use `r!8ball [Yes or No Question]` to seek answers from the cosmos.
 * Capable of notifying users when a Nintendo Direct is announced
   * Sent to the announcements channel of the [Comet Observatory](https://discordapp.com/invite/Tu82Bm7) support server.
-* 24/7 uptime with quality certification from Discord Bot List
+* 24/7 uptime
   * (That's a feature, right?)
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
