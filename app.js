@@ -35,6 +35,7 @@ const NintendoDirect = require('./comet_observatory/NintendoDirect.js');
 const TriggerDirect = require('./commands/TriggerDirect.js');
 const Echo = require('./commands/Echo.js');
 const EchoDelete = require('./commands/EchoDelete.js');
+const Roles = require('./comet_observatory/Roles.js');
 // const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
@@ -113,6 +114,8 @@ client.on('message', msg => {
       new Ping(msg);
     } else if (input.startsWith("echod ")) {
       new EchoDelete(msg);
+    } else if (input.startsWith("role")) {
+      new Roles(msg);
     } else if (input.startsWith("echo ")) {
       new Echo(msg);
     } else if (input == "coin") {
