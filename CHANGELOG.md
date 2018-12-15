@@ -1,4 +1,8 @@
 # Changelog
+## Build 7.1.3
+**December 15, 2018**
+* Adds r!role command for Comet Observatory members
+
 ## Build 7.1.2
 **November 20, 2018**
 * PRIVACY UPDATE: By popular demand, all new codes stored are set to public by default.
