@@ -11,6 +11,8 @@ var color = 0x86D0CF;
 // Example: r!switchCode clear
 // Example: r!switchCode SW-XXXX-XXXX-XXXX
 
+// Shorthand r!sc
+
 class SwitchCode extends Command {
   constructor(msg) {
     super(msg);

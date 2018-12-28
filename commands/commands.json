@@ -1,11 +1,11 @@
 [
   [{
       "name": "switchCode",
-      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code."
+      "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code.\n\n*Shortcut*\n`r!sc`"
     },
     {
       "name": "3DSCode",
-      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!3DSCode YOUR-CODE-HERE` Sets your Nintendo 3DS code (include dashes).\n`r!3DSCode clear` Your Nintendo 3DS code will be removed from the database.\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code."
+      "help": "Keeps your Nintendo 3DS Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!3DSCode YOUR-CODE-HERE` Sets your Nintendo 3DS code (include dashes).\n`r!3DSCode clear` Your Nintendo 3DS code will be removed from the database.\n`r!3DSCode` Gets sender's Nintendo 3DS code.\n`r!3DSCode @USER` Gets mentioned users' Nintendo 3DS code.\n\n*Shortcut*\n`r!ds`"
     },
     {
       "name": "smo",
@@ -18,7 +18,7 @@
   ],
   [{
       "name": "coin",
-      "help": "Flips a coin. Can land on heads, tails, or its side."
+      "help": "Flips a coin. Can land on heads, tails, or its side.\n\n*Shortcut*\n`r!c`"
     },
     {
       "name": "dice",
@@ -52,7 +52,7 @@
   ],
   [{
       "name": "settings",
-      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`, 'PoGo'\n**privacy** - `PUBLIC`, `PRIVATE`"
+      "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`, `PoGo`\n**privacy** - `PUBLIC`, `PRIVATE`"
     },
     {
       "name": "support",

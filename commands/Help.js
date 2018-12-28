@@ -17,11 +17,14 @@ class Help extends Command {
       if (parsable == "die") { // Special case
         parsable = "dice";
       }
-      if (parsable.toLowerCase() == "dscode") { // Special case
+      if (parsable.toLowerCase() == "dscode" || parsable.toLowerCase() == "ds") { // Special case
         parsable = "3dscode";
       }
       if (parsable.toLowerCase() == "server") { // Special case
         parsable = "support";
+      }
+      if (parsable.toLowerCase() == "sc") { // Special case
+        parsable = "switchcode";
       }
       var found = false;
       fs.readFile('./commands/commands.json', 'utf8', function(err, data) {
