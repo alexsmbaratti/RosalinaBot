@@ -120,7 +120,7 @@ client.on('message', msg => {
       new Roles(msg);
     } else if (input.startsWith("echo ")) {
       new Echo(msg);
-    } else if (input == "coin" || input.startsWith("c")) {
+    } else if (input == "coin" || input == "c") {
       new Coin(msg);
     } else if (input == "build" || input == "version") {
       msg.channel.send("Build: `" + build + "`");
