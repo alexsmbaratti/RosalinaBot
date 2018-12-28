@@ -240,6 +240,8 @@ client.on('guildMemberAdd', member => {
           welcomeMsg = "Welcome, " + member.user.username + ", to the Comet Observatory! <:luma:463841535377539082>";
       }
       client.channels.get(config.COMET_OBSERVATORY_WELCOME).send(welcomeMsg);
+      msg.member.addRole('526848849247993867')
+        .catch(console.error);
     }
   }
 });
