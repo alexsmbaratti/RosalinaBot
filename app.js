@@ -36,6 +36,7 @@ const TriggerDirect = require('./commands/TriggerDirect.js');
 const Echo = require('./commands/Echo.js');
 const EchoDelete = require('./commands/EchoDelete.js');
 const Roles = require('./comet_observatory/Roles.js');
+const PostToDB = require('./cloudwatch/PostToDB.js');
 // const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
@@ -60,6 +61,7 @@ client.on('ready', () => {
     new UpdateBalloonCodes();
     new UpdatePoGoCodes();
     new NintendoDirect(client);
+    new PostToDB(client);
     if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
       new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
     }
@@ -118,17 +120,17 @@ client.on('message', msg => {
       new Roles(msg);
     } else if (input.startsWith("echo ")) {
       new Echo(msg);
-    } else if (input == "coin") {
+    } else if (input == "coin" || input.startsWith("c")) {
       new Coin(msg);
     } else if (input == "build" || input == "version") {
       msg.channel.send("Build: `" + build + "`");
     } else if (input == "guilds") {
       msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
       new UpdateGuilds(client.guilds.size);
-    } else if (input.startsWith("switchcode")) {
+    } else if (input.startsWith("switchcode") || input.startsWith("sc")) {
       new SwitchCode(msg);
       new UpdateSwitchCodes();
-    } else if (input.startsWith("3dscode") || input.startsWith("dscode")) {
+    } else if (input.startsWith("3dscode") || input.startsWith("dscode") || input.startsWith("ds")) {
       new DSCode(msg);
       new Update3DSCodes();
     } else if (input.startsWith("pogocode")) {

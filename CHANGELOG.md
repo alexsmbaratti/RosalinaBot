@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.2.0
+**December 27, 2018**
+* Adds shortcut commands
+  * Example: r!switchCode can be written as r!sc
+* Guild count now posted to discord.bots.gg
+* Fixes typo for r!help settings
+
 ## Build 7.1.3
 **December 15, 2018**
 * Adds r!role command for Comet Observatory members

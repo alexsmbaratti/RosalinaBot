@@ -9,6 +9,8 @@ const url = 'mongodb://localhost:27017';
 // Example: r!dsCode clear
 // Example: r!dsCode XXXX-XXXX-XXXX
 
+// Shorthand r!ds
+
 class DSCode extends Command {
   constructor(msg) {
     super(msg);
