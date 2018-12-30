@@ -14,6 +14,7 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Store your Luigi's Balloon World codes and challenge your friends on Discord to find them
 * Share Pokémon Go friend codes
   * Catch them all with your friends!
+* Friend codes transfer between servers
 * Dice
   * Use `r!dice` or `r!die` to roll a die. A great alternative to settling it in Smash!
 * Coin Flipping
@@ -24,6 +25,7 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Sent to the announcements channel of the [Comet Observatory](https://discordapp.com/invite/Tu82Bm7) support server.
 * 24/7 uptime
   * (That's a feature, right?)
+* Command shortcuts
 * Privacy Settings
   * Customize whether your friends can request your individual friend codes.
     * (The alternative is you sending your code to chat yourself.)
