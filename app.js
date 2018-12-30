@@ -44,6 +44,8 @@ const prefix = "r!";
 const color = 0x86D0CF;
 
 client.on('ready', () => {
+  var d = new Date(Date.now());
+  console.log("📅 Instance started at " + d.toTimeString() + " on " + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear());
   console.log(`✅ Logged in as ${client.user.username}!`);
   console.log(`🔨 Build: ${build}`);
   client.user.setPresence({
