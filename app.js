@@ -23,6 +23,7 @@ const SuperMarioOdyssey = require('./commands/SuperMarioOdyssey.js');
 const Status = require('./commands/Status.js');
 const Welcome = require('./commands/Welcome.js');
 const Suggest = require('./comet_observatory/Suggest.js');
+const Arena = require('./commands/Arena.js');
 const Bug = require('./comet_observatory/Bug.js');
 const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
@@ -147,6 +148,8 @@ client.on('message', msg => {
       // msg.channel.send(":x: The `r!settings` command has been temporarily disabled. <:ohno_rosalina:517899671608229899>");
     } else if (input.startsWith("smm")) {
       new MarioMaker(msg);
+    } else if (input.startsWith("ssbu")) {
+      new Arena(msg);
     } else if (input.startsWith("changelog")) {
       new Changelog(msg);
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {

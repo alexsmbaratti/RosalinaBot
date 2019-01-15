@@ -14,6 +14,10 @@
     {
       "name": "poGoCode",
       "help": "Keeps your Pokémon Go Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!poGoCode XXXX XXXX XXXX` Sets your Pokémon Go code.\n`r!poGoCode clear` Your Pokémon Go code will be removed from the database.\n`r!poGoCode` Gets sender's Pokémon Go code.\n`r!poGoCode @USER` Gets mentioned users' Pokémon Go code.\n\n**Pro Tip**: Sending the generated friend code share text will automatically save your friend code.\nExample: `Let's be friends in Pokémon GO! My Trainer Code is XXXX XXXX XXXX!`"
+    },
+    {
+      "name": "ssbu",
+      "help": "Sends a message with your Super Smash Bros. Ultimate Battle Arena details.\n\n*Usage Example*\n`r!ssbu [ID] [Password]` Sends your Arena ID and Arena Password. Password is optional."
     }
   ],
   [{

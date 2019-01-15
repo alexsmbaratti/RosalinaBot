@@ -1,4 +1,9 @@
 # Changelog
+## Build 7.3.0
+**January 14, 2019**
+* Adds r!ssbu command
+  * Share your Super Smash Bros. Ultimate Battle Arenas
+
 ## Build 7.2.0
 **December 27, 2018**
 * Adds shortcut commands
