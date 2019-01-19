@@ -24,6 +24,7 @@ const Status = require('./commands/Status.js');
 const Welcome = require('./commands/Welcome.js');
 const Suggest = require('./comet_observatory/Suggest.js');
 const Arena = require('./commands/Arena.js');
+const ServerInfo = require('./commands/ServerInfo.js');
 const Bug = require('./comet_observatory/Bug.js');
 const Changelog = require('./commands/Changelog.js');
 const UpdateGuilds = require('./cloudwatch/UpdateGuilds.js');
@@ -188,6 +189,8 @@ client.on('message', msg => {
       new Bug(msg, client);
     } else if (input.startsWith("partner")) {
       // new PartnerServers(msg, client);
+    } else if (input.startsWith("serverinfo")) {
+      new ServerInfo(msg);
     } else if (input.startsWith("support") || input.startsWith("server")) {
       msg.channel.send("https://discord.gg/kpFHWAq");
     }

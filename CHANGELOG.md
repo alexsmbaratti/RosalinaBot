@@ -1,4 +1,10 @@
 # Changelog
+## Build 7.3.1
+**January 18, 2019**
+* Adds r!ssbu command
+  * Share your Super Smash Bros. Ultimate Battle Arenas
+* Adds r!serverinfo command
+
 ## Build 7.3.0
 **January 14, 2019**
 * Adds r!ssbu command
