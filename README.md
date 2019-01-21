@@ -5,7 +5,7 @@
 
 RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features.
 
-![alt text](https://github.com/alexsmbaratti/RosalinaBot/raw/master/misc/art.png)
+
 
 ## Features
 * Support for Nintendo Switch and Nintendo 3DS Friend Codes
