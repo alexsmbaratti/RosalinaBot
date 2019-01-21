@@ -32,12 +32,15 @@ class Arena extends Command {
     if (arg1 == "") { // No arguments given
       msg.channel.send(":x: Invalid usage!\nCorrect usage is: `r!ssbu [ID] [PASSWORD]`. Password is optional.")
     } else { // First argument given
-      if (arg1.length == 5) { // Valid ID
+      if (arg1.length == 5 || arg1.toLowerCase() == "friend") { // Valid ID
         if (arg2.length > 8 || isNaN(arg2)) {
           msg.channel.send(":x: Password was invalid.")
         } else {
           if (arg2 == "") { // No password
             arg2 = "No password"
+          }
+          if (arg1.toLowerCase() == "friend") {
+            arg1 = "Friends Only";
           }
           msg.channel.send({
             embed: {
@@ -65,7 +68,9 @@ class Arena extends Command {
                 text: "Requires an active Nintendo Switch Online subscription to join"
               }
             }
-          });
+          }).then(message => {
+            msg.delete();
+          }).catch(console.error);
         }
       } else { // ID not valid
         msg.channel.send(":x: Arena ID was invalid.")

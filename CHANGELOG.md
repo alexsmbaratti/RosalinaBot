@@ -1,4 +1,12 @@
 # Changelog
+## Build 7.4.0
+**January 20, 2019**
+* Revamps r!help and its menus
+* Using r!ssbu friend will indicate that the lobby is only open to friends
+* Using r!ssbu with a valid ID/password will delete the preceding message to keep chat tidy
+* Adds inline formatting for r!smm command
+* Updated art
+
 ## Build 7.3.1
 **January 18, 2019**
 * Adds r!ssbu command

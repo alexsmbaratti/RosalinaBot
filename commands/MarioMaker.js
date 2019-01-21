@@ -45,15 +45,18 @@ class MarioMaker extends Command {
               },
               fields: [{
                   name: "Stars",
-                  value: course.stars
+                  value: course.stars,
+                  inline: true
                 },
                 {
                   name: "Clear Rate",
-                  value: course.clearRate + "%"
+                  value: course.clearRate + "%",
+                  inline: true
                 },
                 {
                   name: "Attempts",
-                  value: course.attempts
+                  value: course.attempts,
+                  inline: true
                 }
               ],
               footer: {
