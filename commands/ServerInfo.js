@@ -7,7 +7,7 @@ class ServerInfo extends Command {
     // Roles and IDs
     // Channels
     try {
-      var mGuild = msg.guild; 
+      var mGuild = msg.guild;
       if (mGuild.available) {
         var bots = 0;
         for (var i = 0; i < mGuild.members.array().length; i++) {
@@ -18,7 +18,6 @@ class ServerInfo extends Command {
         msg.channel.send({
           embed: {
             title: mGuild.name,
-            description: "Server Info",
             color: color,
             fields: [{
                 name: "Members",

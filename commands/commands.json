@@ -17,7 +17,7 @@
     },
     {
       "name": "ssbu",
-      "help": "Sends a message with your Super Smash Bros. Ultimate Battle Arena details.\n\n*Usage Example*\n`r!ssbu [ID] [Password]` Sends your Arena ID and Arena Password. Password is optional."
+      "help": "Sends a message with your Super Smash Bros. Ultimate Battle Arena details.\n\n*Usage Example*\n`r!ssbu [ID] [Password]` Sends your Arena ID and Arena Password. Password is optional. Typing `friend` for ID will indicate that the lobby is only open to friends."
     }
   ],
   [{
