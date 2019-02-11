@@ -10,9 +10,13 @@ class ServerInfo extends Command {
       var mGuild = msg.guild;
       if (mGuild.available) {
         var bots = 0;
+        var plural = " bot)";
         for (var i = 0; i < mGuild.members.array().length; i++) {
           if (mGuild.members.array()[i].user.bot) {
             bots++;
+            if (bots > 1) {
+              plural = " bots)";
+            }
           }
         }
         msg.channel.send({
@@ -21,7 +25,7 @@ class ServerInfo extends Command {
             color: color,
             fields: [{
                 name: "Members",
-                value: mGuild.memberCount + " (" + bots + " bots)",
+                value: mGuild.memberCount + " (including " + bots + plural,
                 inline: true
               },
               {

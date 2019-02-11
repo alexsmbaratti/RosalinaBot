@@ -39,6 +39,7 @@ const Echo = require('./commands/Echo.js');
 const EchoDelete = require('./commands/EchoDelete.js');
 const Roles = require('./comet_observatory/Roles.js');
 const PostToDB = require('./cloudwatch/PostToDB.js');
+const PostToDBL = require('./cloudwatch/PostToDBL.js');
 // const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
@@ -66,6 +67,7 @@ client.on('ready', () => {
     new UpdatePoGoCodes();
     new NintendoDirect(client);
     new PostToDB(client);
+    // new PostToDBL(client);
     if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
       new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
     }
@@ -76,11 +78,13 @@ client.on('ready', () => {
         color: color,
         fields: [{
             name: "Build",
-            value: build
+            value: build,
+            inline: true
           },
           {
             name: "Guilds Serving",
-            value: client.guilds.size
+            value: client.guilds.size,
+            inline: true
           }
         ],
         footer: {
@@ -202,7 +206,8 @@ client.on('message', msg => {
 
 client.on('guildCreate', guild => {
   console.log(`Guild Create Triggered!`);
-  if (client.user.id == config.CLIENT_ID) {
+  if (client.user.id == config.CLIENT_ID && guild.available) {
+    var id = guild.id;
     try {
       guild.defaultChannel.send("**Hello. I am Rosalina.**\nI can store your Nintendo Switch, Nintendo 3DS, and Pokémon Go friend codes on Discord! I also have a variety of fun commands and privacy settings for your codes. \n\nTo get started, use `r!help` to view my commands.\n\nIf you need any help or have a suggestion, please join my support server, The Comet Observatory. https://discord.gg/kpFHWAq \n\nIf you find me useful, please consider voting for me on Discord Bot List. https://discordbots.org/bot/rosalina \n\nThank you and enjoy! " + luma);
       const DBL = require("dblapi.js");
@@ -213,6 +218,25 @@ client.on('guildCreate', guild => {
     } finally {
       new UpdateGuilds(client.guilds.size);
       new PostToDB(client);
+
+      // const MongoClient = require('mongodb').MongoClient;
+      // const url = 'mongodb://localhost:27017';
+      // MongoClient.connect(url, function(err, client) {
+      //   var db = client.db('bot');
+      //   db.collection('guilds').insertOne({
+      //     _id: id,
+      //     announcement_channel: null,
+      //     prefix: "r!"
+      //   }, function(err, res) {
+      //     if (err) {
+      //       console.log(err);
+      //       client.close();
+      //     } else {
+      //       console.log(res);
+      //       client.close();
+      //     }
+      //   });
+      // })
     }
   }
 });

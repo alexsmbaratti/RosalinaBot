@@ -2,6 +2,7 @@ const Command = require('./Command.js');
 var config = require('../config.json');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
+const color = 0x86D0CF;
 
 class Status extends Command {
   constructor(msg, build, client) {
@@ -35,10 +36,111 @@ class Status extends Command {
               poGoCodes = results;
               mongoClient.close();
               let start = msg.createdTimestamp;
-              msg.channel.send("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: ...")
-                .then(message => {
+              msg.channel.send({
+                  embed: {
+                    title: "Status",
+                    color: color,
+                    fields: [{
+                        name: "Ping",
+                        value: '...',
+                        inline: true
+                      },
+                      {
+                        name: "Build",
+                        value: build,
+                        inline: true
+                      },
+                      {
+                        name: "Guilds",
+                        value: client.guilds.size,
+                        inline: true
+                      },
+                      {
+                        name: "Users",
+                        value: client.users.size,
+                        inline: true
+                      },
+                      {
+                        name: "Total Codes",
+                        value: (switchCodes + dsCodes + poGoCodes),
+                        inline: true
+                      },
+                      {
+                        name: "Switch Codes",
+                        value: switchCodes,
+                        inline: true
+                      },
+                      {
+                        name: "3DS Codes",
+                        value: dsCodes,
+                        inline: true
+                      },
+                      {
+                        name: "Pokémon Go Codes",
+                        value: poGoCodes,
+                        inline: true
+                      },
+                      {
+                        name: "Comet Observatory Members",
+                        value: (client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount - 6),
+                        inline: true
+                      }
+                    ]
+                  }
+                }).then(message => {
                   let diff = (message.createdTimestamp - start);
-                  message.edit("**Status**\n✅ Logged in as " + client.user.username + "!\n🔨 Build: " + build + "\n⏱ Ping: " + diff + "ms\n👥 Guilds Serving: " + client.guilds.size + "\n👤 Users Serving (Estimated): " + client.users.size + "\nNintendo Switch Codes: " + switchCodes + "\nNintendo 3DS Codes: " + dsCodes + "\nPokémon Go Codes: " + poGoCodes + "\nComet Observatory Members: " + (client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount - 5));
+                  message.edit({
+                      embed: {
+                        title: "Status",
+                        color: color,
+                        fields: [{
+                            name: "Ping",
+                            value: (diff + " ms"),
+                            inline: true
+                          },
+                          {
+                            name: "Build",
+                            value: build,
+                            inline: true
+                          },
+                          {
+                            name: "Guilds",
+                            value: client.guilds.size,
+                            inline: true
+                          },
+                          {
+                            name: "Users",
+                            value: client.users.size,
+                            inline: true
+                          },
+                          {
+                            name: "Total Codes",
+                            value: (switchCodes + dsCodes + poGoCodes),
+                            inline: true
+                          },
+                          {
+                            name: "Switch Codes",
+                            value: switchCodes,
+                            inline: true
+                          },
+                          {
+                            name: "3DS Codes",
+                            value: dsCodes,
+                            inline: true
+                          },
+                          {
+                            name: "Pokémon Go Codes",
+                            value: poGoCodes,
+                            inline: true
+                          },
+                          {
+                            name: "Comet Observatory Members",
+                            value: (client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount - 6),
+                            inline: true
+                          }
+                        ]
+                      }
+                    })
                 })
                 .catch(console.error);
             });
