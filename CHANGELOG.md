@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.4.1
+**February 11, 2019**
+* Celebrating one year of RosalinaBot!
+* Clarifies how bots are counted in r!ServerInfo
+* Adds embeds to r!Status
+* Bug fixes
+
 ## Build 7.4.0
 **January 20, 2019**
 * Revamps r!help and its menus
