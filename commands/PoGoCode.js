@@ -43,8 +43,15 @@ class PoGoCode extends Command {
             console.log(`✅ Pokémon Go Code saved for ` + msg.author.username);
           } else {
             if (results.poGoPrivacy == "PUBLIC") {
-              msg.channel.send("**" + msg.guild.members.get(extractedID).user.username + "'s Pokémon Go Friend Code**");
-              msg.channel.send(results.poGoCode);
+              try {
+                msg.channel.send("**" + msg.guild.members.get(extractedID).user.username + "'s Pokémon Go Friend Code**");
+                msg.channel.send(results.poGoCode);
+              } catch (e) {
+                msg.channel.send("Unable to complete this request. The error is currently under investigation.");
+                console.log("BAD POGO CODE");
+                console.log("ID: " + extractedID);
+                console.log(e);
+              }
             } else {
               msg.channel.send({
                 embed: {
