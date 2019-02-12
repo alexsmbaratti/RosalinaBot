@@ -73,7 +73,7 @@ class TriggerDirect {
       msg.channel.send({
         embed: {
           author: {
-            name: "Latest Nintendo Direct"
+            name: "Nintendo Direct Announced!"
           },
           title: event.getFirstPropertyValue(`summary`),
           url: event.getFirstPropertyValue('url'),
@@ -81,7 +81,7 @@ class TriggerDirect {
             "url": thumb_url
           },
           color: color,
-          description: "Aired on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00 (" + timezone + ")"
+          description: "Airing on " + (recent.getMonth() + 1) + "/" + recent.getDate() + " at " + recent.getHours() + ":00 (" + timezone + ")"
         }
       });
     });
