@@ -26,6 +26,7 @@ class PoGoCode extends Command {
           "_id": extractedID
         }, function(err, results) {
           if (results == null || results.poGoCode == "-1") {
+            try {
             msg.channel.send({
               embed: {
                 color: 0x86D0CF,
@@ -40,6 +41,12 @@ class PoGoCode extends Command {
                 }
               }
             });
+          } catch (e) {
+            msg.channel.send("Unable to complete this request. The error is currently under investigation.");
+            console.log("BAD POGO CODE");
+            console.log("ID: " + extractedID);
+            console.log(e);
+          }
             console.log(`✅ Pokémon Go Code saved for ` + msg.author.username);
           } else {
             if (results.poGoPrivacy == "PUBLIC") {
