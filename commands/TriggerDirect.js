@@ -21,20 +21,24 @@ class TriggerDirect {
       let allSubcomponents = vcalendar.getAllSubcomponents();
       var recent = new Date(1);
 
-      switch (msg.guild.region) { // For timezones
-        case "us-west":
-          utc = -8;
-          timezone = "PST";
-          break;
-        case "us-east":
-          utc = -5;
-          timezone = "EST";
-          break;
-        case "us-central":
-          utc = -6;
-          timezone = "CST";
-          break;
-        default:
+      try {
+        switch (msg.guild.region) { // For timezones
+          case "us-west":
+            utc = -8;
+            timezone = "PST";
+            break;
+          case "us-east":
+            utc = -5;
+            timezone = "EST";
+            break;
+          case "us-central":
+            utc = -6;
+            timezone = "CST";
+            break;
+          default:
+        }
+      } catch (e) {
+        console.log("Invalid region: " + e.message)
       }
 
       // Finds event with latest date (supposedly a new event)
