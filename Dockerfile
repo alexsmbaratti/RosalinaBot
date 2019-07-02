@@ -20,9 +20,10 @@ RUN /root/.nvm/versions/node/v${NODE_VERSION}/bin/npm install  leasot@latest -g
 
 # Copy Repository
 RUN git clone https://github.com/alexsmbaratti/RosalinaBot.git
+COPY config.json /RosalinaBot
 
 # Install dependencies
 RUN ["sh", "-c", "echo npm install" ]
 
-EXPOSE 27017
-CMD node app.js & mongo --host 127.0.0.1:27017
+# Run RosalinaBot
+CMD node app.js
