@@ -42,7 +42,6 @@ class SwitchCode extends Command {
               });
 
             client.close();
-            if (msg.guild.me.hasPermission(EMBED_LINKS)) {
               msg.channel.send({
                 embed: {
                   color: color,
@@ -57,10 +56,6 @@ class SwitchCode extends Command {
                   }
                 }
               });
-            } else {
-              msg.channel.send("**Code Saved!**");
-              msg.channel.send(argument.toUpperCase());
-            }
             console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
           });
         })
