@@ -1,5 +1,6 @@
 const Command = require('./Command.js');
 const UpdateSwitchCodes = require('../cloudwatch/UpdateSwitchCodes.js');
+const CreateUser = require('./CreateUser.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -24,65 +25,49 @@ class SwitchCode extends Command {
 
     if (argument.startsWith("sw-")) {
       if (validateCode(argument)) {
-      MongoClient.connect(url, function(err, client) {
-        var db = client.db('bot');
-        db.collection('users').findOne({
-          _id: msg.author.id
-        }, function(err, results) {
-          if (results == null) {
-            db.collection('users').insertOne({
-              _id: msg.author.id,
-              switchCode: argument.toUpperCase(),
-              dsCode: "-1",
-              poGoCode: "-1",
-              switchPrivacy: "PUBLIC",
-              dsPrivacy: "PUBLIC",
-              poGoPrivacy: "PUBLIC",
-              bowser: "-1",
-              cap: "-1",
-              cascade: "-1",
-              lake: "-1",
-              lost: "-1",
-              luncheon: "-1",
-              metro: "-1",
-              moon: "-1",
-              mushroom: "-1",
-              sand: "-1",
-              seaside: "-1",
-              snow: "-1",
-              wooded: "-1"
-            });
-          } else {
-            db.collection('users').updateOne({
-              "_id": msg.author.id
-            }, {
-              $set: {
-                "switchCode": argument.toUpperCase()
-              }
-            });
-          }
-          client.close();
-          msg.channel.send({
-            embed: {
-              color: color,
-              author: {
-                name: "Code Saved!",
-                icon_url: msg.author.avatarURL
-              },
-              title: "Nintendo Switch Code",
-              description: argument.toUpperCase(),
-              footer: {
-                text: "Type 'r!help settings' for information about privacy settings."
-              }
+        MongoClient.connect(url, function(err, client) {
+          var db = client.db('bot');
+          db.collection('users').findOne({
+            _id: msg.author.id
+          }, function(err, results) {
+            if (results == null) {
+              new CreateUser(msg, db);
             }
+              db.collection('users').updateOne({
+                "_id": msg.author.id
+              }, {
+                $set: {
+                  "switchCode": argument.toUpperCase()
+                }
+              });
+
+            client.close();
+            if (msg.guild.me.hasPermission(EMBED_LINKS)) {
+              msg.channel.send({
+                embed: {
+                  color: color,
+                  author: {
+                    name: "Code Saved!",
+                    icon_url: msg.author.avatarURL
+                  },
+                  title: "Nintendo Switch Code",
+                  description: argument.toUpperCase(),
+                  footer: {
+                    text: "Type 'r!help settings' for information about privacy settings."
+                  }
+                }
+              });
+            } else {
+              msg.channel.send("**Code Saved!**");
+              msg.channel.send(argument.toUpperCase());
+            }
+            console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
           });
-          console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
-        });
-      })
-    } else {
-      msg.channel.send(":x: Invalid Nintendo Switch Friend Code!");
-    }
-  } else if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
+        })
+      } else {
+        msg.channel.send(":x: Invalid Nintendo Switch Friend Code!");
+      }
+    } else if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
       MongoClient.connect(url, function(err, client) {
         var db = client.db('bot');
         var extractedID = msg.mentions.users.array()[0].id;
@@ -185,7 +170,9 @@ class SwitchCode extends Command {
                   text: "Privacy settings can be managed through r!settings"
                 }
               }
-            });
+            }).then(message => {
+              message.react(":x:");
+            }).catch(console.error);
           }
         });
         client.close();

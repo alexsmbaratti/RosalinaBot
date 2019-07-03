@@ -343,28 +343,7 @@ class SuperMarioOdyssey extends Command {
           "_id": msg.author.id
         }, function(err, results) {
           if (results == null) {
-            db.collection('users').insertOne({
-              _id: msg.author.id,
-              switchCode: "-1",
-              dsCode: "-1",
-              poGoCode: "-1",
-              switchPrivacy: "PUBLIC",
-              dsPrivacy: "PUBLIC",
-              poGoPrivacy: "PUBLIC",
-              bowser: "-1",
-              cap: "-1",
-              cascade: "-1",
-              lake: "-1",
-              lost: "-1",
-              luncheon: "-1",
-              metro: "-1",
-              moon: "-1",
-              mushroom: "-1",
-              sand: "-1",
-              seaside: "-1",
-              snow: "-1",
-              wooded: "-1"
-            });
+            new CreateUser(msg, db);
           }
           switch (kingdom) {
             case "cap":

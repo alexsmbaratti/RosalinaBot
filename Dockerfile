@@ -26,4 +26,4 @@ COPY config.json /RosalinaBot
 RUN ["sh", "-c", "echo npm install" ]
 
 # Run RosalinaBot
-CMD node app.js
+CMD node /RosalinaBot/app.js

@@ -14,6 +14,7 @@ const EightBall = require('./commands/EightBall.js');
 const Dice = require('./commands/Dice.js');
 const Ping = require('./commands/Ping.js');
 const Coin = require('./commands/Coin.js');
+const Profile = require('./commands/Profile.js');
 const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
 const PoGoCode = require('./commands/PoGoCode.js');
@@ -155,11 +156,21 @@ client.on('message', msg => {
       new MarioMaker(msg);
     } else if (input.startsWith("ssbu")) {
       new Arena(msg);
+    } else if (input.startsWith("donate")) {
+      msg.channel.send({
+        embed: {
+          author: {
+            name: "Donate"
+          },
+          title: "Support the Development of RosalinaBot",
+          url: "https://donatebot.io/checkout/424020073712189471?buyer=212031489053818880",
+          color: color
+        }
+      });
     } else if (input.startsWith("changelog")) {
       new Changelog(msg);
     } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
-      new SuperMarioOdyssey(msg);
-      new UpdateBalloonCodes();
+      msg.channel.send(":x: Super Mario Odyssey Balloon World codes have been discontinued.");
     } else if (input.startsWith("vote")) {
       msg.channel.send({
         embed: {
@@ -185,6 +196,8 @@ client.on('message', msg => {
       new Status(msg, build, client);
     } else if (input.startsWith("direct")) {
       new TriggerDirect(client, msg);
+    } else if (input.startsWith("profile")) {
+      new Profile(msg);
     } else if (input.startsWith("welcome")) {
       new Welcome(msg);
     } else if (input.startsWith("suggest")) {
@@ -209,7 +222,6 @@ client.on('guildCreate', guild => {
   if (client.user.id == config.CLIENT_ID && guild.available) {
     var id = guild.id;
     try {
-      guild.defaultChannel.send("**Hello. I am Rosalina.**\nI can store your Nintendo Switch, Nintendo 3DS, and Pokémon Go friend codes on Discord! I also have a variety of fun commands and privacy settings for your codes. \n\nTo get started, use `r!help` to view my commands.\n\nIf you need any help or have a suggestion, please join my support server, The Comet Observatory. https://discord.gg/kpFHWAq \n\nIf you find me useful, please consider voting for me on Discord Bot List. https://discordbots.org/bot/rosalina \n\nThank you and enjoy! " + luma);
       const DBL = require("dblapi.js");
       const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
       updateNickname(newGuild);
