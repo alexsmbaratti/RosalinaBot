@@ -17,6 +17,7 @@ const Coin = require('./commands/Coin.js');
 const Profile = require('./commands/Profile.js');
 const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
+const PSN = require('./commands/PSN.js');
 const PoGoCode = require('./commands/PoGoCode.js');
 const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
@@ -216,6 +217,8 @@ client.on('message', msg => {
         } else if (msg.author.id == config.alexsmbaratti) { // Alpha Testing
             if (input.startsWith("feh")) {
                 new FireEmblemHeroes(msg);
+            } else if (input.startsWith("psn")) {
+                new PSN(msg);
             } else if (input == "clear") {
                 new DeleteUser(msg);
             }

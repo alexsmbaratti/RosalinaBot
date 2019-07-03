@@ -1,22 +1,22 @@
 const Command = require('./Command.js');
 const CreateUser = require('./CreateUser.js');
-const UpdateFEHCodes = require('../cloudwatch/UpdateFEHCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
 var color = 0x86D0CF;
 
-// Example: r!feh
-// Example: r!feh @USER
-// Example: r!feh clear
-// Example: r!feh XXXXXXXXXX
+// Example: r!psn
+// Example: r!psn @USER
+// Example: r!psn clear
+// Example: r!psn XXXXXXXXXX
 
-class FireEmblemHeroes extends Command {
+class PSN extends Command {
     constructor(msg) {
         super(msg);
+        var argument;
         try {
-            var argument = msg.content.split(" ")[1].toLowerCase();
+            argument = msg.content.split(" ")[1];
         } catch (e) {
             argument = "";
         }
@@ -32,7 +32,7 @@ class FireEmblemHeroes extends Command {
                 db.collection('users').findOne({
                     "_id": extractedID
                 }, function (err, results) {
-                    if (results == null || results.feh == "-1") {
+                    if (results == null || results.psn == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -40,17 +40,14 @@ class FireEmblemHeroes extends Command {
                                     name: msg.guild.members.get(extractedID).user.username,
                                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                                 },
-                                title: "Fire Emblem Heroes Code",
-                                description: "This user has not entered their code.",
-                                thumbnail: {
-                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
-                                },
+                                title: "PlayStation Network ID",
+                                description: "This user has not entered their tag.",
                                 footer: {
-                                    text: "They must set it up with `r!feh XXXXXXXXXX`"
+                                    text: "They must set it up with `r!psn [ID]`"
                                 }
                             }
                         });
-                        console.log(`✅ Fire Emblem Heroes Code saved for ` + msg.author.username);
+                        console.log(`✅ PSN ID saved for ` + msg.author.username);
                     } else {
                         msg.channel.send({
                             embed: {
@@ -59,11 +56,8 @@ class FireEmblemHeroes extends Command {
                                     name: msg.guild.members.get(extractedID).user.username,
                                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                                 },
-                                title: "Fire Emblem Heroes Code",
-                                thumbnail: {
-                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
-                                },
-                                description: results.feh
+                                title: "PlayStation Network ID",
+                                description: results.psn
                             }
                         });
                     }
@@ -77,11 +71,11 @@ class FireEmblemHeroes extends Command {
                     "_id": msg.author.id
                 }, {
                     $set: {
-                        "feh": "-1"
+                        "psn": "-1"
                     }
                 });
                 client.close();
-                msg.reply("Your Fire Emblem Heroes friend code has been removed from my knowledge.");
+                msg.reply("Your PlayStation Network ID has been removed from my knowledge.");
             });
         } else if (argument == "") {
             MongoClient.connect(url, function (err, client) {
@@ -89,7 +83,7 @@ class FireEmblemHeroes extends Command {
                 db.collection('users').findOne({
                     "_id": msg.author.id
                 }, function (err, results) {
-                    if (results == null || results.feh == "-1") {
+                    if (results == null || results.psn == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -97,13 +91,10 @@ class FireEmblemHeroes extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Fire Emblem Heroes Code",
+                                title: "PlayStation Network ID",
                                 description: "You have not entered a code.",
-                                thumbnail: {
-                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
-                                },
                                 footer: {
-                                    text: "You can set it up with `r!feh XXXXXXXXXX`"
+                                    text: "You can set it up with `r!psn [ID]`"
                                 }
                             }
                         });
@@ -115,11 +106,8 @@ class FireEmblemHeroes extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Fire Emblem Heroes Code",
-                                thumbnail: {
-                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
-                                },
-                                description: results.feh
+                                title: "PlayStation Network ID",
+                                description: results.psn
                             }
                         });
                     }
@@ -140,7 +128,7 @@ class FireEmblemHeroes extends Command {
                             "_id": msg.author.id
                         }, {
                             $set: {
-                                "feh": argument
+                                "psn": argument
                             }
                         });
 
@@ -149,14 +137,11 @@ class FireEmblemHeroes extends Command {
                             embed: {
                                 color: 0x86D0CF,
                                 author: {
-                                    name: "Code Saved!",
+                                    name: "ID Saved!",
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Fire Emblem Heroes Code",
-                                description: argument.toUpperCase(),
-                                thumbnail: {
-                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
-                                }
+                                title: "PlayStation Network ID",
+                                description: argument
                             }
                         });
                     });
@@ -165,17 +150,12 @@ class FireEmblemHeroes extends Command {
                 msg.channel.send(":x: Invalid usage!");
             }
         }
-        new UpdateFEHCodes();
     }
 }
 
 function validateCode(code) {
-    if (code.length == 10) {
-        return true;
-    } else {
-        return false;
-    }
+    return true;
 }
 
 
-module.exports = FireEmblemHeroes;
+module.exports = PSN;
