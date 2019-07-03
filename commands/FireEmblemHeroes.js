@@ -1,17 +1,18 @@
 const Command = require('./Command.js');
-const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
+const CreateUser = require('./CreateUser.js');
+const UpdateFEHCodes = require('../cloudwatch/UpdateFEHCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
-// Example: r!dsCode
-// Example: r!dsCode @USER
-// Example: r!dsCode clear
-// Example: r!dsCode XXXX-XXXX-XXXX
+var color = 0x86D0CF;
 
-// Shorthand r!ds
+// Example: r!feh
+// Example: r!feh @USER
+// Example: r!feh clear
+// Example: r!feh XXXXXXXXXX
 
-class DSCode extends Command {
+class FireEmblemHeroes extends Command {
     constructor(msg) {
         super(msg);
         try {
@@ -27,7 +28,7 @@ class DSCode extends Command {
                 db.collection('users').findOne({
                     "_id": extractedID
                 }, function (err, results) {
-                    if (results == null || results.dsCode == "-1") {
+                    if (results == null || results.feh == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -35,43 +36,32 @@ class DSCode extends Command {
                                     name: msg.guild.members.get(extractedID).user.username,
                                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
+                                title: "Fire Emblem Heroes Code",
                                 description: "This user has not entered their code.",
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
+                                },
                                 footer: {
-                                    text: "They must set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                                    text: "They must set it up with `r!feh XXXXXXXXXX`"
                                 }
                             }
                         });
-                        console.log(`✅ Nintendo 3DS Code saved for ` + msg.author.username);
+                        console.log(`✅ Fire Emblem Heroes Code saved for ` + msg.author.username);
                     } else {
-                        if (results.dsPrivacy == "PUBLIC") {
-                            msg.channel.send({
-                                embed: {
-                                    color: 0x86D0CF,
-                                    author: {
-                                        name: msg.guild.members.get(extractedID).user.username,
-                                        icon_url: msg.guild.members.get(extractedID).user.avatarURL
-                                    },
-                                    title: "Nintendo 3DS Code",
-                                    description: results.dsCode
-                                }
-                            });
-                        } else {
-                            msg.channel.send({
-                                embed: {
-                                    color: 0x86D0CF,
-                                    author: {
-                                        name: msg.guild.members.get(extractedID).user.username,
-                                        icon_url: msg.guild.members.get(extractedID).user.avatarURL
-                                    },
-                                    title: "Nintendo 3DS Code",
-                                    description: "This code has been kept private",
-                                    footer: {
-                                        text: "Privacy settings can be managed through r!settings"
-                                    }
-                                }
-                            });
-                        }
+                        msg.channel.send({
+                            embed: {
+                                color: 0x86D0CF,
+                                author: {
+                                    name: msg.guild.members.get(extractedID).user.username,
+                                    icon_url: msg.guild.members.get(extractedID).user.avatarURL
+                                },
+                                title: "Fire Emblem Heroes Code",
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
+                                },
+                                description: results.feh
+                            }
+                        });
                     }
                 });
                 client.close();
@@ -83,11 +73,11 @@ class DSCode extends Command {
                     "_id": msg.author.id
                 }, {
                     $set: {
-                        "dsCode": "-1"
+                        "feh": "-1"
                     }
                 });
                 client.close();
-                msg.reply("Your Nintendo 3DS friend code has been removed from my knowledge.");
+                msg.reply("Your Fire Emblem Heroes friend code has been removed from my knowledge.");
             });
         } else if (argument == "") {
             MongoClient.connect(url, function (err, client) {
@@ -95,7 +85,7 @@ class DSCode extends Command {
                 db.collection('users').findOne({
                     "_id": msg.author.id
                 }, function (err, results) {
-                    if (results == null || results.dsCode == "-1") {
+                    if (results == null || results.feh == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -103,10 +93,13 @@ class DSCode extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
+                                title: "Fire Emblem Heroes Code",
                                 description: "You have not entered a code.",
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
+                                },
                                 footer: {
-                                    text: "You can set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                                    text: "You can set it up with `r!feh XXXXXXXXXX`"
                                 }
                             }
                         });
@@ -118,11 +111,11 @@ class DSCode extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
-                                description: results.dsCode,
-                                footer: {
-                                    text: "Privacy settings can be managed through r!settings"
-                                }
+                                title: "Fire Emblem Heroes Code",
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
+                                },
+                                description: results.feh
                             }
                         });
                     }
@@ -143,7 +136,7 @@ class DSCode extends Command {
                             "_id": msg.author.id
                         }, {
                             $set: {
-                                "dsCode": argument
+                                "feh": argument
                             }
                         });
 
@@ -155,10 +148,10 @@ class DSCode extends Command {
                                     name: "Code Saved!",
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
+                                title: "Fire Emblem Heroes Code",
                                 description: argument.toUpperCase(),
-                                footer: {
-                                    text: "Type 'r!help settings' for information about privacy settings."
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_feh.png"
                                 }
                             }
                         });
@@ -168,20 +161,17 @@ class DSCode extends Command {
                 msg.channel.send(":x: Invalid usage!");
             }
         }
-        new Update3DSCodes();
+        new UpdateFEHCodes();
     }
 }
 
 function validateCode(code) {
-    if (code.substring(0, 3) != "SW-") {
-        if (code.length == 14) {
-            return true;
-        } else {
-            return false;
-        }
+    if (code.length == 10) {
+        return true;
     } else {
         return false;
     }
 }
 
-module.exports = DSCode;
+
+module.exports = FireEmblemHeroes;
