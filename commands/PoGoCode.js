@@ -1,4 +1,5 @@
 const Command = require('./Command.js');
+const CreateUser = require('./CreateUser.js');
 const UpdatePoGoCodes = require('../cloudwatch/UpdatePoGoCodes.js');
 
 const MongoClient = require('mongodb').MongoClient;

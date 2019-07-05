@@ -1,5 +1,6 @@
 const Command = require('./Command.js');
 const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
+const CreateUser = require('./CreateUser.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
