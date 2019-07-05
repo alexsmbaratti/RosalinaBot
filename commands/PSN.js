@@ -1,23 +1,27 @@
 const Command = require('./Command.js');
-const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
 const CreateUser = require('./CreateUser.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
-// Example: r!dsCode
-// Example: r!dsCode @USER
-// Example: r!dsCode clear
-// Example: r!dsCode XXXX-XXXX-XXXX
+var color = 0x86D0CF;
 
-// Shorthand r!ds
+// Example: r!psn
+// Example: r!psn @USER
+// Example: r!psn clear
+// Example: r!psn XXXXXXXXXX
 
-class DSCode extends Command {
+class PSN extends Command {
     constructor(msg) {
         super(msg);
+        var argument;
         try {
-            var argument = msg.content.split(" ")[1].toLowerCase();
+            argument = msg.content.split(" ")[1];
         } catch (e) {
+            argument = "";
+        }
+
+        if (argument == undefined) {
             argument = "";
         }
 
@@ -28,7 +32,7 @@ class DSCode extends Command {
                 db.collection('users').findOne({
                     "_id": extractedID
                 }, function (err, results) {
-                    if (results == null || results.dsCode == "-1") {
+                    if (results == null || results.psn == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -36,43 +40,26 @@ class DSCode extends Command {
                                     name: msg.guild.members.get(extractedID).user.username,
                                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
-                                description: "This user has not entered their code.",
+                                title: "PlayStation Network ID",
+                                description: "This user has not entered their tag.",
                                 footer: {
-                                    text: "They must set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                                    text: "They must set it up with `r!psn [ID]`"
                                 }
                             }
                         });
-                        console.log(`✅ Nintendo 3DS Code saved for ` + msg.author.username);
+                        console.log(`✅ PSN ID saved for ` + msg.author.username);
                     } else {
-                        if (results.dsPrivacy == "PUBLIC") {
-                            msg.channel.send({
-                                embed: {
-                                    color: 0x86D0CF,
-                                    author: {
-                                        name: msg.guild.members.get(extractedID).user.username,
-                                        icon_url: msg.guild.members.get(extractedID).user.avatarURL
-                                    },
-                                    title: "Nintendo 3DS Code",
-                                    description: results.dsCode
-                                }
-                            });
-                        } else {
-                            msg.channel.send({
-                                embed: {
-                                    color: 0x86D0CF,
-                                    author: {
-                                        name: msg.guild.members.get(extractedID).user.username,
-                                        icon_url: msg.guild.members.get(extractedID).user.avatarURL
-                                    },
-                                    title: "Nintendo 3DS Code",
-                                    description: "This code has been kept private",
-                                    footer: {
-                                        text: "Privacy settings can be managed through r!settings"
-                                    }
-                                }
-                            });
-                        }
+                        msg.channel.send({
+                            embed: {
+                                color: 0x86D0CF,
+                                author: {
+                                    name: msg.guild.members.get(extractedID).user.username,
+                                    icon_url: msg.guild.members.get(extractedID).user.avatarURL
+                                },
+                                title: "PlayStation Network ID",
+                                description: results.psn
+                            }
+                        });
                     }
                 });
                 client.close();
@@ -84,11 +71,11 @@ class DSCode extends Command {
                     "_id": msg.author.id
                 }, {
                     $set: {
-                        "dsCode": "-1"
+                        "psn": "-1"
                     }
                 });
                 client.close();
-                msg.reply("Your Nintendo 3DS friend code has been removed from my knowledge.");
+                msg.reply("Your PlayStation Network ID has been removed from my knowledge.");
             });
         } else if (argument == "") {
             MongoClient.connect(url, function (err, client) {
@@ -96,7 +83,7 @@ class DSCode extends Command {
                 db.collection('users').findOne({
                     "_id": msg.author.id
                 }, function (err, results) {
-                    if (results == null || results.dsCode == "-1") {
+                    if (results == null || results.psn == "-1") {
                         msg.channel.send({
                             embed: {
                                 color: 0x86D0CF,
@@ -104,10 +91,10 @@ class DSCode extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
+                                title: "PlayStation Network ID",
                                 description: "You have not entered a code.",
                                 footer: {
-                                    text: "You can set it up with `r!dsCode XXXX-XXXX-XXXX`"
+                                    text: "You can set it up with `r!psn [ID]`"
                                 }
                             }
                         });
@@ -119,11 +106,8 @@ class DSCode extends Command {
                                     name: msg.author.username,
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
-                                description: results.dsCode,
-                                footer: {
-                                    text: "Privacy settings can be managed through r!settings"
-                                }
+                                title: "PlayStation Network ID",
+                                description: results.psn
                             }
                         });
                     }
@@ -144,7 +128,7 @@ class DSCode extends Command {
                             "_id": msg.author.id
                         }, {
                             $set: {
-                                "dsCode": argument
+                                "psn": argument
                             }
                         });
 
@@ -153,14 +137,11 @@ class DSCode extends Command {
                             embed: {
                                 color: 0x86D0CF,
                                 author: {
-                                    name: "Code Saved!",
+                                    name: "ID Saved!",
                                     icon_url: msg.author.avatarURL
                                 },
-                                title: "Nintendo 3DS Code",
-                                description: argument.toUpperCase(),
-                                footer: {
-                                    text: "Type 'r!help settings' for information about privacy settings."
-                                }
+                                title: "PlayStation Network ID",
+                                description: argument
                             }
                         });
                     });
@@ -169,20 +150,12 @@ class DSCode extends Command {
                 msg.channel.send(":x: Invalid usage!");
             }
         }
-        new Update3DSCodes();
     }
 }
 
 function validateCode(code) {
-    if (code.substring(0, 3) != "SW-") {
-        if (code.length == 14) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        return false;
-    }
+    return true;
 }
 
-module.exports = DSCode;
+
+module.exports = PSN;

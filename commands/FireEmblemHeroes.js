@@ -21,6 +21,10 @@ class FireEmblemHeroes extends Command {
             argument = "";
         }
 
+        if (argument == undefined) {
+            argument = "";
+        }
+
         if (msg.mentions.everyone == false && msg.mentions.users.array()[0] != null) {
             MongoClient.connect(url, function (err, client) {
                 var db = client.db('bot');
