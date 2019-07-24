@@ -55,6 +55,9 @@ client.on('ready', () => {
     console.log("📅 Instance started at " + d.toTimeString() + " on " + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear());
     console.log(`✅ Logged in as ${client.user.username}!`);
     console.log(`🔨 Build: ${build}`);
+    if (process.env.PLATFORM != null) {
+        console.log("Running on " + process.env.PLATFORM);
+    }
     client.user.setPresence({
         status: 'online',
         afk: false,
