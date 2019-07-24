@@ -53,7 +53,22 @@ const color = 0x86D0CF;
 client.on('ready', () => {
     var d = new Date(Date.now());
     console.log("📅 Instance started at " + d.toTimeString() + " on " + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear());
-    console.log(`✅ Logged in as ${client.user.username}!`);
+    switch (client.user.username) {
+        case "Rosalina":
+            console.log(`✅ Logged in as \x1b[34mRosalina\x1b[0m!`);
+            break;
+        case "Peach":
+            console.log(`✅ Logged in as \x1b[35mPeach\x1b[0m!`);
+            break;
+        case "Daisy":
+            console.log(`✅ Logged in as \x1b[33mDaisy\x1b[0m!`);
+            break;
+        case "Pauline":
+            console.log(`✅ Logged in as \x1b[31mPauline\x1b[0m!`);
+            break;
+        default:
+            console.log(`✅ Logged in as ${client.user.username}!`);
+    }
     console.log(`🔨 Build: ${build}`);
     if (process.env.PLATFORM != null) {
         console.log("Running on " + process.env.PLATFORM);
