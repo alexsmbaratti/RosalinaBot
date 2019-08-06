@@ -44,6 +44,7 @@ const EchoDelete = require('./commands/EchoDelete.js');
 const Roles = require('./comet_observatory/Roles.js');
 const PostToDB = require('./cloudwatch/PostToDB.js');
 const PostToDBL = require('./cloudwatch/PostToDBL.js');
+const Logger = require('./utils/Logger.js');
 // const PartnerServers = require('./comet_observatory/PartnerServers.js');
 
 const build = npm.version;
@@ -51,27 +52,26 @@ const prefix = "r!";
 const color = 0x86D0CF;
 
 client.on('ready', () => {
-    var d = new Date(Date.now());
-    console.log("📅 Instance started at " + d.toTimeString() + " on " + (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear());
+    new Logger("Client is ready!");
     switch (client.user.username) {
         case "Rosalina":
-            console.log(`✅ Logged in as \x1b[34mRosalina\x1b[0m!`);
+            new Logger("Logged in as \x1b[34mRosalina\x1b[0m!")
             break;
         case "Peach":
-            console.log(`✅ Logged in as \x1b[35mPeach\x1b[0m!`);
+            new Logger("Logged in as \x1b[35mPeach\x1b[0m!");
             break;
         case "Daisy":
-            console.log(`✅ Logged in as \x1b[33mDaisy\x1b[0m!`);
+            new Logger("Logged in as \x1b[33mDaisy\x1b[0m!");
             break;
         case "Pauline":
-            console.log(`✅ Logged in as \x1b[31mPauline\x1b[0m!`);
+            new Logger("Logged in as \x1b[31mPauline\x1b[0m!");
             break;
         default:
-            console.log(`✅ Logged in as ${client.user.username}!`);
+            new Logger("Logged in as " + client.user.username + "!");
     }
-    console.log(`🔨 Build: ${build}`);
+    new Logger(`Build ${build}`);
     if (process.env.PLATFORM != null) {
-        console.log("Running on " + process.env.PLATFORM);
+        new Logger("Running on " + process.env.PLATFORM);
     }
     client.user.setPresence({
         status: 'online',
@@ -102,12 +102,11 @@ client.on('ready', () => {
                     name: "Build",
                     value: build,
                     inline: true
-                },
-                    {
+                }, {
                         name: "Guilds Serving",
                         value: client.guilds.size,
                         inline: true
-                    }
+                }
                 ],
                 footer: {
                     text: "This message was automatically generated because an instance of RosalinaBot was started. This message is intended for development and debugging purposes and should only appear in a specific server."
@@ -359,4 +358,5 @@ function updateNickname(guild) {
     }
 }
 
+new Logger("Logging in...")
 client.login(config.TOKEN);
