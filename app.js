@@ -357,7 +357,7 @@ function updateNickname(guild) {
     }
 }
 
-if (process.env.TOKEN != "") {
+if (process.env.TOKEN != undefined) {
     client.login(process.env.TOKEN);
 } else {
     client.login(config.TOKEN);
