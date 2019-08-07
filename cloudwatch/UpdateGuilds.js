@@ -1,5 +1,6 @@
 var AWS = require("aws-sdk");
 AWS.config.loadFromPath('./config.json');
+const Logger = require('../utils/Logger.js');
 var cw = new AWS.CloudWatch({
   apiVersion: '2010-08-01'
 });
@@ -21,9 +22,9 @@ class UpdateGuilds {
 
     cw.putMetricData(params, function(err, data) {
       if (err) {
-        console.log("⛈  CloudWatch Put Error: ", err);
+        new Logger("\x1b[31mFailed to put guilds to CloudWatch!\x1b[0m");
       } else {
-        console.log("☁️  Put " + guilds + " guilds to CloudWatch");
+        new Logger(`\x1b[32mPut ` + guilds + ` Nintendo Switch friend codes to CloudWatch\x1b[0m`);
       }
     });
   }
