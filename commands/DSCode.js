@@ -1,6 +1,7 @@
 const Command = require('./Command.js');
 const Update3DSCodes = require('../cloudwatch/Update3DSCodes.js');
 const CreateUser = require('./CreateUser.js');
+const Logger = require('../utils/Logger.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -43,7 +44,7 @@ class DSCode extends Command {
                                 }
                             }
                         });
-                        console.log(`✅ Nintendo 3DS Code saved for ` + msg.author.username);
+                        new Logger(`\x1b[32mNintendo 3DS Code saved for ` + msg.author.username + `\x1b[0m`);
                     } else {
                         if (results.dsPrivacy == "PUBLIC") {
                             msg.channel.send({

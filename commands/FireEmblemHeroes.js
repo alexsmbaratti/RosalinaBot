@@ -1,6 +1,7 @@
 const Command = require('./Command.js');
 const CreateUser = require('./CreateUser.js');
 const UpdateFEHCodes = require('../cloudwatch/UpdateFEHCodes.js');
+const Logger = require('../utils/Logger.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -50,7 +51,7 @@ class FireEmblemHeroes extends Command {
                                 }
                             }
                         });
-                        console.log(`✅ Fire Emblem Heroes Code saved for ` + msg.author.username);
+                        new Logger(`✅ Fire Emblem Heroes Code saved for ` + msg.author.username);
                     } else {
                         msg.channel.send({
                             embed: {
@@ -159,6 +160,7 @@ class FireEmblemHeroes extends Command {
                                 }
                             }
                         });
+                        new Logger(`\x1b[32mFEH Code saved for ` + msg.author.username + `\x1b[0m`);
                     });
                 })
             } else {

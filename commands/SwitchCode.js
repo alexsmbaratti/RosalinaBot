@@ -1,6 +1,7 @@
 const Command = require('./Command.js');
 const UpdateSwitchCodes = require('../cloudwatch/UpdateSwitchCodes.js');
 const CreateUser = require('./CreateUser.js');
+const Logger = require('../utils/Logger.js');
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -56,7 +57,7 @@ class SwitchCode extends Command {
                   }
                 }
               });
-            console.log(`✅ Nintendo Switch Code saved for ` + msg.author.username);
+            new Logger(`\x1b[32mNintendo Switch Code saved for ` + msg.author.username + `\x1b[0m`);
           });
         })
       } else {
