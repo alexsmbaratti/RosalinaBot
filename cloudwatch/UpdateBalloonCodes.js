@@ -2,6 +2,7 @@ var AWS = require("aws-sdk");
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 AWS.config.loadFromPath('./config.json');
+const Logger = require('../utils/Logger.js');
 var cw = new AWS.CloudWatch({
   apiVersion: '2010-08-01'
 });
@@ -132,9 +133,9 @@ class UpdateBalloonCodes { // There is probably a better way to do this
 
                                                     cw.putMetricData(params, function(err, data) {
                                                       if (err) {
-                                                        console.log("⛈  CloudWatch Put Error: ", err);
+                                                        new Logger("\x1b[31mFailed to put Balloon World codes to CloudWatch!\x1b[0m");
                                                       } else {
-                                                        console.log("☁️  Put " + num + " Balloon World codes to CloudWatch");
+                                                        new Logger(`\x1b[32mPut ` + num + ` Balloon World codes to CloudWatch\x1b[0m`);
                                                       }
                                                     });
                                                   });
