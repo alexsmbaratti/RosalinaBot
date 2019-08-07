@@ -247,7 +247,7 @@ client.on('message', msg => {
 });
 
 client.on('guildCreate', guild => {
-    console.log(`Guild Create Triggered!`);
+    new Logger(`Guild Create Triggered`);
     if (client.user.id == config.CLIENT_ID && guild.available) {
         var id = guild.id;
         try {
@@ -283,15 +283,14 @@ client.on('guildCreate', guild => {
 });
 
 client.on('guildDelete', guild => {
-    console.log(`Guild Delete Triggered!`);
+    new Logger(`Guild Delete Triggered`);
     new UpdateGuilds(client.guilds.size);
     const DBL = require("dblapi.js");
     const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 });
 
 client.on('guildUpdate', (oldGuild, newGuild) => {
-    console.log(`Guild Update Triggered!`);
-    console.log("Region: " + newGuild.region);
+    new Logger(`Guild Update Triggered`);
     updateNickname(newGuild);
 });
 
@@ -358,7 +357,7 @@ function updateNickname(guild) {
     }
 }
 
-if (process.env.TOKEN != "") {
+if (process.env.TOKEN != undefined) {
     client.login(process.env.TOKEN);
 } else {
     client.login(config.TOKEN);

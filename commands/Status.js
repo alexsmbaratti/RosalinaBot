@@ -51,6 +51,11 @@ class Status extends Command {
                         inline: true
                       },
                       {
+                        name: "Platform",
+                        value: "...",
+                        inline: true
+                      },
+                      {
                         name: "Guilds",
                         value: client.guilds.size,
                         inline: true
@@ -89,6 +94,10 @@ class Status extends Command {
                   }
                 }).then(message => {
                   let diff = (message.createdTimestamp - start);
+                  var platform = process.env.PLATFORM;
+                  if (platform == undefined) {
+                    platform = "Unknown";
+                  }
                   message.edit({
                       embed: {
                         title: "Status",
@@ -101,6 +110,11 @@ class Status extends Command {
                           {
                             name: "Build",
                             value: build,
+                            inline: true
+                          },
+                          {
+                            name: "Platform",
+                            value: platform,
                             inline: true
                           },
                           {
