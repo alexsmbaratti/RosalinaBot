@@ -3,6 +3,7 @@ const iCal = require(`ical.js`);
 const fs = require(`fs`);
 var request = require('request');
 var calendarUrl = 'webcal://nintendo.cal.events/Sh0TE6.ics';
+const Logger = require('../utils/Logger.js');
 var options = {
   url: calendarUrl.replace('webcal://', 'https://'),
   gzip: true
@@ -13,7 +14,7 @@ class NintendoDirect {
   constructor(client) {
     // Download fresh version of ICS file
     request(options, function(error, response, icalData) {
-      console.log("Nintendo Direct Calendar Response: " + response.statusCode);
+      new Logger("Nintendo Direct Calendar Response: " + response.statusCode);
       let jcalData = ICAL.parse(icalData);
       let vcalendar = new iCal.Component(jcalData);
       let allSubcomponents = vcalendar.getAllSubcomponents();
