@@ -1,4 +1,9 @@
 # Changelog
+## Build 7.5.0
+**August 7, 2019**
+* New Debug Logger for Quicker Fixes
+* 2FA Authenticated
+
 ## Build 7.4.1
 **February 11, 2019**
 * Celebrating one year of RosalinaBot!

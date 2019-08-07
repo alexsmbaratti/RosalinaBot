@@ -3,8 +3,6 @@ const client = new Discord.Client();
 
 var config = require('./config.json');
 var npm = require('./package.json');
-const DBL = require("dblapi.js");
-const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 
 const luma = "<:luma:463841535377539082>";
 
@@ -52,27 +50,27 @@ const prefix = "r!";
 const color = 0x86D0CF;
 
 client.on('ready', () => {
-    new Logger("Client is ready!");
+    new Logger("Client is ready");
     switch (client.user.username) {
         case "Rosalina":
-            new Logger("Logged in as \x1b[34mRosalina\x1b[0m!")
+            new Logger("Logged in as \x1b[34mRosalina\x1b[0m")
             break;
         case "Peach":
-            new Logger("Logged in as \x1b[35mPeach\x1b[0m!");
+            new Logger("Logged in as \x1b[35mPeach\x1b[0m");
             break;
         case "Daisy":
-            new Logger("Logged in as \x1b[33mDaisy\x1b[0m!");
+            new Logger("Logged in as \x1b[33mDaisy\x1b[0m");
             break;
         case "Pauline":
-            new Logger("Logged in as \x1b[31mPauline\x1b[0m!");
+            new Logger("Logged in as \x1b[31mPauline\x1b[0m");
             break;
         default:
-            new Logger("Logged in as " + client.user.username + "!");
+            new Logger("Logged in as " + client.user.username);
     }
     new Logger(`Build ${build}`);
-    if (process.env.PLATFORM != null) {
-        new Logger("Running on " + process.env.PLATFORM);
-    }
+    new Logger("Running on " + process.env.PLATFORM + " with Node " + process.env.NODE_VERSION);
+    new Logger("Currently in " + client.guilds.size + " servers")
+    new Logger("All timestamps are in the timezone of " + process.env.TIMEZONE)
     client.user.setPresence({
         status: 'online',
         afk: false,
@@ -81,7 +79,7 @@ client.on('ready', () => {
         }
     });
     if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
-        console.log("Live bot");
+        new Logger("This instance is a live bot")
         new UpdateGuilds(client.guilds.size);
         new Update3DSCodes();
         new UpdateSwitchCodes();
@@ -89,6 +87,8 @@ client.on('ready', () => {
         new UpdatePoGoCodes();
         new NintendoDirect(client);
         new PostToDB(client);
+        const DBL = require("dblapi.js");
+        const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
         // new PostToDBL(client);
         if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
             new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
@@ -103,9 +103,9 @@ client.on('ready', () => {
                     value: build,
                     inline: true
                 }, {
-                        name: "Guilds Serving",
-                        value: client.guilds.size,
-                        inline: true
+                    name: "Guilds Serving",
+                    value: client.guilds.size,
+                    inline: true
                 }
                 ],
                 footer: {
@@ -358,5 +358,8 @@ function updateNickname(guild) {
     }
 }
 
-new Logger("Logging in...")
-client.login(config.TOKEN);
+if (process.env.TOKEN != "") {
+    client.login(process.env.TOKEN);
+} else {
+    client.login(config.TOKEN);
+}

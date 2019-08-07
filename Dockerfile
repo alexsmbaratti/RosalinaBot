@@ -24,4 +24,4 @@ COPY . /app
 RUN npm install
 
 # Run RosalinaBot
-CMD node app.js & mongo --host 127.0.0.1:27017
+CMD node app.js
