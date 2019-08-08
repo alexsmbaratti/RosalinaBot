@@ -1,5 +1,6 @@
 const https = require('https');
 var config = require('../config.json');
+const Logger = require('../utils/Logger.js');
 
 class PostToDB {
   constructor(client) {
@@ -22,7 +23,7 @@ class PostToDB {
           console.log(err);
         })
         response.on('end', () => {
-          console.log("Guild post returned: " + response.statusMessage);
+          new Logger("Guild post returned: " + response.statusMessage);
         });
       }
     ).on('error', (err) => {

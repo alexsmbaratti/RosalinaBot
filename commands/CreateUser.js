@@ -31,6 +31,7 @@ class CreateUser extends Command {
             psn: "-1",
             xbox: "-1",
             ssbmain: -1,
+            acpc: -1,
             smm2: []
         }, function (error, response) {
             if (error) {
