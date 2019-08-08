@@ -44,6 +44,9 @@ class PSN extends Command {
                                 description: "This user has not entered their tag.",
                                 footer: {
                                     text: "They must set it up with `r!psn [ID]`"
+                                },
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_psn.png"
                                 }
                             }
                         });
@@ -57,7 +60,10 @@ class PSN extends Command {
                                     icon_url: msg.guild.members.get(extractedID).user.avatarURL
                                 },
                                 title: "PlayStation Network ID",
-                                description: results.psn
+                                description: results.psn,
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_psn.png"
+                                }
                             }
                         });
                     }
@@ -95,6 +101,9 @@ class PSN extends Command {
                                 description: "You have not entered a code.",
                                 footer: {
                                     text: "You can set it up with `r!psn [ID]`"
+                                },
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_psn.png"
                                 }
                             }
                         });
@@ -107,7 +116,10 @@ class PSN extends Command {
                                     icon_url: msg.author.avatarURL
                                 },
                                 title: "PlayStation Network ID",
-                                description: results.psn
+                                description: results.psn,
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_psn.png"
+                                }
                             }
                         });
                     }
@@ -141,7 +153,10 @@ class PSN extends Command {
                                     icon_url: msg.author.avatarURL
                                 },
                                 title: "PlayStation Network ID",
-                                description: argument
+                                description: argument,
+                                thumbnail: {
+                                    url: "https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/icon_psn.png"
+                                }
                             }
                         });
                     });
