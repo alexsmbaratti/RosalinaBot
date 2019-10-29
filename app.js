@@ -85,7 +85,7 @@ client.on('ready', () => {
         new UpdateSwitchCodes();
         new UpdateBalloonCodes();
         new UpdatePoGoCodes();
-        new NintendoDirect(client);
+        // new NintendoDirect(client);
         new PostToDB(client);
         const DBL = require("dblapi.js");
         const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
