@@ -216,7 +216,8 @@ client.on('message', msg => {
         } else if (input.startsWith("status")) {
             new Status(msg, build, client);
         } else if (input.startsWith("direct")) {
-            new TriggerDirect(client, msg);
+            // new TriggerDirect(client, msg);
+            msg.channel.send("r!direct is currently disabled as we investigate an issue.");
         } else if (input.startsWith("profile")) {
             new Profile(msg);
         } else if (input.startsWith("welcome")) {
