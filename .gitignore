@@ -7,6 +7,7 @@
 /sounds
 /profile_pictures
 package-lock.json
+/.idea
 
 # Database
 database.json
