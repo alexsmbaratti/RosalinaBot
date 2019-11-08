@@ -6,6 +6,7 @@ LABEL description="RosalinaBot"
 ENV NODE_VERSION=8.10.0
 ENV PLATFORM="Docker"
 ENV TIMEZONE=America/Los_Angeles
+# Make sure to set TOKEN env with command line!
 
 USER root
 
