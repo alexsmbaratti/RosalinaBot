@@ -109,6 +109,7 @@ client.on('ready', () => {
                 }
                 ],
                 footer: {
+                    icon_url: "https://github.com/alexsmbaratti/RosalinaBot/raw/master/misc/rosalina_emblem.png",
                     text: "This message was automatically generated because an instance of RosalinaBot was started. This message is intended for development and debugging purposes and should only appear in a specific server."
                 }
             }
