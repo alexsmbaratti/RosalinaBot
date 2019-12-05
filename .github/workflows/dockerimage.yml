@@ -12,3 +12,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag rosalina-bot:$(date +%s)
+      env:
+        CI: github_actions
