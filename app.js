@@ -116,7 +116,7 @@ client.on('ready', () => {
                 }
             }
         });
-    } else if (process.env.USER == "travis") { // Travis-CI
+    } else if (process.env.USER == "travis" || process.env.CI == "github_actions") { // CI-Build
         console.log("Compilation successful! Exiting with code 0.");
         process.exit(0);
     }
