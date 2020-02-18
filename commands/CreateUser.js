@@ -32,6 +32,7 @@ class CreateUser extends Command {
             xbox: "-1",
             ssbmain: -1,
             acpc: -1,
+            pokemonHome: "-1",
             smm2: []
         }, function (error, response) {
             if (error) {

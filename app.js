@@ -17,6 +17,7 @@ const SwitchCode = require('./commands/SwitchCode.js');
 const DSCode = require('./commands/DSCode.js');
 const PSN = require('./commands/PSN.js');
 const PoGoCode = require('./commands/PoGoCode.js');
+const PokemonHome = require('./commands/PokemonHomeCode.js');
 const Settings = require('./commands/Settings.js');
 const MarioMaker = require('./commands/MarioMaker.js');
 const FireEmblemHeroes = require('./commands/FireEmblemHeroes.js');
@@ -168,6 +169,9 @@ client.on('message', msg => {
         } else if (input.startsWith("pogocode")) {
             new PoGoCode(msg);
             new UpdatePoGoCodes();
+        } else if (input.startsWith("pokemonhome")) {
+            // new PokemonHome(msg);
+            msg.channel.send(":x: Pokémon Home support is on the way!");
         } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
             msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
         } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
@@ -219,8 +223,7 @@ client.on('message', msg => {
         } else if (input.startsWith("status")) {
             new Status(msg, build, client);
         } else if (input.startsWith("direct")) {
-            // new TriggerDirect(client, msg);
-            msg.channel.send("r!direct is currently disabled as we investigate an issue.");
+            new TriggerDirect(client, msg);
         } else if (input.startsWith("profile")) {
             new Profile(msg);
         } else if (input.startsWith("welcome")) {
