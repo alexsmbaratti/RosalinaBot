@@ -22,12 +22,12 @@ class TriggerDirect {
             name: "Latest Nintendo Direct"
           },
           title: "Animal Crossing: New Horizons Direct",
-          url: "https://twitter.com/NintendoAmerica/status/1229888341769744385",
+          url: "https://www.nintendo.com/nintendo-direct/02-20-2020/",
           "image": {
             "url": thumb_url
           },
           color: color,
-          description: "Airing on February 20 at 6 a.m. PT / 9 a.m ET"
+          description: "Aired on February 20 at 6 a.m. PT / 9 a.m ET"
         }
       });
   }
