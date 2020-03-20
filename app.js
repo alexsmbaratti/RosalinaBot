@@ -255,42 +255,37 @@ client.on('message', msg => {
 
 client.on('guildCreate', guild => {
     new Logger(`Guild Create Triggered`);
-    try {
-        if (client.user.id == config.CLIENT_ID && guild.available) {
-            var id = guild.id;
-            try {
-                const DBL = require("dblapi.js");
-                const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
-                updateNickname(newGuild);
-                new UpdateGuilds(client.guilds.size);
-                new PostToDB(client);
-            } catch (e) {
-                // If there is no default channel
-            } finally {
+    if (client.user.id == config.CLIENT_ID && guild.available) {
+        var id = guild.id;
+        try {
+            const DBL = require("dblapi.js");
+            const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
+            updateNickname(newGuild);
+        } catch (e) {
+            // If there is no default channel
+        } finally {
+            new UpdateGuilds(client.guilds.size);
+            new PostToDB(client);
 
-
-                // const MongoClient = require('mongodb').MongoClient;
-                // const url = 'mongodb://localhost:27017';
-                // MongoClient.connect(url, function(err, client) {
-                //   var db = client.db('bot');
-                //   db.collection('guilds').insertOne({
-                //     _id: id,
-                //     announcement_channel: null,
-                //     prefix: "r!"
-                //   }, function(err, res) {
-                //     if (err) {
-                //       console.log(err);
-                //       client.close();
-                //     } else {
-                //       console.log(res);
-                //       client.close();
-                //     }
-                //   });
-                // })
-            }
+            // const MongoClient = require('mongodb').MongoClient;
+            // const url = 'mongodb://localhost:27017';
+            // MongoClient.connect(url, function(err, client) {
+            //   var db = client.db('bot');
+            //   db.collection('guilds').insertOne({
+            //     _id: id,
+            //     announcement_channel: null,
+            //     prefix: "r!"
+            //   }, function(err, res) {
+            //     if (err) {
+            //       console.log(err);
+            //       client.close();
+            //     } else {
+            //       console.log(res);
+            //       client.close();
+            //     }
+            //   });
+            // })
         }
-    } catch (e) {
-        
     }
 });
 
