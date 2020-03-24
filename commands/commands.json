@@ -1,5 +1,6 @@
 [
-  [{
+  [
+    {
       "name": "switchCode",
       "help": "Keeps your Nintendo Switch Friend Code stored for reference and sharing.\n\n*Usage Examples*\n`r!switchCode SW-YOUR-CODE-HERE` Sets your Nintendo Switch code (include dashes).\n`r!switchCode clear` Your Nintendo Switch code will be removed from the database.\n`r!switchCode` Gets sender's Nintendo Switch code.\n`r!switchCode @USER` Gets mentioned users' Nintendo Switch code.\n\n*Shortcut*\n`r!sc`"
     },
@@ -18,9 +19,14 @@
     {
       "name": "ssbu",
       "help": "Sends a message with your Super Smash Bros. Ultimate Battle Arena details.\n\n*Usage Example*\n`r!ssbu [ID] [Password]` Sends your Arena ID and Arena Password. Password is optional. Typing `friend` for ID will indicate that the lobby is only open to friends."
+    },
+    {
+      "name": "acnh",
+      "help": "Sends a message with your Animal Crossing New Horizons Dodo Code details.\n\n*Usage Example*\n`r!acnh [DODOCODE]` Sends your Dodo Code."
     }
   ],
-  [{
+  [
+    {
       "name": "coin",
       "help": "Flips a coin. Can land on heads, tails, or its side.\n\n*Shortcut*\n`r!c`"
     },
@@ -41,7 +47,8 @@
       "help": "Rosalina will echo whatever you say, but will also delete the message you sent.\n\n*Usage Example*\n`r!echod May the stars shine down on you.`"
     }
   ],
-  [{
+  [
+    {
       "name": "ping",
       "help": "Returns the response time, or ping, of a message."
     },
@@ -58,9 +65,14 @@
       "help": "Sends information about the server the message was sent in."
     }
   ],
-  [{
+  [
+    {
       "name": "settings",
       "help": "Lists your current settings\n\n*Usage Examples*\n`r!settings switchCode PUBLIC` Sets the sender's privacy settings for their Nintendo Switch friend code.\n\n*Format*\n`r!settings [platform]Code [PRIVACY]`\n\n*Arguments*\n**platform** - `3DS`, `Switch`, `PoGo`\n**privacy** - `PUBLIC`, `PRIVATE`"
+    },
+    {
+      "name": "clear",
+      "help": "Deletes all of your records stored. Use with caution."
     },
     {
       "name": "support",

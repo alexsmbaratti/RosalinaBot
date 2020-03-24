@@ -26,6 +26,7 @@ const Status = require('./commands/Status.js');
 const Welcome = require('./commands/Welcome.js');
 const Suggest = require('./comet_observatory/Suggest.js');
 const Arena = require('./commands/Arena.js');
+const DodoCode = require('./commands/DodoCode.js');
 const ServerInfo = require('./commands/ServerInfo.js');
 const Bug = require('./comet_observatory/Bug.js');
 const Changelog = require('./commands/Changelog.js');
@@ -183,6 +184,8 @@ client.on('message', msg => {
             new MarioMaker(msg);
         } else if (input.startsWith("ssbu")) {
             new Arena(msg);
+        } else if (input.startsWith("acnh")) {
+            new DodoCode(msg);
         } else if (input.startsWith("donate")) {
             msg.channel.send({
                 embed: {
