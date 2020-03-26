@@ -22,9 +22,6 @@ class TriggerDirect {
             name: "Latest Nintendo Direct"
           },
           title: "Nintendo Direct Mini",
-          "image": {
-            "url": thumb_url
-          },
           color: color,
           description: "Aired on March 26"
         }
