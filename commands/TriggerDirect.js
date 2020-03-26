@@ -21,13 +21,12 @@ class TriggerDirect {
           author: {
             name: "Latest Nintendo Direct"
           },
-          title: "Animal Crossing: New Horizons Direct",
-          url: "https://www.nintendo.com/nintendo-direct/02-20-2020/",
+          title: "Nintendo Direct Mini",
           "image": {
             "url": thumb_url
           },
           color: color,
-          description: "Aired on February 20 at 6 a.m. PT / 9 a.m ET"
+          description: "Aired on March 26"
         }
       });
   }
