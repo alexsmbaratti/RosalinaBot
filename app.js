@@ -184,7 +184,7 @@ client.on('message', msg => {
             new MarioMaker(msg);
         } else if (input.startsWith("ssbu")) {
             new Arena(msg);
-        } else if (input.startsWith("acnh")) {
+        } else if (input.startsWith("acnh") || input.startsWith("dodo")) {
             new DodoCode(msg);
         } else if (input.startsWith("donate")) {
             msg.channel.send({
