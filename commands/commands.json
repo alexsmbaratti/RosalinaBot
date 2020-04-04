@@ -22,7 +22,7 @@
     },
     {
       "name": "acnh",
-      "help": "Sends a message with your Animal Crossing New Horizons Dodo Code details.\n\n*Usage Example*\n`r!acnh [DODOCODE]` Sends your Dodo Code."
+      "help": "Sends a message with your Animal Crossing: New Horizons Dodo Code details.\n\n*Usage Example*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n\n*Alias*\n`r!dodo`"
     }
   ],
   [
