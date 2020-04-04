@@ -119,7 +119,6 @@ class DodoCode extends Command {
             }
         }
     }
+}
 
-    module
-.
-    exports = DodoCode;
+module.exports = DodoCode;
