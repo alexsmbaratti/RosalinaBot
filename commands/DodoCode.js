@@ -17,30 +17,35 @@ class DodoCode extends Command {
         try {
             arg2 = msg.content.split(" ")[2].toUpperCase();
             switch (arg2.toLowerCase()) {
+                case "🍐":
                 case "pear":
                 case "pears":
-                    arg2 = "Pear";
+                    arg2 = "Pears 🍐";
                     break;
+                case "🍎":
                 case "a":
                 case "apple":
                 case "apples":
-                    arg2 = "Apples";
+                    arg2 = "Apples 🍎";
                     break;
+                case "🍑":
                 case "peach":
                 case "peachs":
                 case "peaches":
-                    arg2 = "Peaches";
+                    arg2 = "Peaches 🍑";
                     break;
+                case "🍊":
                 case "orange":
                 case "oranges":
                 case "o":
-                    arg2 = "Oranges";
+                    arg2 = "Oranges 🍊";
                     break;
                 case "c":
+                case "🍒":
                 case "cherry":
                 case "cherrys":
                 case "cherries":
-                    arg2 = "Cherries";
+                    arg2 = "Cherries 🍒";
                     break;
                 default:
                     arg2 = "NONE";
