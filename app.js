@@ -125,134 +125,138 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    if (msg.content.toLowerCase().startsWith(prefix) && msg.author.bot != true) {
-        var input = msg.content.toLowerCase().substring(prefix.length);
-        if (input.startsWith("help")) {
-            new Help(msg);
-        } else if (input.startsWith("8ball")) {
-            new EightBall(msg);
-        } else if (input == "github") {
-            msg.channel.send({
-                embed: {
-                    author: {
-                        name: "GitHub",
-                        icon_url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/github-favicon.png"
-                    },
-                    title: "RosalinaBot",
-                    url: "https://github.com/alexsmbaratti/RosalinaBot/",
-                    color: color,
-                    description: "View the source code, request features, and report bugs.",
+    try {
+        if (msg.content.toLowerCase().startsWith(prefix) && msg.author.bot != true) {
+            var input = msg.content.toLowerCase().substring(prefix.length);
+            if (input.startsWith("help")) {
+                new Help(msg);
+            } else if (input.startsWith("8ball")) {
+                new EightBall(msg);
+            } else if (input == "github") {
+                msg.channel.send({
+                    embed: {
+                        author: {
+                            name: "GitHub",
+                            icon_url: "https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/master/misc/github-favicon.png"
+                        },
+                        title: "RosalinaBot",
+                        url: "https://github.com/alexsmbaratti/RosalinaBot/",
+                        color: color,
+                        description: "View the source code, request features, and report bugs.",
+                    }
+                });
+            } else if (input.startsWith("dice") || input.startsWith("die")) {
+                new Dice(msg);
+            } else if (input == "ping") {
+                new Ping(msg);
+            } else if (input.startsWith("echod ")) {
+                new EchoDelete(msg);
+            } else if (input.startsWith("role")) {
+                new Roles(msg);
+            } else if (input.startsWith("echo ")) {
+                new Echo(msg);
+            } else if (input == "coin" || input == "c") {
+                new Coin(msg);
+            } else if (input == "build" || input == "version") {
+                msg.channel.send("Build: `" + build + "`");
+            } else if (input == "guilds") {
+                msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
+                new UpdateGuilds(client.guilds.size);
+            } else if (input.startsWith("switchcode") || input.startsWith("sc")) {
+                new SwitchCode(msg);
+                new UpdateSwitchCodes();
+            } else if (input.startsWith("3dscode") || input.startsWith("dscode") || input.startsWith("ds")) {
+                new DSCode(msg);
+                new Update3DSCodes();
+            } else if (input.startsWith("pogocode")) {
+                new PoGoCode(msg);
+                new UpdatePoGoCodes();
+            } else if (input.startsWith("pokemonhome")) {
+                // new PokemonHome(msg);
+                msg.channel.send(":x: Pokémon Home support is on the way!");
+            } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
+                msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
+            } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
+                msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!3DSCode` instead.");
+            } else if (input.startsWith("settings")) {
+                new Settings(msg);
+                // msg.channel.send(":x: The `r!settings` command has been temporarily disabled. <:ohno_rosalina:517899671608229899>");
+            } else if (input.startsWith("smm")) {
+                new MarioMaker(msg);
+            } else if (input.startsWith("ssbu")) {
+                new Arena(msg);
+            } else if (input.startsWith("acnh") || input.startsWith("dodo")) {
+                new DodoCode(msg);
+            } else if (input.startsWith("donate")) {
+                msg.channel.send({
+                    embed: {
+                        author: {
+                            name: "Donate"
+                        },
+                        title: "Support the Development of RosalinaBot",
+                        url: "https://donatebot.io/checkout/424020073712189471?buyer=212031489053818880",
+                        color: color
+                    }
+                });
+            } else if (input.startsWith("changelog")) {
+                new Changelog(msg);
+            } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
+                new SuperMarioOdyssey(msg);
+                new UpdateBalloonCodes();
+            } else if (input.startsWith("vote")) {
+                msg.channel.send({
+                    embed: {
+                        title: "Vote on Discord Bot List",
+                        thumbnail: {
+                            url: client.user.avatarURL
+                        },
+                        url: "https://discordbots.org/bot/322405544490958849/vote",
+                        color: color,
+                        description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
+                    }
+                });
+            } else if (input.startsWith("invite")) {
+                msg.channel.send({
+                    embed: {
+                        title: "Invite Link",
+                        url: "https://discordapp.com/oauth2/authorize?client_id=322405544490958849&scope=bot&permissions=0",
+                        color: color,
+                        description: "To invite RosalinaBot to another server, use this link."
+                    }
+                });
+            } else if (input.startsWith("status")) {
+                new Status(msg, build, client);
+            } else if (input.startsWith("direct")) {
+                new TriggerDirect(client, msg);
+            } else if (input.startsWith("profile")) {
+                new Profile(msg);
+            } else if (input.startsWith("welcome")) {
+                new Welcome(msg);
+            } else if (input.startsWith("suggest")) {
+                new Suggest(msg, client);
+            } else if (input.startsWith("bug")) {
+                new Bug(msg, client);
+            } else if (input.startsWith("partner")) {
+                // new PartnerServers(msg, client);
+            } else if (input.startsWith("serverinfo")) {
+                new ServerInfo(msg);
+            } else if (input.startsWith("support") || input.startsWith("server")) {
+                msg.channel.send("https://discord.gg/kpFHWAq");
+            } else if (msg.author.id == config.alexsmbaratti) { // Alpha Testing
+                if (input.startsWith("feh")) {
+                    new FireEmblemHeroes(msg);
+                } else if (input.startsWith("psn")) {
+                    new PSN(msg);
+                } else if (input == "clear") {
+                    new DeleteUser(msg);
                 }
-            });
-        } else if (input.startsWith("dice") || input.startsWith("die")) {
-            new Dice(msg);
-        } else if (input == "ping") {
-            new Ping(msg);
-        } else if (input.startsWith("echod ")) {
-            new EchoDelete(msg);
-        } else if (input.startsWith("role")) {
-            new Roles(msg);
-        } else if (input.startsWith("echo ")) {
-            new Echo(msg);
-        } else if (input == "coin" || input == "c") {
-            new Coin(msg);
-        } else if (input == "build" || input == "version") {
-            msg.channel.send("Build: `" + build + "`");
-        } else if (input == "guilds") {
-            msg.channel.send("I am currently serving `" + client.guilds.size + "` guilds.");
-            new UpdateGuilds(client.guilds.size);
-        } else if (input.startsWith("switchcode") || input.startsWith("sc")) {
-            new SwitchCode(msg);
-            new UpdateSwitchCodes();
-        } else if (input.startsWith("3dscode") || input.startsWith("dscode") || input.startsWith("ds")) {
-            new DSCode(msg);
-            new Update3DSCodes();
-        } else if (input.startsWith("pogocode")) {
+            }
+        } else if (msg.content.startsWith("Let's be friends in Pokémon GO! My Trainer Code is ")) {
             new PoGoCode(msg);
             new UpdatePoGoCodes();
-        } else if (input.startsWith("pokemonhome")) {
-            // new PokemonHome(msg);
-            msg.channel.send(":x: Pokémon Home support is on the way!");
-        } else if (input.startsWith("getswitchcode") || input.startsWith("setswitchcode")) {
-            msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!switchCode` instead.");
-        } else if (input.startsWith("getdscode") || input.startsWith("setdscode") || input.startsWith("get3dscode") || input.startsWith("set3dscode")) {
-            msg.channel.send(":x: " + msg.content.split("!")[1] + " is deprecated! Please use `r!3DSCode` instead.");
-        } else if (input.startsWith("settings")) {
-            new Settings(msg);
-            // msg.channel.send(":x: The `r!settings` command has been temporarily disabled. <:ohno_rosalina:517899671608229899>");
-        } else if (input.startsWith("smm")) {
-            new MarioMaker(msg);
-        } else if (input.startsWith("ssbu")) {
-            new Arena(msg);
-        } else if (input.startsWith("acnh") || input.startsWith("dodo")) {
-            new DodoCode(msg);
-        } else if (input.startsWith("donate")) {
-            msg.channel.send({
-                embed: {
-                    author: {
-                        name: "Donate"
-                    },
-                    title: "Support the Development of RosalinaBot",
-                    url: "https://donatebot.io/checkout/424020073712189471?buyer=212031489053818880",
-                    color: color
-                }
-            });
-        } else if (input.startsWith("changelog")) {
-            new Changelog(msg);
-        } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {
-            new SuperMarioOdyssey(msg);
-            new UpdateBalloonCodes();
-        } else if (input.startsWith("vote")) {
-            msg.channel.send({
-                embed: {
-                    title: "Vote on Discord Bot List",
-                    thumbnail: {
-                        url: client.user.avatarURL
-                    },
-                    url: "https://discordbots.org/bot/322405544490958849/vote",
-                    color: color,
-                    description: "If you find this bot useful, please consider voting for it. Every vote helps! It's quick and easy!"
-                }
-            });
-        } else if (input.startsWith("invite")) {
-            msg.channel.send({
-                embed: {
-                    title: "Invite Link",
-                    url: "https://discordapp.com/oauth2/authorize?client_id=322405544490958849&scope=bot&permissions=0",
-                    color: color,
-                    description: "To invite RosalinaBot to another server, use this link."
-                }
-            });
-        } else if (input.startsWith("status")) {
-            new Status(msg, build, client);
-        } else if (input.startsWith("direct")) {
-            new TriggerDirect(client, msg);
-        } else if (input.startsWith("profile")) {
-            new Profile(msg);
-        } else if (input.startsWith("welcome")) {
-            new Welcome(msg);
-        } else if (input.startsWith("suggest")) {
-            new Suggest(msg, client);
-        } else if (input.startsWith("bug")) {
-            new Bug(msg, client);
-        } else if (input.startsWith("partner")) {
-            // new PartnerServers(msg, client);
-        } else if (input.startsWith("serverinfo")) {
-            new ServerInfo(msg);
-        } else if (input.startsWith("support") || input.startsWith("server")) {
-            msg.channel.send("https://discord.gg/kpFHWAq");
-        } else if (msg.author.id == config.alexsmbaratti) { // Alpha Testing
-            if (input.startsWith("feh")) {
-                new FireEmblemHeroes(msg);
-            } else if (input.startsWith("psn")) {
-                new PSN(msg);
-            } else if (input == "clear") {
-                new DeleteUser(msg);
-            }
         }
-    } else if (msg.content.startsWith("Let's be friends in Pokémon GO! My Trainer Code is ")) {
-        new PoGoCode(msg);
-        new UpdatePoGoCodes();
+    } catch (e) {
+        console.log(e);
     }
 });
 
@@ -269,6 +273,7 @@ client.on('guildCreate', guild => {
                 new PostToDB(client);
             } catch (e) {
                 // If there is no default channel
+                console.log(e);
             } finally {
 
 
@@ -293,7 +298,7 @@ client.on('guildCreate', guild => {
             }
         }
     } catch (e) {
-        
+        console.log(e);
     }
 });
 
@@ -305,8 +310,12 @@ client.on('guildDelete', guild => {
 });
 
 client.on('guildUpdate', (oldGuild, newGuild) => {
-    new Logger(`Guild Update Triggered`);
-    updateNickname(newGuild);
+    try {
+        new Logger(`Guild Update Triggered`);
+        updateNickname(newGuild);
+    } catch (e) {
+        console.log(e);
+    }
 });
 
 client.on('guildMemberAdd', member => {
