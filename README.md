@@ -3,6 +3,14 @@
 
 [![Add to Discord](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![Build Status](https://travis-ci.org/alexsmbaratti/RosalinaBot.svg?branch=master)](https://travis-ci.org/alexsmbaratti/RosalinaBot) [![Version](https://img.shields.io/badge/version-7.5.0-brightgreen.svg "Version")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![Library](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) [![Server Count](https://discordbots.org/api/widget/servers/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849) [![Discord Bots](https://discordbots.org/api/widget/status/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849)
 
+<a href="https://discordbotlist.com/bots/322405544490958849">
+    <img 
+        width="380" 
+        height="140" 
+        src="https://discordbotlist.com/bots/322405544490958849/widget" 
+        alt="Rosalina stats on Discord Bot List">
+</a>
+
 RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord! Equipped with a coin, a dice, and communication with the stars (*definitely*) for maximum obligatory bot features.
 
 ![alt text](https://github.com/alexsmbaratti/RosalinaBot/raw/indev/misc/art.png)

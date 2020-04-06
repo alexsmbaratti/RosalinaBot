@@ -276,26 +276,24 @@ client.on('guildCreate', guild => {
                 console.log(e);
             } finally {
 
-
-                // const MongoClient = require('mongodb').MongoClient;
-                // const url = 'mongodb://localhost:27017';
-                // MongoClient.connect(url, function(err, client) {
-                //   var db = client.db('bot');
-                //   db.collection('guilds').insertOne({
-                //     _id: id,
-                //     announcement_channel: null,
-                //     prefix: "r!"
-                //   }, function(err, res) {
-                //     if (err) {
-                //       console.log(err);
-                //       client.close();
-                //     } else {
-                //       console.log(res);
-                //       client.close();
-                //     }
-                //   });
-                // })
-            }
+            // const MongoClient = require('mongodb').MongoClient;
+            // const url = 'mongodb://localhost:27017';
+            // MongoClient.connect(url, function(err, client) {
+            //   var db = client.db('bot');
+            //   db.collection('guilds').insertOne({
+            //     _id: id,
+            //     announcement_channel: null,
+            //     prefix: "r!"
+            //   }, function(err, res) {
+            //     if (err) {
+            //       console.log(err);
+            //       client.close();
+            //     } else {
+            //       console.log(res);
+            //       client.close();
+            //     }
+            //   });
+            // })
         }
     } catch (e) {
         console.log(e);

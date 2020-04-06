@@ -30,7 +30,6 @@ class Roles extends Command {
           }
         } else {
           msg.channel.send(":x: **Invalid role!**\nPlease use a valid role.\n\n**Available Roles**\n```\nSSBU\nMK8D\n```")
-          msg.channel.send(msg.guild.roles.array())
         }
       } else {
         msg.channel.send(":x: **Invalid usage!**\nPlease specify the role you want to toggle.\n\n*Usage Example*\n`r!role SSBU`\n\n**Available Roles**\n```\nSSBU\nMK8D\n```")

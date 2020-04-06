@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build the Docker image
+      env:
+        CI: github_actions
+        PLATFORM: GitHub Actions
+      run: docker build . --file Dockerfile --tag rosalina-bot:$(date +%s)
