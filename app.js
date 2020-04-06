@@ -268,7 +268,7 @@ client.on('guildCreate', guild => {
             try {
                 const DBL = require("dblapi.js");
                 const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
-                updateNickname(newGuild);
+                updateNickname(guild);
                 new UpdateGuilds(client.guilds.size);
                 new PostToDB(client);
             } catch (e) {
