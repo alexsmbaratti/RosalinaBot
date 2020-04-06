@@ -1,4 +1,13 @@
 # Changelog
+## Build 7.6.0
+**April 6, 2020**
+* Adds r!acnh to share Dodo Codes in Animal Crossing: New Horizons
+    * Allows for island name and native fruit to be saved
+    * Updates help prompts for r!acnh
+    * Adds r!help dodo
+    * Adds r!anch as auto-correct for r!acnh
+* Bug fixes and stability improvements
+
 ## Build 7.5.0
 **August 7, 2019**
 * New Debug Logger for Quicker Fixes
