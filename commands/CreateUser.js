@@ -33,6 +33,9 @@ class CreateUser extends Command {
             ssbmain: -1,
             acpc: -1,
             pokemonHome: "-1",
+            acnhIslandName: "",
+            acnhFruit: -1,
+            acnhDesigner: "",
             smm2: []
         }, function (error, response) {
             if (error) {
