@@ -17,7 +17,6 @@ class Settings extends Command {
         arg2 = "";
       }
     }
-    console.log(msg.content + " with ID " + msg.author.id);
     if (arg1 != "" && (arg2 == "public" || arg2 == "private")) {
       if (arg1 == "switchcode" || arg1 == "switch") {
         MongoClient.connect(url, function(err, client) {
