@@ -48,7 +48,6 @@ class PoGoCode extends Command {
                             console.log("ID: " + extractedID);
                             console.log(e);
                         }
-                        console.log(`✅ Pokémon Go Code saved for ` + msg.author.username);
                     } else {
                         if (results.poGoPrivacy == "PUBLIC") {
                             try {

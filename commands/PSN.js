@@ -4,6 +4,8 @@ const CreateUser = require('./CreateUser.js');
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 
+const Logger = require('../utils/Logger.js');
+
 var color = 0x86D0CF;
 
 // Example: r!psn
@@ -50,7 +52,6 @@ class PSN extends Command {
                                 }
                             }
                         });
-                        console.log(`✅ PSN ID saved for ` + msg.author.username);
                     } else {
                         msg.channel.send({
                             embed: {
@@ -159,6 +160,7 @@ class PSN extends Command {
                                 }
                             }
                         });
+                        new Logger(`\x1b[32mPSN ID saved for ` + msg.author.id + `\x1b[0m`);
                     });
                 })
             } else {

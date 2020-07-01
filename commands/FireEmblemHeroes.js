@@ -51,7 +51,6 @@ class FireEmblemHeroes extends Command {
                                 }
                             }
                         });
-                        new Logger(`✅ Fire Emblem Heroes Code saved for ` + msg.author.username);
                     } else {
                         msg.channel.send({
                             embed: {
@@ -160,7 +159,7 @@ class FireEmblemHeroes extends Command {
                                 }
                             }
                         });
-                        new Logger(`\x1b[32mFEH Code saved for ` + msg.author.username + `\x1b[0m`);
+                        new Logger(`\x1b[32mFEH Code saved for ` + msg.author.id + `\x1b[0m`);
                     });
                 })
             } else {

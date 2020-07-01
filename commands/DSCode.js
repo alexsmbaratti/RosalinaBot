@@ -44,7 +44,6 @@ class DSCode extends Command {
                                 }
                             }
                         });
-                        new Logger(`\x1b[32mNintendo 3DS Code saved for ` + msg.author.username + `\x1b[0m`);
                     } else {
                         if (results.dsPrivacy == "PUBLIC") {
                             msg.channel.send({

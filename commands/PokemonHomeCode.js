@@ -47,7 +47,6 @@ class PokemonHomeCode extends Command {
                             console.log("ID: " + extractedID);
                             console.log(e);
                         }
-                        console.log(`✅ Pokémon Home Code saved for ` + msg.author.username);
                     } else {
                         if (results.poGoPrivacy == "PUBLIC") {
                             try {

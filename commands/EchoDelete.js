@@ -12,7 +12,6 @@ class EchoDelete extends Command {
         msg.channel.send(msg.content.substring(8))
           .then(message => {
             msg.delete()
-              .then(msg => console.log(`Deleted message from ${msg.author.username}`))
               .catch(console.error);
           });
       }

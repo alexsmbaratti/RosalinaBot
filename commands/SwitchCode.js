@@ -57,7 +57,6 @@ class SwitchCode extends Command {
                   }
                 }
               });
-            new Logger(`\x1b[32mNintendo Switch Code saved for ` + msg.author.username + `\x1b[0m`);
           });
         })
       } else {
