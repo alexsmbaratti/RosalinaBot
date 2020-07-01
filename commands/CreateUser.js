@@ -40,7 +40,6 @@ class CreateUser extends Command {
         }, function (error, response) {
             if (error) {
                 new Logger("\x1b[31mFailed to add user " + msg.author.id + " to database!\x1b[0m");
-                new Logger("\t" + msg.content);
             } else {
                 new Logger("\x1b[32mUser " + msg.author.id + " added to database successfully!\x1b[0m");
             }
