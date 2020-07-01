@@ -60,7 +60,7 @@ class DodoCode extends Command {
                     arg2 = cherries;
                     break;
                 default:
-                    if (arg1.toLowerCase() != "island" && arg1.toLowerCase() != "name") {
+                    if (arg1.toLowerCase() != "name") {
                         arg2 = "NONE";
                     }
             }
@@ -83,7 +83,8 @@ class DodoCode extends Command {
                 .setAuthor(name + " is inviting you to their island!", msg.author.avatarURL)
                 .setThumbnail("https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/ac_emblem_white.png")
             let footer = "Requires an active Nintendo Switch Online subscription to join"
-            if (arg1.toLowerCase() == "island" || arg1.toLowerCase() == "name") {
+            if (arg1.toLowerCase() == "name" && msg.content.length > 12) { // r!acnh name MY ISLAND
+                arg2 = msg.content.split("name ")[1]
                 if (arg2.length < 11) {
                     MongoClient.connect(url, function (err, client) {
                         var db = client.db('bot');
@@ -120,7 +121,7 @@ class DodoCode extends Command {
                         });
                     })
                 } else {
-                    msg.channel.send(":x: Island Name was invalid.\n\n*Usage Examples*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.")
+                    msg.channel.send(":x: Island Name was invalid. Island names are ten characters or less.\n\n*Usage Examples*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.")
                 }
             } else if (arg1.toLowerCase() == "fruit") {
                 if (arg2 == peaches || arg2 == pears || arg2 == apples || arg2 == cherries || arg2 == oranges) {
