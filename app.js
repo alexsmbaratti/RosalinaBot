@@ -92,9 +92,6 @@ client.on('ready', () => {
         const DBL = require("dblapi.js");
         const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
         // new PostToDBL(client);
-        if (client.guilds.get(config.COMET_OBSERVATORY_ID).available) {
-            new UpdateServerMembers(client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount);
-        }
 
         client.channels.get(config.rosalinaBotTestChannel).send({
             embed: {

@@ -84,11 +84,6 @@ class Status extends Command {
                         name: "Pokémon Go Codes",
                         value: poGoCodes,
                         inline: true
-                      },
-                      {
-                        name: "Comet Observatory Members",
-                        value: (client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount - 6),
-                        inline: true
                       }
                     ]
                   }
@@ -145,11 +140,6 @@ class Status extends Command {
                           {
                             name: "Pokémon Go Codes",
                             value: poGoCodes,
-                            inline: true
-                          },
-                          {
-                            name: "Comet Observatory Members",
-                            value: (client.guilds.get(config.COMET_OBSERVATORY_ID).memberCount - 6),
                             inline: true
                           }
                         ]

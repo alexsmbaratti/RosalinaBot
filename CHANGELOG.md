@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.6.1
+**July 1, 2020**
+* Bug fix for r!acnh when entering an island name with a space
+* Adds [privacy policy](https://github.com/alexsmbaratti/RosalinaBot/blob/master/Privacy-Policy.md)
+* Removes reliance on server member counts to avoid use of Privileged Gateway Intents
+    * As a result, r!serverinfo will no longer show server member count
+
 ## Build 7.6.0
 **April 6, 2020**
 * Adds r!acnh to share Dodo Codes in Animal Crossing: New Horizons

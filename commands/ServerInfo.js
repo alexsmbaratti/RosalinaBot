@@ -23,11 +23,7 @@ class ServerInfo extends Command {
           embed: {
             title: mGuild.name,
             color: color,
-            fields: [{
-                name: "Members",
-                value: mGuild.memberCount + " (including " + bots + plural,
-                inline: true
-              },
+            fields: [
               {
                 name: "Region",
                 value: mGuild.region,
