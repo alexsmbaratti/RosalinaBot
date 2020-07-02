@@ -7,7 +7,7 @@ RosalinaBot will never sell your personal information.
 
 ## Collection of Friend Codes and Related Data
 The headlining feature of RosalinaBot is to keep track of and store friend codes. Friend codes are stored 
-for the purpose of storing them for later retrival at a user's request. A friend code is only saved when the user 
+for the purpose of storing them for later retrieval at a user's request. A friend code is only saved when the user 
 explicitly issues a command to save such data. 
 
 Any mention of the term "friend code" in this policy may include, but is not limited to:
