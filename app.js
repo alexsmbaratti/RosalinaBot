@@ -195,6 +195,15 @@ client.on('message', msg => {
                         color: color
                     }
                 });
+            } else if (input.startsWith("privacy")) {
+                msg.channel.send({
+                    embed: {
+                        title: "Privacy Policy",
+                        description: "See how your data is processed and how you can request deletion of that data.",
+                        url: "https://github.com/alexsmbaratti/RosalinaBot/blob/master/Privacy-Policy.md",
+                        color: color
+                    }
+                });
             } else if (input.startsWith("changelog")) {
                 new Changelog(msg);
             } else if (input.startsWith("smo") || input.startsWith("balloon") || input.startsWith("balloonworld")) {

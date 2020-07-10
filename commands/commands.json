@@ -95,6 +95,10 @@
       "help": "View the source code, request features, and report bugs."
     },
     {
+      "name": "privacy",
+      "help": "View the privacy policy."
+    },
+    {
       "name": "changelog",
       "help": "Find out what's new in the latest build."
     },
