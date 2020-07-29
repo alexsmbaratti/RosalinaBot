@@ -42,6 +42,7 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
 To share your friend code with people in your server, or just keep it handy on Discord, use either `r!switchCode` or `r!3DSCode` to store your Nintendo Switch friend code or Nintendo 3DS friend code respectively. You can also use the `r!sc` or `r!ds` shortcut commands instead. Example usage is below for both commands.
 
 `r!switchCode SW-1234-5678-9000`
+
 `r!3DSCode 1234-5678-9000`
 
 Note that dashes are required and the commands are not case sensitive. You should receive a confirmation message if it is successful. By default, your friend codes are public. In order for others to see them, you must type `r!switchCode` or `r!3DSCode` to retrieve your friend codes. If you set your friend codes to public, others in a server with RosalinaBot may use `r!switchCode @[YOU]` or `r!3DSCode @[YOU]` to retrieve your friend codes.
@@ -52,6 +53,7 @@ To learn more about this command, use `r!help sc` or `r!help ds`.
 To share a Super Smash Bros. Ultimate Battle Arena with your channel, use the `r!ssbu` command to post it. You can either choose to share a Battle Arena ID, or share that your Battle Arena is open to friends. Example usage is below for both instances.
 
 `r!ssbu 12345`
+
 `r!ssbu friend`
 
 If you have a password on your Battle Arena, add it to the end of the command, like the example below.
