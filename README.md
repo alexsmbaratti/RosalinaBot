@@ -62,4 +62,17 @@ If you have a password on your Battle Arena, add it to the end of the command, l
 
 `r!ssbu 12345 PASSWORD`
 
-To learn more about this command, use `r!help ssbu`.
+Battle Arena IDs are not stored. This command is solely used to make your Battle Arena stand out from the rest of chat. To learn more about this command, use `r!help ssbu`.
+
+### Sharing Animal Crossing: New Horizons Dodo Codes
+To share an Animal Crossing: New Horizons Dodo Code with your channel, use the `r!acnh` command to post it. Below is an example.
+
+`r!acnh 12345`
+
+To display your island name and/or native fruit alongside your Dodo Code, you must set them as per the examples below.
+
+`r!acnh name ISLANDNAME`
+
+`r!acnh fruit apples`
+
+Dodo Codes are not stored. This command is solely used to make your Dodo Code stand out from the rest of chat. To learn more about this command, use `r!help acnh`.
