@@ -18,12 +18,14 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
 ## Features
 * Support for Nintendo Switch and Nintendo 3DS Friend Codes
   * Send and receive your Nintendo Switch and Nintendo 3DS friend codes with your Discord friends
+* Share Super Smash Bros. Ultimate Battle Arenas
+  * Settle it in Smash with your Discord server!
+* Share Animal Crossing: New Horizons Dodo Codes
+  * Store your Island Name and Native Fruit!
 * Share Super Mario Odyssey Balloon Codes
   * Store your Luigi's Balloon World codes and challenge your friends on Discord to find them
 * Share Pokémon Go friend codes
   * Catch them all with your friends!
-* Share Super Smash Bros. Ultimate Battle Arenas
-  * Settle it in Smash with your Discord server!
 * Friend codes transfer between servers
 * Dice
   * Use `r!dice` or `r!die` to roll a die. A great alternative to settling it in Smash!
