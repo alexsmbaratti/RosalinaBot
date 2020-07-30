@@ -97,7 +97,7 @@ class DodoCode extends Command {
                             footer += "\nSet your island name using r!acnh name [ISLAND_NAME]"
                         }
 
-                        if (results.acnhDreamAdress != "") {
+                        if (results.acnhDreamAdress != "" && results.acnhDreamAdress != undefined) {
                             try {
                                 embed.addField("Dream Address", results.acnhDreamAdress, true);
                             } catch (e) {
@@ -136,6 +136,10 @@ class DodoCode extends Command {
                             }
                             footer += "\nSave your island's native fruit using r!acnh fruit [FRUIT]"
                         }
+                    } else {
+                        new CreateUser(msg, db);
+                        embed.addField("Dream Address", "Not Set", true);
+                        footer += "\nSet your island name using r!acnh [DREAM_ADDRESS]"
                     }
                     client.close()
                     embed.setFooter(footer)
@@ -305,11 +309,11 @@ class DodoCode extends Command {
                     })
                 });
             } else if (arg1.length == 17 && arg1.startsWith("DA-")) {
-                MongoClient.connect(url, function(err, client) {
+                MongoClient.connect(url, function (err, client) {
                     var db = client.db('bot');
                     db.collection('users').findOne({
                         _id: msg.author.id
-                    }, function(err, results) {
+                    }, function (err, results) {
                         if (results == null) {
                             new CreateUser(msg, db);
                         }
@@ -342,5 +346,4 @@ class DodoCode extends Command {
     }
 }
 
-module
-    .exports = DodoCode;
+module.exports = DodoCode;
