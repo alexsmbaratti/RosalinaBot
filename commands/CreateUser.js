@@ -36,6 +36,7 @@ class CreateUser extends Command {
             acnhIslandName: "",
             acnhFruit: -1,
             acnhDesigner: "",
+            acnhDreamAdress: "",
             smm2: []
         }, function (error, response) {
             if (error) {
