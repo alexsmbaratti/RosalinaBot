@@ -1,4 +1,11 @@
 # Changelog
+## Build 7.7.0
+**July 29, 2020**
+* Adds Animal Crossing: New Horizons Dream Address Support!
+    * Use `r!acnh [DREAM_ADDRESS]` to set the address
+    * Use `r!acnh` to get the address
+    * Dream Address by mention is coming soon!
+
 ## Build 7.6.1
 **July 1, 2020**
 * Bug fix for r!acnh when entering an island name with a space

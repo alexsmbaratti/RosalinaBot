@@ -1,7 +1,7 @@
 # RosalinaBot
 **A Discord Bot for Nintendo fans**
 
-[![Add to Discord](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![Build Status](https://travis-ci.org/alexsmbaratti/RosalinaBot.svg?branch=master)](https://travis-ci.org/alexsmbaratti/RosalinaBot) [![Version](https://img.shields.io/badge/version-7.6.1-brightgreen.svg "Version")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![Library](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) [![Server Count](https://discordbots.org/api/widget/servers/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849) [![Discord Bots](https://discordbots.org/api/widget/status/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849)
+[![Add to Discord](https://img.shields.io/badge/add%20to-Discord-7289DA.svg "Add to Discord")](https://discordapp.com/oauth2/authorize?client_id=322405544490958849&permissions=0&scope=bot) [![Build Status](https://travis-ci.org/alexsmbaratti/RosalinaBot.svg?branch=master)](https://travis-ci.org/alexsmbaratti/RosalinaBot) [![Version](https://img.shields.io/badge/version-7.7.0-brightgreen.svg "Version")](https://github.com/alexsmbaratti/RosalinaBot/releases) [![Library](https://img.shields.io/badge/lib-discord.js-blue.svg "Discord.js")](https://discord.js.org/) [![Server Count](https://discordbots.org/api/widget/servers/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849) [![Discord Bots](https://discordbots.org/api/widget/status/322405544490958849.svg?noavatar=true)](https://discordbots.org/bot/322405544490958849)
 
 <a href="https://discordbotlist.com/bots/322405544490958849">
     <img 
@@ -22,6 +22,8 @@ RosalinaBot keeps tracks of your friends' Nintendo friend codes through Discord!
   * Settle it in Smash with your Discord server!
 * Share Animal Crossing: New Horizons Dodo Codes
   * Store your Island Name and Native Fruit!
+* Share Animal Crossing: New Horizons Dream Addresses
+  * Send and receive your Dream Addresses with your Discord friends!
 * Share Super Mario Odyssey Balloon Codes
   * Store your Luigi's Balloon World codes and challenge your friends on Discord to find them
 * Share Pokémon Go friend codes
