@@ -22,7 +22,7 @@
     },
     {
       "name": "acnh",
-      "help": "Sends a message with your Animal Crossing: New Horizons Dodo Code details.\n\n*Usage Examples*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.\n\n*Alias*\n`r!dodo`"
+      "help": "Sends a message with your Animal Crossing: New Horizons Dodo Code details.\n\n*Usage Examples*\n`r!acnh` Sends your Dream Address.\n`r!acnh [DREAMADDRESS]` Sets your Dream Address.\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.\n\n*Alias*\n`r!dodo`"
     }
   ],
   [

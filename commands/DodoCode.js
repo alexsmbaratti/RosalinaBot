@@ -74,8 +74,74 @@ class DodoCode extends Command {
             name = msg.author.username;
         }
 
-        if (arg1 == "") { // No arguments given
-            msg.channel.send(":x: Invalid usage!\n\n*Usage Examples*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.")
+        if (arg1 == "") { // No arguments given; send Dream Address
+            let embed = new RichEmbed()
+                .setTitle("**Animal Crossing New Horizons**")
+                .setColor(color)
+                .setAuthor(name + " is inviting you to their dream island!", msg.author.avatarURL)
+                .setThumbnail("https://raw.githubusercontent.com/alexsmbaratti/RosalinaBot/indev/misc/ac_emblem_white.png")
+            let footer = "Requires an active Nintendo Switch Online subscription to join"
+            MongoClient.connect(url, function (err, client) {
+                var db = client.db('bot');
+                db.collection('users').findOne({
+                    "_id": msg.author.id
+                }, function (err, results) {
+                    if (results != null) {
+                        if (results.acnhIslandName != "") {
+                            try {
+                                embed.addField("Island Name", results.acnhIslandName, true);
+                            } catch (e) {
+                                console.log(e)
+                            }
+                        } else {
+                            footer += "\nSet your island name using r!acnh name [ISLAND_NAME]"
+                        }
+
+                        if (results.acnhDreamAdress != "") {
+                            try {
+                                embed.addField("Dream Address", results.acnhDreamAdress, true);
+                            } catch (e) {
+                                console.log(e)
+                            }
+                        } else {
+                            embed.addField("Dream Address", "Not Set", true);
+                            footer += "\nSet your island name using r!acnh [DREAM_ADDRESS]"
+                        }
+
+                        if (results.acnhFruit != -1) {
+                            let fruit;
+                            switch (results.acnhFruit) {
+                                case 1:
+                                    fruit = pears;
+                                    break;
+                                case 2:
+                                    fruit = apples;
+                                    break;
+                                case 3:
+                                    fruit = peaches;
+                                    break;
+                                case 4:
+                                    fruit = oranges;
+                                    break;
+                                case 5:
+                                    fruit = cherries;
+                                    break;
+                                default:
+                                    fruit = "ERROR";
+                            }
+                            embed.addField("Native Fruit", fruit, true);
+                        } else {
+                            if (arg2 == peaches || arg2 == pears || arg2 == apples || arg2 == cherries || arg2 == oranges) {
+                                embed.addField("Native Fruit", arg2, true);
+                            }
+                            footer += "\nSave your island's native fruit using r!acnh fruit [FRUIT]"
+                        }
+                    }
+                    client.close()
+                    embed.setFooter(footer)
+                    msg.channel.send(embed)
+                })
+            })
         } else { // First argument given
             let embed = new RichEmbed()
                 .setTitle("**Animal Crossing New Horizons**")
@@ -238,6 +304,37 @@ class DodoCode extends Command {
                         msg.channel.send(embed)
                     })
                 });
+            } else if (arg1.length == 17 && arg1.startsWith("DA-")) {
+                MongoClient.connect(url, function(err, client) {
+                    var db = client.db('bot');
+                    db.collection('users').findOne({
+                        _id: msg.author.id
+                    }, function(err, results) {
+                        if (results == null) {
+                            new CreateUser(msg, db);
+                        }
+                        db.collection('users').updateOne({
+                            "_id": msg.author.id
+                        }, {
+                            $set: {
+                                "acnhDreamAdress": arg1.toUpperCase()
+                            }
+                        });
+
+                        client.close();
+                        msg.channel.send({
+                            embed: {
+                                color: color,
+                                author: {
+                                    name: "Dream Address Saved!",
+                                    icon_url: msg.author.avatarURL
+                                },
+                                title: "Animal Crossing: New Horizons Dream Address",
+                                description: arg1.toUpperCase()
+                            }
+                        });
+                    });
+                })
             } else { // ID not valid
                 msg.channel.send(":x: Dodo Code was invalid.\n\n*Usage Examples*\n`r!acnh [DODOCODE]` Sends your Dodo Code.\n`r!acnh name [ISLAND_NAME]` Saves the name of your island.\n`r!acnh fruit [NATIVE_FRUIT]` Saves the native fruit of your island.")
             }
@@ -245,4 +342,5 @@ class DodoCode extends Command {
     }
 }
 
-module.exports = DodoCode;
+module
+    .exports = DodoCode;
