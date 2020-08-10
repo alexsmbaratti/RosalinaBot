@@ -314,15 +314,6 @@ client.on('guildDelete', guild => {
     const dbl = new DBL(config.DBL_TOKEN, client); // Requires Node 7.6 or later
 });
 
-client.on('guildUpdate', (oldGuild, newGuild) => {
-    try {
-        new Logger(`Guild Update Triggered`);
-        updateNickname(newGuild);
-    } catch (e) {
-        console.log(e);
-    }
-});
-
 client.on('guildMemberAdd', member => {
     if (member.guild.id == config.COMET_OBSERVATORY_ID) {
         if (!(member.user.username.includes("discord.gg/"))) {
@@ -369,21 +360,7 @@ client.on('guildMemberRemove', member => {
 });
 
 function updateNickname(guild) {
-    if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
-        switch (guild.region) {
-            case "japan":
-                guild.me.setNickname("ロゼッタ")
-                    .catch(console.error);
-                break;
-            case "russia":
-                guild.me.setNickname("Розалина")
-                    .catch(console.error);
-                break;
-            default:
-                guild.me.setNickname("Rosalina")
-                    .catch(console.error);
-        }
-    }
+    // Currently disabled due to an issue
 }
 
 if (process.env.TOKEN != undefined) {
