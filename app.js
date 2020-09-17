@@ -80,6 +80,12 @@ client.on('ready', () => {
             name: "r!help for commands"
         }
     });
+
+    client.options.messageCacheLifetime = 30
+    new Logger('Message Lifetime is set to ' + client.options.messageCacheLifetime)
+    client.options.messageSweepInterval = 45
+    new Logger('Message Sweep Interval is set to ' + client.options.messageSweepInterval)
+
     if (client.user.id == config.CLIENT_ID) { // Client must be actual live bot for this block
         new Logger("This instance is a live bot")
         new UpdateGuilds(client.guilds.size);
