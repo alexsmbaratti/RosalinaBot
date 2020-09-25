@@ -348,7 +348,7 @@ client.on('guildMemberAdd', member => {
 client.on('guildMemberRemove', member => {
     if (member.guild.id == config.COMET_OBSERVATORY_ID) {
         if (!(member.user.username.includes("discord.gg/"))) {
-            var ran = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+            var ran = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
             var byeMsg;
             switch (ran) {
                 case 1:
@@ -356,6 +356,12 @@ client.on('guildMemberRemove', member => {
                     break;
                 case 2:
                     byeMsg = "Goodbye " + member.user.username + "!";
+                    break;
+                case 3:
+                    byeMsg = member.user.username + " was ejected...";
+                    break;
+                case 4:
+                    byeMsg = member.user.username + " was an imposter. One imposter remains...";
                     break;
                 default:
                     byeMsg = member.user.username + " has left the server.";
