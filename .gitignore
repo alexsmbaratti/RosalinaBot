@@ -2,44 +2,15 @@
 
 # Dependencies
 /node_modules
+.npmrc
 
 # Directories
-/sounds
-/profile_pictures
-package-lock.json
 /.idea
 
 # Database
-database.json
-/mongoDB
 
 # System Files
 .DS_Store
 
-# API Keys
+# Config files
 config.json
-
-# Additional files and notes
-talk.js
-voice.js
-embed.js
-notes.txt
-todo.md
-transfer.md
-online.js
-info.js
-/profile_pictures
-comet_observatory/lastEvent.dat
-lastEvent.dat
-filters.dat
-
-# Gource
-gource.sh
-gource.mp4
-
-# Gource Live
-/.project
-/.gitignore~
-tmp
-/feeders
-gource-live.sh
