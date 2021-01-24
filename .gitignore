@@ -6,11 +6,11 @@
 
 # Directories
 /.idea
-
-# Database
+/keys
 
 # System Files
 .DS_Store
 
 # Config files
 config.json
+.starbitconfig
