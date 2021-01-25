@@ -2,8 +2,12 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("../config.json");
 const BotDBDriver = require('../models/BotDBDriver');
+
+const Utils = require('./utils');
 const SwitchCode = require('./SwitchCode');
 const SetSwitchCode = require('./SetSwitchCode');
+const SSBU = require('./SSBUArena');
+
 var driver;
 
 client.ws.on('INTERACTION_CREATE', async interaction => {
@@ -17,6 +21,11 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                     break;
                 case 'setswitchcode':
                     SetSwitchCode.handle(interaction, driver, channel, user);
+                    break;
+                case 'ssbu':
+                    SSBU.handle(interaction, channel, user);
+                    break;
+                case 'acnh':
                     break;
                 default:
                 // Do nothing
