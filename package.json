@@ -19,7 +19,7 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "mongodb": "^3.6.3",
-    "@alexsmbaratti/Starbit": "0.1.55"
+    "@alexsmbaratti/Starbit": "0.1.56"
   },
   "devDependencies": {
     "nodemon": "^1.18.5"
