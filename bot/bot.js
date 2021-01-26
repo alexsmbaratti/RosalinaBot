@@ -3,10 +3,7 @@ const client = new Discord.Client();
 const config = require("../config.json");
 const BotDBDriver = require('../models/BotDBDriver');
 
-const Utils = require('./utils');
-const SwitchCode = require('./SwitchCode');
-const SetSwitchCode = require('./SetSwitchCode');
-const SSBU = require('./SSBUArena');
+const Platform = require('./Platform');
 
 var driver;
 
@@ -14,23 +11,13 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
     let guild = client.guilds.cache.get(interaction.guild_id);
     if (guild.available) {
         let channel = client.channels.cache.get(interaction.channel_id);
-        client.users.fetch(interaction.member.user.id).then(user => {
-            switch (interaction.data.name.toLowerCase()) {
-                case 'switchcode':
-                    SwitchCode.handle(interaction, driver, channel, user, client);
-                    break;
-                case 'setswitchcode':
-                    SetSwitchCode.handle(interaction, driver, channel, user);
-                    break;
-                case 'ssbu':
-                    SSBU.handle(interaction, channel, user);
-                    break;
-                case 'acnh':
-                    break;
-                default:
-                // Do nothing
-            }
-        });
+        switch (interaction.data.name.toLowerCase()) {
+            case 'platform':
+                Platform.handle(interaction, driver, channel, interaction.member.user.id, client);
+                break;
+            default:
+            // Do nothing
+        }
     }
 });
 
