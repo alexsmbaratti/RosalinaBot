@@ -4,6 +4,7 @@ const config = require("../config.json");
 const BotDBDriver = require('../models/BotDBDriver');
 
 const Platform = require('./Platform');
+const Game = require('./Game');
 
 var driver;
 
@@ -14,6 +15,9 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
         switch (interaction.data.name.toLowerCase()) {
             case 'platform':
                 Platform.handle(interaction, driver, channel, interaction.member.user.id, client);
+                break;
+            case 'game':
+                Game.handle(interaction, driver, channel, interaction.member.user.id, client);
                 break;
             default:
             // Do nothing

@@ -8,6 +8,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
         switch (game) {
             case 'pogo':
                 title = "Pokémon Go Friend Code";
+                footer = "Valid Pokémon Go Friend Codes look like XXXX XXXX XXXX";
                 break;
             case 'feh':
                 title = "Fire Emblem Heroes";
@@ -51,6 +52,9 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 });
             } else if (option == 'set') {
                 let code = interaction.data.options[0].options[0].options[0].value;
+                if ((game == 'pogo' || game == 'mkt') && code.length == 12) {
+                    code = code.substring(0, 4) + ' ' + code.substring(4, 8) + ' ' + code.substring(8, 12);
+                }
                 client.users.fetch(user).then(requestingUser => {
                     if (validateCode(game, code)) {
                         driver.setCode(interaction.member.user.id, game, code).then(res => {
@@ -96,12 +100,31 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
 function validateCode(game, code) {
     switch (game) {
         case 'pogo':
-            if (code.length == 12) {
+            if (code.split(' ').length == 3) {
+                let splitCode = code.split(' ');
+                for (let i = 0; i < 3; i++) {
+                    if (splitCode[i].length != 4 || isNaN(splitCode[i])) {
+                        return false;
+                    }
+                }
                 return true;
             }
             break
         case 'feh':
-
+            if (code.length == 10 && !isNaN(code)) {
+                return true;
+            }
+            break;
+        case 'mkt':
+            if (code.split(' ').length == 3) {
+                let splitCode = code.split(' ');
+                for (let i = 0; i < 3; i++) {
+                    if (splitCode[i].length != 4 || isNaN(splitCode[i])) {
+                        return false;
+                    }
+                }
+                return true;
+            }
             break;
         default:
             return false;

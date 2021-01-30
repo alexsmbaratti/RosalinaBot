@@ -82,6 +82,36 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 }
             }
             break;
+        case 'pogo':
+            set = {
+                $set: {
+                    pogo: {
+                        code: code,
+                        public: true
+                    }
+                }
+            }
+            break;
+        case 'feh':
+            set = {
+                $set: {
+                    feh: {
+                        code: code,
+                        public: true
+                    }
+                }
+            }
+            break;
+        case 'mkt':
+            set = {
+                $set: {
+                    mkt: {
+                        code: code,
+                        public: true
+                    }
+                }
+            }
+            break;
         default:
     }
 
