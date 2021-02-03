@@ -70,7 +70,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                                         icon_url: requestingUser.avatarURL({dynamic: true})
                                     },
                                     title: title + " Saved!",
-                                    description: code,
+                                    description: public ? code : "Private Code",
                                     footer: {
                                         text: "Use the appropriate /platform command to share your code"
                                     }
