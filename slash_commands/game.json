@@ -38,6 +38,11 @@
               "required": false
             }
           ]
+        },
+        {
+          "name": "clear",
+          "description": "Remove your Pokémon Go friend code",
+          "type": 1
         }
       ]
     },
@@ -77,6 +82,11 @@
               "required": false
             }
           ]
+        },
+        {
+          "name": "clear",
+          "description": "Remove your Fire Emblem Heroes friend code",
+          "type": 1
         }
       ]
     },
@@ -116,6 +126,11 @@
               "required": false
             }
           ]
+        },
+        {
+          "name": "clear",
+          "description": "Remove your Mario Kart Tour friend code",
+          "type": 1
         }
       ]
     },
