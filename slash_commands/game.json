@@ -1,0 +1,177 @@
+{
+  "name": "game",
+  "description": "Game options",
+  "options": [
+    {
+      "name": "pogo",
+      "description": "Pokémon Go options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Pokémon Go friend code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the friend code to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Set your Pokémon Go friend code",
+          "type": 1,
+          "options": [
+            {
+              "name": "pogocode",
+              "description": "Your Pokémon Go friend code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "feh",
+      "description": "Fire Emblem Heroes options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Fire Emblem Heroes friend code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the friend code to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Set your Fire Emblem Heroes friend code",
+          "type": 1,
+          "options": [
+            {
+              "name": "fehcode",
+              "description": "Your Fire Emblem Heroes friend code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mkt",
+      "description": "Mario Kart Tour options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Mario Kart Tour friend code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the friend code to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Set your Mario Kart Tour friend code",
+          "type": 1,
+          "options": [
+            {
+              "name": "mktcode",
+              "description": "Your Mario Kart Tour friend code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ssbu",
+      "description": "Super Smash Bros. Ultimate options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Super Smash Bros. Ultimate Battle Arena with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "arenaid",
+              "description": "The Arena ID of your Battle Arena",
+              "type": 3,
+              "required": true
+            },
+            {
+              "name": "password",
+              "description": "The password of your Battle Arena",
+              "type": 3,
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "acnh",
+      "description": "Animal Crossing: New Horizons options",
+      "type": 2,
+      "options": [
+        {
+          "name": "dodo",
+          "description": "Share your Animal Crossing: New Horizons Dodo Code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "dodocode",
+              "description": "Your Dodo Code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "dreamaddress",
+          "description": "Share a Animal Crossing: New Horizons Dream Address with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the Dream Address to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "design",
+          "description": "Share a Animal Crossing: New Horizons Creator ID with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the Design Creator ID to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

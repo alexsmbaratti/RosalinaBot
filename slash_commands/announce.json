@@ -1,0 +1,18 @@
+{
+  "name": "announce",
+  "description": "Send out an embed with a title and description",
+  "options": [
+    {
+      "name": "title",
+      "description": "The title (or headline) of your announcement",
+      "type": 3,
+      "required": true
+    },
+    {
+      "name": "description",
+      "description": "The description of your announcement",
+      "type": 3,
+      "required": false
+    }
+  ]
+}

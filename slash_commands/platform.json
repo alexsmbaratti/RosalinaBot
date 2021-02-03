@@ -1,0 +1,72 @@
+{
+  "name": "platform",
+  "description": "Platform options",
+  "options": [
+    {
+      "name": "switch",
+      "description": "Nintendo Switch options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Nintendo Switch friend code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the friend code to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Set your Nintendo Switch friend code",
+          "type": 1,
+          "options": [
+            {
+              "name": "switchcode",
+              "description": "Your Nintendo Switch friend code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3ds",
+      "description": "Nintendo 3DS options",
+      "type": 2,
+      "options": [
+        {
+          "name": "share",
+          "description": "Share a Nintendo 3DS friend code with this channel",
+          "type": 1,
+          "options": [
+            {
+              "name": "user",
+              "description": "The user of the friend code to share (shares yours if left blank)",
+              "type": 6,
+              "required": false
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "description": "Set your Nintendo 3DS friend code",
+          "type": 1,
+          "options": [
+            {
+              "name": "3dscode",
+              "description": "Your Nintendo 3DS friend code",
+              "type": 3,
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
