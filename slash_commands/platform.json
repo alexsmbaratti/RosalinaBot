@@ -30,8 +30,19 @@
               "description": "Your Nintendo Switch friend code",
               "type": 3,
               "required": true
+            },
+            {
+              "name": "private",
+              "description": "If public, others can lookup your Nintendo Switch friend code. If private, only you can share it.",
+              "type": 5,
+              "required": false
             }
           ]
+        },
+        {
+          "name": "clear",
+          "description": "Remove your Nintendo Switch friend code",
+          "type": 1
         }
       ]
     },
@@ -63,8 +74,19 @@
               "description": "Your Nintendo 3DS friend code",
               "type": 3,
               "required": true
+            },
+            {
+              "name": "private",
+              "description": "If public, others can lookup your Nintendo 3DS friend code. If private, only you can share it.",
+              "type": 5,
+              "required": false
             }
           ]
+        },
+        {
+          "name": "clear",
+          "description": "Remove your Nintendo 3DS friend code",
+          "type": 1
         }
       ]
     }
