@@ -40,15 +40,19 @@ BotDBDriver.prototype.getCode = function (id, codeName, isSelfCall) {
                         console.log(res);
                         reject(err);
                     } else {
-                        let document = {_id: res._id}
-                        if (res[codeName]) {
-                            if (res[codeName].public || isSelfCall) {
-                                document[codeName] = res[codeName];
-                            } else {
-                                document[codeName] = {code: "This code is private", public: false}
-                            }
+                        let document = {_id: id}
+                        if (res == undefined) {
+                            document[codeName] = {code: "This code has not been set", public: false};
                         } else {
-                            document[codeName] = {code: "This code has not been set", public: false}
+                            if (res[codeName]) {
+                                if (res[codeName].public || isSelfCall) {
+                                    document[codeName] = res[codeName];
+                                } else {
+                                    document[codeName] = {code: "This code is private", public: false};
+                                }
+                            } else {
+                                document[codeName] = {code: "This code has not been set", public: false};
+                            }
                         }
                         resolve(document);
                     }
