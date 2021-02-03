@@ -59,7 +59,7 @@ BotDBDriver.prototype.getCode = function (id, codeName, isSelfCall) {
     });
 }
 
-BotDBDriver.prototype.setCode = function (id, codeName, code) {
+BotDBDriver.prototype.setCode = function (id, codeName, code, public = true) {
     let set = {};
     switch (codeName) {
         case 'switch':
@@ -67,7 +67,7 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 $set: {
                     switch: {
                         code: code,
-                        public: true
+                        public: public
                     }
                 }
             }
@@ -77,7 +77,7 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 $set: {
                     ds: {
                         code: code,
-                        public: true
+                        public: public
                     }
                 }
             }
@@ -87,7 +87,7 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 $set: {
                     pogo: {
                         code: code,
-                        public: true
+                        public: public
                     }
                 }
             }
@@ -97,7 +97,7 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 $set: {
                     feh: {
                         code: code,
-                        public: true
+                        public: public
                     }
                 }
             }
@@ -107,7 +107,7 @@ BotDBDriver.prototype.setCode = function (id, codeName, code) {
                 $set: {
                     mkt: {
                         code: code,
-                        public: true
+                        public: public
                     }
                 }
             }

@@ -51,9 +51,15 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 });
             } else if (option == 'set') {
                 let code = interaction.data.options[0].options[0].options[0].value;
+                let public = interaction.data.options[0].options[0].options[1];
+                if (public == undefined) {
+                    public = true; // Codes are public by default
+                } else {
+                    public = !public.value;
+                }
                 utils.getUser(client, user).then(requestingUser => {
                     if (validateCode(platform, code)) {
-                        driver.setCode(interaction.member.user.id, platform, code).then(res => {
+                        driver.setCode(interaction.member.user.id, platform, code, public).then(res => {
                             channel.send({
                                 embed: {
                                     color: 0x86D0CF,
@@ -88,6 +94,8 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                         });
                     }
                 });
+            } else if (option == 'clear') {
+                // TODO: Implement!
             }
         }
     }
