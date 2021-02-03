@@ -135,4 +135,65 @@ BotDBDriver.prototype.setCode = function (id, codeName, code, public = true) {
     });
 }
 
+BotDBDriver.prototype.clearCode = function (id, codeName) {
+    let unset = {};
+    switch (codeName) {
+        case 'switch':
+            unset = {
+                $unset: {
+                    switch: {}
+                }
+            }
+            break;
+        case 'ds':
+            unset = {
+                $unset: {
+                    ds: {}
+                }
+            }
+            break;
+        case 'pogo':
+            unset = {
+                $unset: {
+                    pogo: {}
+                }
+            }
+            break;
+        case 'feh':
+            unset = {
+                $unset: {
+                    feh: {}
+                }
+            }
+            break;
+        case 'mkt':
+            unset = {
+                $unset: {
+                    mkt: {}
+                }
+            }
+            break;
+        default:
+    }
+
+    let client = new MongoClient(BotDBDriver.prototype.uri, {useNewUrlParser: true, useUnifiedTopology: true});
+    return new Promise(function (resolve, reject) {
+        client.connect(err => {
+            if (err) {
+                reject(err);
+                client.close();
+            } else {
+                client.db(BotDBDriver.prototype.db).collection('users').updateOne({_id: {$eq: id}}, unset, {upsert: false}, function (err, res) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(res);
+                    }
+                    client.close();
+                });
+            }
+        });
+    });
+}
+
 module.exports = BotDBDriver;

@@ -97,7 +97,20 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                     }
                 });
             } else if (option == 'clear') {
-                // TODO: Implement!
+                driver.clearCode(interaction.member.user.id, platform).then(res => {
+                    utils.getUser(client, user).then(requestingUser => {
+                        channel.send({
+                            embed: {
+                                color: 0x86D0CF,
+                                author: {
+                                    name: requestingUser.username,
+                                    icon_url: requestingUser.avatarURL({dynamic: true})
+                                },
+                                title: title + " Removed"
+                            }
+                        });
+                    });
+                }).catch(err => console.error(err));
             }
         }
     }
