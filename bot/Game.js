@@ -11,10 +11,10 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 footer = "Valid Pokémon Go Friend Codes look like XXXX XXXX XXXX";
                 break;
             case 'feh':
-                title = "Fire Emblem Heroes";
+                title = "Fire Emblem Heroes Friend Code";
                 break;
             case 'mkt':
-                title = "Mario Kart Tour";
+                title = "Mario Kart Tour Friend Code";
                 break;
             default:
                 title = game;
@@ -74,7 +74,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                                         icon_url: requestingUser.avatarURL({dynamic: true})
                                     },
                                     title: title + " Saved!",
-                                    description: code,
+                                    description: public ? code : "Private Code",
                                     footer: {
                                         text: "Use the appropriate /game command to share your code"
                                     }
@@ -100,8 +100,24 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                         });
                     }
                 });
-            } else if (option == 'clear') {
-                // TODO: Implement!
+            } else if (option === 'clear') {
+                driver.clearCode(interaction.member.user.id, game).then(res => {
+                    utils.getUser(client, user).then(requestingUser => {
+                        channel.send({
+                            embed: {
+                                color: 0x86D0CF,
+                                author: {
+                                    name: requestingUser.username,
+                                    icon_url: requestingUser.avatarURL({dynamic: true})
+                                },
+                                title: res.modifiedCount == 0 ? title + " Is Not Set" : title + " Removed",
+                                footer: {
+                                    text: res.modifiedCount == 0 ? "Use the appropriate /game command to set your code" : undefined
+                                }
+                            }
+                        });
+                    });
+                }).catch(err => console.error(err));
             }
         }
     }

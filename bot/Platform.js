@@ -96,7 +96,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                         });
                     }
                 });
-            } else if (option == 'clear') {
+            } else if (option === 'clear') {
                 driver.clearCode(interaction.member.user.id, platform).then(res => {
                     utils.getUser(client, user).then(requestingUser => {
                         channel.send({
