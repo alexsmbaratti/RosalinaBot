@@ -106,7 +106,10 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                                     name: requestingUser.username,
                                     icon_url: requestingUser.avatarURL({dynamic: true})
                                 },
-                                title: title + " Removed"
+                                title: res.modifiedCount == 0 ? title + " Is Not Set" : title + " Removed",
+                                footer: {
+                                    text: res.modifiedCount == 0 ? "Use the appropriate /platform command to set your code" : undefined
+                                }
                             }
                         });
                     });
