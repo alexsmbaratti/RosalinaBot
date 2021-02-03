@@ -5,6 +5,7 @@ const BotDBDriver = require('../models/BotDBDriver');
 
 const Platform = require('./Platform');
 const Game = require('./Game');
+const Announce = require('./Announce');
 
 var driver;
 
@@ -18,6 +19,9 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                 break;
             case 'game':
                 Game.handle(interaction, driver, channel, interaction.member.user.id, client);
+                break;
+            case 'announce':
+                Announce.handle(interaction, channel);
                 break;
             default:
             // Do nothing
