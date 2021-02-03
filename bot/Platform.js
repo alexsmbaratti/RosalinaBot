@@ -29,8 +29,8 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                     mentionedUserID = interaction.data.options[0].options[0].options[0].value;
                     selfCall = false;
                 }
-                client.users.fetch(user).then(requestingUser => {
-                    client.users.fetch(mentionedUserID).then(mentionedUser => {
+                utils.getUser(client, user).then(requestingUser => {
+                    utils.getUser(client, mentionedUserID).then(mentionedUser => {
                         driver.getCode(mentionedUserID, platform, selfCall).then(res => {
                             channel.send({
                                 embed: {
@@ -51,7 +51,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 });
             } else if (option == 'set') {
                 let code = interaction.data.options[0].options[0].options[0].value;
-                client.users.fetch(user).then(requestingUser => {
+                utils.getUser(client, user).then(requestingUser => {
                     if (validateCode(platform, code)) {
                         driver.setCode(interaction.member.user.id, platform, code).then(res => {
                             channel.send({

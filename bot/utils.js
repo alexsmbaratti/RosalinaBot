@@ -24,3 +24,13 @@ module.exports.sendDeprecationNotice = function (msg) {
         }
     });
 }
+
+module.exports.getUser = function (client, userID) {
+    return new Promise(function (resolve, reject) {
+        client.users.fetch(userID).then(user => {
+            resolve(user);
+        }).catch(err => {
+            reject(err);
+        })
+    });
+}

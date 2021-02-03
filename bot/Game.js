@@ -30,8 +30,8 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                     mentionedUserID = interaction.data.options[0].options[0].options[0].value;
                     selfCall = false;
                 }
-                client.users.fetch(user).then(requestingUser => {
-                    client.users.fetch(mentionedUserID).then(mentionedUser => {
+                utils.getUser(client, user).then(requestingUser => {
+                    utils.getUser(client, mentionedUserID).then(mentionedUser => {
                         driver.getCode(mentionedUserID, game, selfCall).then(res => {
                             channel.send({
                                 embed: {
@@ -55,7 +55,7 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 if ((game == 'pogo' || game == 'mkt') && code.length == 12) {
                     code = code.substring(0, 4) + ' ' + code.substring(4, 8) + ' ' + code.substring(8, 12);
                 }
-                client.users.fetch(user).then(requestingUser => {
+                utils.getUser(client, user).then(requestingUser => {
                     if (validateCode(game, code)) {
                         driver.setCode(interaction.member.user.id, game, code).then(res => {
                             channel.send({
