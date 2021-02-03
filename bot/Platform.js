@@ -27,7 +27,9 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 let selfCall = true;
                 if (interaction.data.options[0].options[0].options) { // If a user was specified
                     mentionedUserID = interaction.data.options[0].options[0].options[0].value;
-                    selfCall = false;
+                    if (mentionedUserID != user) {
+                        selfCall = false;
+                    }
                 }
                 utils.getUser(client, user).then(requestingUser => {
                     utils.getUser(client, mentionedUserID).then(mentionedUser => {
