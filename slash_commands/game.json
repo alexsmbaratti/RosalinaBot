@@ -30,6 +30,12 @@
               "description": "Your Pokémon Go friend code",
               "type": 3,
               "required": true
+            },
+            {
+              "name": "private",
+              "description": "If public, others can lookup your Pokémon Go friend code. If private, only you can share it.",
+              "type": 5,
+              "required": false
             }
           ]
         }
@@ -63,6 +69,12 @@
               "description": "Your Fire Emblem Heroes friend code",
               "type": 3,
               "required": true
+            },
+            {
+              "name": "private",
+              "description": "If public, others can lookup your Fire Emblem Heroes friend code. If private, only you can share it.",
+              "type": 5,
+              "required": false
             }
           ]
         }
@@ -96,6 +108,12 @@
               "description": "Your Mario Kart Tour friend code",
               "type": 3,
               "required": true
+            },
+            {
+              "name": "private",
+              "description": "If public, others can lookup your Mario Kart Tour friend code. If private, only you can share it.",
+              "type": 5,
+              "required": false
             }
           ]
         }

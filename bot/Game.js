@@ -28,7 +28,9 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 let selfCall = true;
                 if (interaction.data.options[0].options[0].options) { // If a user was specified
                     mentionedUserID = interaction.data.options[0].options[0].options[0].value;
-                    selfCall = false;
+                    if (mentionedUserID != user) {
+                        selfCall = false;
+                    }
                 }
                 utils.getUser(client, user).then(requestingUser => {
                     utils.getUser(client, mentionedUserID).then(mentionedUser => {
@@ -55,9 +57,15 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                 if ((game == 'pogo' || game == 'mkt') && code.length == 12) {
                     code = code.substring(0, 4) + ' ' + code.substring(4, 8) + ' ' + code.substring(8, 12);
                 }
+                let public = interaction.data.options[0].options[0].options[1];
+                if (public == undefined) {
+                    public = true; // Codes are public by default
+                } else {
+                    public = !public.value;
+                }
                 utils.getUser(client, user).then(requestingUser => {
                     if (validateCode(game, code)) {
-                        driver.setCode(interaction.member.user.id, game, code).then(res => {
+                        driver.setCode(interaction.member.user.id, game, code, public).then(res => {
                             channel.send({
                                 embed: {
                                     color: 0x86D0CF,
@@ -92,6 +100,8 @@ module.exports.handle = function (interaction, driver, channel, user, client) {
                         });
                     }
                 });
+            } else if (option == 'clear') {
+                // TODO: Implement!
             }
         }
     }
