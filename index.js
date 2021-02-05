@@ -11,5 +11,9 @@ starbit.start(config.botToken, './bot/bot.js', {
     port: config.port,
     httpsOpts: {key: fs.readFileSync(config.keyPath), cert: fs.readFileSync(config.certificatePath)},
     discordJSVersion: Discord.version,
-    dbDriver: driver
+    dbDriver: driver,
+    discordInviteOptions: {
+        inviteScope: 'bot%20applications.commands',
+        invitePermissions: '0'
+    }
 });
