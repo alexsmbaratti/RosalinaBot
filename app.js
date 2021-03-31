@@ -231,7 +231,7 @@ client.on('message', msg => {
                 msg.channel.send({
                     embed: {
                         title: "Invite Link",
-                        url: "https://discordapp.com/oauth2/authorize?client_id=322405544490958849&scope=bot&permissions=0",
+                        url: "https://discord.com/api/oauth2/authorize?client_id=322405544490958849&permissions=17408&scope=applications.commands%20bot",
                         color: color,
                         description: "To invite RosalinaBot to another server, use this link."
                     }
