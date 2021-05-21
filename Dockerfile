@@ -17,12 +17,14 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /et
 # Install dev tools
 RUN apt-get -y update && apt-get -y install wget nano npm curl mongodb ca-certificates rsync git
 
-# Copy Repository
+# Copy Dependencies
 COPY package.json /app
-COPY . /app
 
-# Install dependencies
+# Install Dependencies
 RUN npm install
+
+# Copy Repository
+COPY . /app
 
 # Run RosalinaBot
 CMD node app.js
